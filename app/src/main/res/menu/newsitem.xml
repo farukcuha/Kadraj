@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/newssabah"
+        android:title=""
+        android:icon="@drawable/sabahlogo"
+        />
+    <item
+        android:id="@+id/newssozcu"
+        android:title=""
+        android:icon="@drawable/sozcu"
+        />
+    <item
+        android:id="@+id/newsbozyazi"
+        android:title=""
+        android:icon="@drawable/bozyazilogo"
+        />
+
+</menu>

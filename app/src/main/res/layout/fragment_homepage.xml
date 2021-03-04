@@ -1,0 +1,1044 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.HomepageFragment"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:text="Mersin Haberleri"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="10dp"
+                />
+
+            <com.smarteist.autoimageslider.SliderView
+                android:id="@+id/localnewsslider"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:text="Hava Durumu"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="10dp"
+                />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                >
+                <ImageView
+                    android:id="@+id/weatherimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+
+                <ProgressBar
+                    android:id="@+id/weatherprogressbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/weatherimage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:text="Covid19 Tablosu"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                android:paddingVertical="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:paddingLeft="5dp"
+                android:text="Bugün"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:background="#f8b133"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="1dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="#00a0a0"
+                        android:text="Test Sayısı"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/todaytestnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="48.245.895"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vaka Sayısı"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/todaycasenumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="11.895"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasta Sayısı"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/todaypatientnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="689"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vefat Sayısı"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/todaydeathnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="65"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="1dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="İyileşen Sayısı"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/todayhealingnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="7.191"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:paddingVertical="2dp"
+                android:layout_marginTop="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:paddingLeft="5dp"
+                android:text="Toplam"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:background="#f8b133"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="1dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_marginEnd="1dp"
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Test Sayısı"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="1dp"
+                        />
+                    <TextView
+                        android:id="@+id/alltestnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="48.245.895"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vaka Sayısı"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/allcasenumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="2.411.520"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:gravity="center"
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ağır Hasta"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/allheavypatientnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="1.689"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginEnd="1dp"
+                        android:layout_marginBottom="1dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Vefat Sayısı"
+                        android:maxLines="3"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/alldeathnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:layout_marginEnd="1dp"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="28.765"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:background="#00a0a0"
+                        android:textColor="#FFFFFF"                    android:textSize="20dp"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="1dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="İyileşen Sayısı"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:id="@+id/allhealingnumber"
+                        android:padding="2dp"
+                        android:gravity="center"
+                        android:background="#6f6f6f"
+                        android:textColor="#FFFFFF"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:autoSizeTextType="uniform"
+                        android:maxLines="1"
+                        android:text="5.657.191"
+                        android:layout_weight="1"
+
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:text="Hal Fiyatları"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                android:id="@+id/lastupdate"
+                android:layout_marginHorizontal="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Son Güncelleme: 26.01.2021"
+                android:fontFamily="@font/sfusemibold"
+                android:textColor="#000000"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/cucumber"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Salatalık"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/cucumberprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="25 ₺"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="#111111"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/eggplant"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Patlıcan"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/eggplantprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="25 ₺"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="#111111"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/green_beans"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Fasülye"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/beanprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="25 ₺"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="#111111"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/green_chili_pepper"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Kıl Biber"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/pepperprice1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="25 ₺"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="#111111"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/green_chili_pepper__1_"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Sivri Biber"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/pepperprice2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="25 ₺"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="#111111"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/tomato"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Domates"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/tomatoprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:text="25 ₺"
+                        android:textSize="25sp"
+                        android:textAlignment="center"
+                        android:textColor="#111111"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:text="Döviz Fiyatları"
+                android:fontFamily="@font/sfumedium"
+                android:textColor="#000000"
+                android:layout_marginHorizontal="10dp"
+                />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ingot"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Altın"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_weight="0.7">
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/goldprice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="25 ₺"
+                            android:textSize="25sp"
+                            android:textAlignment="center"
+                            android:textColor="#111111"/>
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/goldchanging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="% 3,15"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="#409E43"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/dollar"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Dolar"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="0.7">
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/dollarprice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="25 ₺"
+                            android:textSize="25sp"
+                            android:textAlignment="center"
+                            android:textColor="#111111"/>
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/dollarchanging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="% 3,15"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="#409E43"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/euro"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Euro"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="0.7">
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/europrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="25 ₺"
+                            android:textSize="25sp"
+                            android:textAlignment="center"
+                            android:textColor="#111111"/>
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/eurochanging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="% 3,15"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="#409E43"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/bitcoin"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Bitcoin"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="0.7">
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/bitcoinprice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="25 ₺"
+                            android:textSize="25sp"
+                            android:textAlignment="center"
+                            android:textColor="#111111"/>
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/bitcoinchanging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="% 3,15"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="#409E43"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="25dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ethereum"
+                        android:layout_weight="0.7"/>
+                    <TextView
+                        android:fontFamily="@font/sfumedium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="25sp"
+                        android:text="Ethereum"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:textColor="#000000"
+                        android:layout_weight="0.4"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="0.7">
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/ethereumprice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="25 ₺"
+                            android:textSize="25sp"
+                            android:textAlignment="center"
+                            android:textColor="#111111"/>
+                        <TextView
+                            android:fontFamily="@font/sfumedium"
+                            android:layout_weight="1"
+                            android:id="@+id/ethereumchanging"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="% 3,15"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textColor="#409E43"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

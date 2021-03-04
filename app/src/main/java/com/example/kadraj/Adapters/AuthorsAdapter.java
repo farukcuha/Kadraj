@@ -51,8 +51,6 @@ public class AuthorsAdapter extends RecyclerView.Adapter<AuthorsAdapter.Holder> 
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         AuthorsModel model = authorsList.get(position);
 
-
-
         Glide.with(context).load(model.getAuthorImage()).transform(new CenterCrop(), new RoundedCorners(30))
                 .listener(new RequestListener<Drawable>() {
                     @Override

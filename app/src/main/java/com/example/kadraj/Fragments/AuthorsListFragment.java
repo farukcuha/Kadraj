@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
-import com.example.kadraj.AuthorsSharedPreferences;
+import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Tasks.AuthorsListTask;
 import com.example.kadraj.R;
 
@@ -47,7 +47,10 @@ public class AuthorsListFragment extends Fragment {
             authorsRecyclerView.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             authorsRecyclerView.setLayoutManager(linearLayoutManager);
-            popularAuthorsAdapter = new AuthorsAdapter(new AuthorsSharedPreferences(getContext()).getData(resources, "newspaperauthors"), getContext(), getFragmentManager());
+            popularAuthorsAdapter = new AuthorsAdapter(new SharedPreferencesProvider(
+                    getContext()).getAuthorsData(resources, "newspaperauthors"),
+                    getContext(),
+                    getFragmentManager());
             authorsRecyclerView.setAdapter(popularAuthorsAdapter);
             Log.d("sadsfsgfdhjh", "alhaalıdo");
 

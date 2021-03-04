@@ -19,7 +19,10 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.example.kadraj.R;
+import com.example.kadraj.SharedPreferencesProvider;
+import com.example.kadraj.Tasks.CovidTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
 import com.smarteist.autoimageslider.SliderView;
 
@@ -28,23 +31,36 @@ public class HomepageFragment extends Fragment {
     private TextView cucumberPrice, eggplantPrice, beanPrice, pepperPrice1, pepperPrice2, tomatoPrice;
     private TextView goldPrice, dollarPrice, euroPrice, bitcoinPrice, ethereumPrice;
     private TextView goldChanging, dollarChanging, euroChanging, bitcoinChanging, ethereumChanging;
-    private TextView todayTestNumber, todayCaseNumber, todayPatientNumber, todayDeathNumber, todayHealingNumber;
-    private TextView allTestNumber, allCaseNumber, allHeavyPatientNumber, allDeathNumber, allHealingNumber;
+
     private ImageView weatherImage;
     private ProgressBar weatherProgressBar;
-    private SliderView localNewsSliderView;
+    private SliderView sliderView;
+    private int currentPosition;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
+        idPairs(view);
+        loadWeatherImage(view);
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
 
-        new LocalNewsTask(getContext(), view.findViewById(R.id.localnewsslider), "https://www.hurriyet.com.tr/mersin-haberleri/").execute();
+        String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnews", "null");
+        if (!resources.equals("null")){
+            sliderView.setSliderAdapter(new LocalNewsSliderAdapter(
+                    new SharedPreferencesProvider(getContext()).getLocalNewsData(resources, "localnews"),
+                    getContext(),
+                    getFragmentManager(),
+                    getActivity(),
+                    sliderView
+            ));
+        }
+        else {
+            new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
+        }
 
-        idPairs(view);
-        loadWeatherImage(view);
+        new CovidTask(view, getContext()).execute();
 
         return view;
     }
@@ -57,31 +73,21 @@ public class HomepageFragment extends Fragment {
                 weatherProgressBar.setVisibility(View.VISIBLE);
                 return false;
             }
-
             @Override
             public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                 weatherProgressBar.setVisibility(View.GONE);
-
                 return false;
             }
         }).into(weatherImage);
     }
 
     private void idPairs(View view) {
+        sliderView = view.findViewById(R.id.localnewsslider);
 
         weatherImage = view.findViewById(R.id.weatherimage);
         weatherProgressBar = view.findViewById(R.id.weatherprogressbar);
 
-        todayTestNumber = view.findViewById(R.id.todaycasenumber);
-        todayCaseNumber = view.findViewById(R.id.todaytestnumber);
-        todayPatientNumber = view.findViewById(R.id.todaypatientnumber);
-        todayDeathNumber = view.findViewById(R.id.todaydeathnumber);
-        todayHealingNumber = view.findViewById(R.id.todayhealingnumber);
-        allTestNumber = view.findViewById(R.id.alltestnumber);
-        allCaseNumber = view.findViewById(R.id.allcasenumber);
-        allHeavyPatientNumber = view.findViewById(R.id.allheavypatientnumber);
-        allDeathNumber = view.findViewById(R.id.alldeathnumber);
-        allHealingNumber = view.findViewById(R.id.allhealingnumber);
+
 
         cucumberPrice = view.findViewById(R.id.cucumberprice);
         eggplantPrice = view.findViewById(R.id.eggplantprice);
@@ -102,5 +108,17 @@ public class HomepageFragment extends Fragment {
         bitcoinChanging = view.findViewById(R.id.bitcoinchanging);
         ethereumChanging = view.findViewById(R.id.ethereumchanging);
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        currentPosition = sliderView.getCurrentPagePosition();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sliderView.setCurrentPagePosition(currentPosition);
     }
 }

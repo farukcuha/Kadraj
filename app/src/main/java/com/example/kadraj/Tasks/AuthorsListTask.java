@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
-import com.example.kadraj.AuthorsSharedPreferences;
+import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.CustomProgressDialog;
 import com.example.kadraj.Models.AuthorsModel;
 import com.example.kadraj.R;
@@ -327,7 +327,7 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
         AuthorsAdapter authorsAdapter = new AuthorsAdapter(list, context, fragmentManager);
         recyclerView.setAdapter(authorsAdapter);
 
-        new AuthorsSharedPreferences(context).putData(list, "newspaperauthors");
+        new SharedPreferencesProvider(context).putAuthorsData(list, "newspaperauthors");
 
         progressDialog.dismiss();
     }

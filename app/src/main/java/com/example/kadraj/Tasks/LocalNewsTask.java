@@ -1,14 +1,17 @@
 package com.example.kadraj.Tasks;
 
+import android.app.Activity;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.fragment.app.FragmentManager;
+
 import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.example.kadraj.CustomProgressDialog;
 import com.example.kadraj.Models.SliderNewsModel;
+import com.example.kadraj.SharedPreferencesProvider;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.jsoup.Jsoup;
@@ -25,11 +28,15 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
     private List<SliderNewsModel> list;
     private String url;
     private Dialog progressDialog;
+    private FragmentManager fragmentManager;
+    private Activity activity;
 
-    public LocalNewsTask(Context context, SliderView localNewsSliderView, String url) {
+    public LocalNewsTask(Context context, SliderView localNewsSliderView, String url, FragmentManager fragmentManager, Activity activity) {
         this.context = context;
         this.localNewsSliderView = localNewsSliderView;
         this.url = url;
+        this.fragmentManager = fragmentManager;
+        this.activity = activity;
     }
 
     @Override
@@ -59,7 +66,7 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
 
                 list.add(new SliderNewsModel(
                         image,
-                        element.attr("href"),
+                        "https://www.hurriyet.com.tr" + element.attr("href"),
                         element.attr("title")
                 ));
                 Log.d("sdfg", element.select("img").attr("data-src"));
@@ -78,7 +85,8 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        localNewsSliderView.setSliderAdapter(new LocalNewsSliderAdapter(list, context));
+        localNewsSliderView.setSliderAdapter(new LocalNewsSliderAdapter(list, context, fragmentManager, activity, localNewsSliderView));
+        new SharedPreferencesProvider(context).putLocalNewsData(list, "localnews");
         progressDialog.dismiss();
 
     }

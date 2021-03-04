@@ -28,9 +28,6 @@ public class NewsFragment extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
         bottomNavigationView.setItemIconTintList(null);
 
-
-
-
         return view;
     }
 

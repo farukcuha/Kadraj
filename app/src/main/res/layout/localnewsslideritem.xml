@@ -4,18 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="250dp"
+    android:orientation="vertical">
+
 
     <ImageView
         android:id="@+id/newsimage"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.405"
         tools:ignore="MissingConstraints" />
 
     <ProgressBar
@@ -23,34 +19,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/newsimage"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/newsimage"
         app:layout_constraintStart_toStartOf="@+id/newsimage"
         app:layout_constraintTop_toTopOf="@+id/newsimage"
         tools:ignore="MissingConstraints" />
 
 
-    <eightbitlab.com.blurview.BlurView
-        android:id="@+id/blurview"
+    <TextView
+        android:id="@+id/newstitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/newsimage"
+        android:layout_marginHorizontal="10dp"
+        android:fontFamily="@font/sfusemibold"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="5"
+        android:text="Antalya'da bakkal, kasap, manav çalışma saatleri değişti"
+        android:textColor="#FFFFFF"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/newsimage"
-        app:layout_constraintVertical_bias="0.8"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/newstitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sfumedium"
-            android:padding="5dp"
-            android:text="Antalya'da bakkal, kasap, manav çalışma saatleri değişti"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp" />
-    </eightbitlab.com.blurview.BlurView>
+        app:layout_constraintVertical_bias="0.827"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

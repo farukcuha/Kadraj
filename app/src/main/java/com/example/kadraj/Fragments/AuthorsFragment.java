@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
 import com.example.kadraj.Adapters.PapernewsAdapter;
-import com.example.kadraj.AuthorsSharedPreferences;
+import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Models.PapernewsModel;
 import com.example.kadraj.Tasks.PopularAuthorsTask;
 import com.example.kadraj.R;
@@ -41,6 +41,7 @@ public class AuthorsFragment extends Fragment {
         setUpAuthorList();
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("newspaperauthors").apply();
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
 
         return view;
     }
@@ -74,9 +75,10 @@ public class AuthorsFragment extends Fragment {
             popularAuthorsRecyclerView.setHasFixedSize(true);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
             popularAuthorsRecyclerView.setLayoutManager(linearLayoutManager);
-            popularAuthorsAdapter = new AuthorsAdapter(new AuthorsSharedPreferences(getContext()).getData(resources, "popularauthors"), getContext(), getFragmentManager());
+            popularAuthorsAdapter = new AuthorsAdapter(new SharedPreferencesProvider(getContext()).getAuthorsData(resources, "popularauthors"), getContext(), getFragmentManager());
             popularAuthorsRecyclerView.setAdapter(popularAuthorsAdapter);
         }
+
         else {
             new PopularAuthorsTask(getContext(), popularAuthorsRecyclerView, getFragmentManager()).execute();
         }

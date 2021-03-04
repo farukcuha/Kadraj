@@ -18,6 +18,16 @@
         app:layout_constraintVertical_bias="0.405"
         tools:ignore="MissingConstraints" />
 
+    <ProgressBar
+        android:id="@+id/sliderprogressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/newsimage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/newsimage"
+        app:layout_constraintTop_toTopOf="@+id/newsimage"
+        tools:ignore="MissingConstraints" />
+
 
     <eightbitlab.com.blurview.BlurView
         android:id="@+id/blurview"

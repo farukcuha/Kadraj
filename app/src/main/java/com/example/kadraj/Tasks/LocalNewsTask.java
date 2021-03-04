@@ -1,5 +1,7 @@
 package com.example.kadraj.Tasks;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -22,6 +24,7 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
     private SliderView localNewsSliderView;
     private List<SliderNewsModel> list;
     private String url;
+    private Dialog progressDialog;
 
     public LocalNewsTask(Context context, SliderView localNewsSliderView, String url) {
         this.context = context;
@@ -33,7 +36,8 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-        new CustomProgressDialog(context).loadingDialog().show();
+        progressDialog = new CustomProgressDialog(context).loadingDialog();
+        progressDialog.show();
         list = new ArrayList<>();
 
     }
@@ -42,9 +46,19 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
         try {
             Document document = Jsoup.connect(url).ignoreContentType(true).get();
 
+
             for (Element element : document.select("div[class=swiper-slide  read-count-container sponsored-news no-sponsor-text] > a")){
+                String image = element.select("img").attr("data-src");
+
+                if (image == null){
+                    image = element.select("div[class=local-spot-colorbox] > img").attr("src");
+                }
+                else {
+                    image = element.select("img").attr("data-src");
+                }
+
                 list.add(new SliderNewsModel(
-                        element.select("img").attr("data-src"),
+                        image,
                         element.attr("href"),
                         element.attr("title")
                 ));
@@ -65,7 +79,7 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
         super.onPostExecute(aVoid);
 
         localNewsSliderView.setSliderAdapter(new LocalNewsSliderAdapter(list, context));
-        new CustomProgressDialog(context).loadingDialog().dismiss();
+        progressDialog.dismiss();
 
     }
 }

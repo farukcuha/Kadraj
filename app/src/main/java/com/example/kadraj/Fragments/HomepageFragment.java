@@ -41,7 +41,7 @@ public class HomepageFragment extends Fragment {
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
 
-        new LocalNewsTask(getContext(), view.findViewById(R.id.localnewsslider), "https://www.hurriyet.com.tr/antalya-haberleri/").execute();
+        new LocalNewsTask(getContext(), view.findViewById(R.id.localnewsslider), "https://www.hurriyet.com.tr/mersin-haberleri/").execute();
 
         idPairs(view);
         loadWeatherImage(view);

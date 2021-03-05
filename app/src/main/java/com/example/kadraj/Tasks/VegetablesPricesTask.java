@@ -1,4 +1,4 @@
-package com.example.kadraj;
+package com.example.kadraj.Tasks;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.kadraj.CustomProgressDialog;
+import com.example.kadraj.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

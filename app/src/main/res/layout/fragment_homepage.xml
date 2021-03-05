@@ -337,6 +337,7 @@
                 android:layout_marginTop="5dp"
                 >
                 <LinearLayout
+                    
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -370,304 +371,595 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="Döviz Fiyatları"
-                android:fontFamily="@font/sfumedium"
-                android:textColor="#000000"
-                android:layout_marginHorizontal="10dp"
-                />
-
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="40sp"
+                    android:text="Döviz"
+                    android:fontFamily="@font/sfumedium"
+                    android:textColor="#000000"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ingot"
-                        android:layout_weight="0.7"/>
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
                         android:fontFamily="@font/sfumedium"
+                        android:textColor="#FFFFFF"
+                        android:layout_weight="1"
+                        android:text="Ad"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:background="#FF9A00"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+                        />
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Altın"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
-                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#FFFFFF"
+                        android:layout_weight="1"
+                        android:text="Alış"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:background="#FF9A00"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+                        />
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_weight="0.7">
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/goldprice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="25 ₺"
-                            android:textSize="25sp"
-                            android:textAlignment="center"
-                            android:textColor="#111111"/>
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/goldchanging"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="% 3,15"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:textColor="#409E43"/>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#FFFFFF"
+                        android:layout_weight="1"
+                        android:text="Satış"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:background="#FF9A00"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#FFFFFF"
+                        android:layout_weight="1"
+                        android:text="Değişim"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:background="#FF9A00"
+                        android:paddingVertical="2dp"
+
+                        />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
+                <TextView
+                    android:id="@+id/weatherlocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="Altın"
+                    android:fontFamily="@font/sfusemibold"
+                    android:textColor="#000000"
+                    />
+
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/dollar"
-                        android:layout_weight="0.7"/>
                     <TextView
-                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/goldname1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="25sp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#35495E"
+                        android:textSize="20sp"
+                        android:text="Gram"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="textStart"/>
+                    <TextView
+                        android:id="@+id/goldpurchaseprice1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="407,85"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+                        />
+                    <TextView
+                        android:id="@+id/goldsaleprice1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.350,20"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/goldchanging1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%0.08"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/goldname2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#35495E"
+                        android:textSize="20sp"
+                        android:text="Çeyrek"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="textStart"/>
+                    <TextView
+                        android:id="@+id/goldpurchaseprice2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="568,85"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+                        />
+                    <TextView
+                        android:id="@+id/goldsaleprice2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.890,20"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/goldchanging2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%0.65"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/goldname3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#35495E"
+                        android:textSize="20sp"
+                        android:text="Cumhriyet"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="textStart"/>
+                    <TextView
+                        android:id="@+id/goldpurchaseprice3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.789,85"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+                        />
+                    <TextView
+                        android:id="@+id/goldsaleprice3"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="8.456,48"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/goldchanging3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%48,65"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="Döviz"
+                    android:fontFamily="@font/sfusemibold"
+                    android:textColor="#000000"
+                    />
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/currency1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/sfumedium"
                         android:text="Dolar"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
-                    <LinearLayout
+                        android:textAlignment="textStart"
+                        android:textColor="#35495E"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/currencypurchaseprice1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="0.7">
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/dollarprice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="25 ₺"
-                            android:textSize="25sp"
-                            android:textAlignment="center"
-                            android:textColor="#111111"/>
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/dollarchanging"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="% 3,15"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:textColor="#409E43"/>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="407,85"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+                        />
+                    <TextView
+                        android:id="@+id/currencysaleprice1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.350,20"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/currencychanging1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%0.08"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/euro"
-                        android:layout_weight="0.7"/>
                     <TextView
-                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/currencyname2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="25sp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#35495E"
+                        android:textSize="20sp"
                         android:text="Euro"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
-                    <LinearLayout
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="textStart"/>
+                    <TextView
+                        android:id="@+id/currencypurchaseprice2"
+
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="0.7">
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/europrice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="25 ₺"
-                            android:textSize="25sp"
-                            android:textAlignment="center"
-                            android:textColor="#111111"/>
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/eurochanging"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="% 3,15"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:textColor="#409E43"/>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="568,85"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+                        />
+                    <TextView
+                        android:id="@+id/currencysaleprice2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.890,20"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/currencychanging2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%0.65"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:text="Kripto"
+                    android:fontFamily="@font/sfusemibold"
+                    android:textColor="#000000"
+                    />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/bitcoin"
-                        android:layout_weight="0.7"/>
                     <TextView
-                        android:fontFamily="@font/sfumedium"
+                        android:id="@+id/cryptoname1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textSize="25sp"
+                        android:layout_weight="1"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/sfumedium"
                         android:text="Bitcoin"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
-                    <LinearLayout
+                        android:textAlignment="textStart"
+                        android:textColor="#35495E"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/cryptopurchasegprice1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="0.7">
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/bitcoinprice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="25 ₺"
-                            android:textSize="25sp"
-                            android:textAlignment="center"
-                            android:textColor="#111111"/>
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/bitcoinchanging"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="% 3,15"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:textColor="#409E43"/>
-                    </LinearLayout>
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/sfumedium"
+                        android:maxLines="1"
+                        android:paddingVertical="2dp"
+                        android:text="407,85"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+
+                        />
+                    <TextView
+                        android:id="@+id/cryptosaleprice1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.350,20"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/cryptochanging1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%0.08"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ethereum"
-                        android:layout_weight="0.7"/>
                     <TextView
+                        android:id="@+id/cryptoname2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
+                        android:textColor="#35495E"
+                        android:textSize="20sp"
                         android:text="Ethereum"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
-                    <LinearLayout
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="textStart"/>
+                    <TextView
+                        android:id="@+id/cryptopurchasegprice2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="0.7">
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/ethereumprice"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="25 ₺"
-                            android:textSize="25sp"
-                            android:textAlignment="center"
-                            android:textColor="#111111"/>
-                        <TextView
-                            android:fontFamily="@font/sfumedium"
-                            android:layout_weight="1"
-                            android:id="@+id/ethereumchanging"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="% 3,15"
-                            android:textSize="18sp"
-                            android:textAlignment="center"
-                            android:textColor="#409E43"/>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="568,85"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+                        />
+                    <TextView
+                        android:id="@+id/cryptosaleprice2"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#000000"
+                        android:layout_weight="1"
+                        android:text="1.890,20"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:layout_marginRight="1dp"
+                        android:paddingVertical="2dp"
+
+
+                        />
+                    <TextView
+                        android:id="@+id/cryptochanging2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/sfumedium"
+                        android:textColor="#4CAF50"
+                        android:layout_weight="1"
+                        android:text="%0.65"
+                        android:textAlignment="center"
+                        android:maxLines="1"
+                        android:autoSizeTextType="uniform"
+                        android:paddingVertical="2dp"
+
+                        />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
 
             <Button
                 android:layout_marginVertical="5dp"

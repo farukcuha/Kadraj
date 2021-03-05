@@ -23,14 +23,11 @@ import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.example.kadraj.R;
 import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Tasks.LocalNewsTask;
-import com.example.kadraj.VegetablesPricesTask;
+import com.example.kadraj.Tasks.VegetablesPricesTask;
 import com.smarteist.autoimageslider.SliderView;
 
 
 public class HomepageFragment extends Fragment {
-    private TextView goldPrice, dollarPrice, euroPrice, bitcoinPrice, ethereumPrice;
-    private TextView goldChanging, dollarChanging, euroChanging, bitcoinChanging, ethereumChanging;
-
     private ImageView weatherImage;
     private ProgressBar weatherProgressBar;
     private SliderView sliderView;
@@ -60,6 +57,7 @@ public class HomepageFragment extends Fragment {
         }
 
         new VegetablesPricesTask(getContext(), view).execute();
+        new CurrencyPricesTask(getContext(), view).execute();
 
 
         return view;
@@ -86,21 +84,6 @@ public class HomepageFragment extends Fragment {
 
         weatherImage = view.findViewById(R.id.weatherimage);
         weatherProgressBar = view.findViewById(R.id.weatherprogressbar);
-
-
-
-        goldPrice = view.findViewById(R.id.goldprice);
-        dollarPrice = view.findViewById(R.id.dollarprice);
-        euroPrice = view.findViewById(R.id.europrice);
-        bitcoinPrice = view.findViewById(R.id.bitcoinprice);
-        ethereumPrice = view.findViewById(R.id.ethereumprice);
-
-        goldChanging = view.findViewById(R.id.goldchanging);
-        dollarChanging = view.findViewById(R.id.dollarchanging);
-        euroChanging = view.findViewById(R.id.eurochanging);
-        bitcoinChanging = view.findViewById(R.id.bitcoinchanging);
-        ethereumChanging = view.findViewById(R.id.ethereumchanging);
-
     }
 
     @Override

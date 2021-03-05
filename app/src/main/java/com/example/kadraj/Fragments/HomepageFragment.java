@@ -22,13 +22,12 @@ import com.bumptech.glide.request.target.Target;
 import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.example.kadraj.R;
 import com.example.kadraj.SharedPreferencesProvider;
-import com.example.kadraj.Tasks.CovidTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
+import com.example.kadraj.VegetablesPricesTask;
 import com.smarteist.autoimageslider.SliderView;
 
 
 public class HomepageFragment extends Fragment {
-    private TextView cucumberPrice, eggplantPrice, beanPrice, pepperPrice1, pepperPrice2, tomatoPrice;
     private TextView goldPrice, dollarPrice, euroPrice, bitcoinPrice, ethereumPrice;
     private TextView goldChanging, dollarChanging, euroChanging, bitcoinChanging, ethereumChanging;
 
@@ -60,7 +59,8 @@ public class HomepageFragment extends Fragment {
             new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
         }
 
-        new CovidTask(view, getContext()).execute();
+        new VegetablesPricesTask(getContext(), view).execute();
+
 
         return view;
     }
@@ -89,13 +89,6 @@ public class HomepageFragment extends Fragment {
 
 
 
-        cucumberPrice = view.findViewById(R.id.cucumberprice);
-        eggplantPrice = view.findViewById(R.id.eggplantprice);
-        beanPrice = view.findViewById(R.id.beanprice);
-        pepperPrice1 = view.findViewById(R.id.pepperprice1);
-        pepperPrice2 = view.findViewById(R.id.pepperprice2);
-        tomatoPrice = view.findViewById(R.id.tomatoprice);
-
         goldPrice = view.findViewById(R.id.goldprice);
         dollarPrice = view.findViewById(R.id.dollarprice);
         euroPrice = view.findViewById(R.id.europrice);
@@ -120,5 +113,6 @@ public class HomepageFragment extends Fragment {
     public void onResume() {
         super.onResume();
         sliderView.setCurrentPagePosition(currentPosition);
+
     }
 }

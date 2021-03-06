@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -22,6 +21,7 @@ import com.bumptech.glide.request.target.Target;
 import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.example.kadraj.R;
 import com.example.kadraj.SharedPreferencesProvider;
+import com.example.kadraj.Tasks.CurrencyPricesTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
 import com.example.kadraj.Tasks.VegetablesPricesTask;
 import com.smarteist.autoimageslider.SliderView;

@@ -41,7 +41,7 @@ public class AuthorsFragment extends Fragment {
         setUpAuthorList();
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("newspaperauthors").apply();
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
+
 
         return view;
     }

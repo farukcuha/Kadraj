@@ -1,12 +1,15 @@
 package com.example.kadraj.Tasks;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.kadraj.CustomProgressDialog;
 import com.example.kadraj.Models.CurrencyModel;
 import com.example.kadraj.R;
 
@@ -25,12 +28,12 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
     private View view;
 
     private TextView goldName1, goldName2, goldName3, currencyName1, currencyName2, cryptoName1, cryptoName2;
-    private TextView goldPurchase1, goldPurchase2, goldPurchase3, currencyPurchase1, currencyPurchase2, cryptoPurchase1, cryptoPurchase2;
+    private TextView goldPurchase1, goldPurchase2, goldPurchase3, currencyPurchase1, currencyPurchase2;
     private TextView goldSalePrice1, goldSalePrice2, goldSalePrice3, currencySalePrice1, currencySalePrice2, cryptoSalePrice1, cryptoSalePrice2;
     private TextView goldChanging1, goldChanging2, goldChanging3, currencyChanging1, currencyChanging2, cryptoChanging1, cryptoChanging2;
     private Document document;
     private List<CurrencyModel> goldList, currencyList, cryptoList;
-    char[] changingControl = new char[2];
+    private Dialog progressDialog;
 
     public CurrencyPricesTask(Context context, View view) {
         this.context = context;
@@ -39,15 +42,15 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPreExecute() {
-        idPairs(view);
 
+        idPairs(view);
         goldList = new ArrayList<>();
         currencyList = new ArrayList<>();
         cryptoList = new ArrayList<>();
-
-
-
+        progressDialog = new CustomProgressDialog(context).loadingDialog();
+        progressDialog.show();
         super.onPreExecute();
+
     }
 
     @Override
@@ -84,22 +87,45 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         goldSalePrice2.setText(goldList.get(1).getSalePrice());
         goldSalePrice3.setText(goldList.get(2).getSalePrice());
         currencySalePrice1.setText(currencyList.get(0).getSalePrice());
-        currencySalePrice1.setText(currencyList.get(1).getSalePrice());
+        currencySalePrice2.setText(currencyList.get(1).getSalePrice());
         cryptoSalePrice1.setText(cryptoList.get(0).getSalePrice());
         cryptoSalePrice2.setText(cryptoList.get(1).getSalePrice());
 
+        goldChanging1.setText(goldList.get(0).getChanging());
+        goldChanging2.setText(goldList.get(1).getChanging());
+        goldChanging3.setText(goldList.get(2).getChanging());
+        currencyChanging1.setText(currencyList.get(0).getChanging());
+        currencyChanging2.setText(currencyList.get(1).getChanging());
+        cryptoChanging1.setText(cryptoList.get(0).getChanging());
+        cryptoChanging2.setText(cryptoList.get(1).getChanging());
 
-        cryptoList.get(0).getChanging().getChars(0,2, changingControl,0)
-
-        if (changingControl == "%-"){
-            Log.d("a", "azalan");
-            Log.d("asds", String.valueOf(changingControl));
+        if (goldList.get(0).getRotation().equals("down")){
+            goldChanging1.setTextColor(Color.RED);
         }
-        else {
-            Log.d("a", "artan");
-            Log.d("asds", String.valueOf(changingControl));
+        if (goldList.get(1).getRotation().equals("down")){
+            goldChanging2.setTextColor(Color.RED);
+        }
+        if (goldList.get(2).getRotation().equals("down")){
+            goldChanging3.setTextColor(Color.RED);
+        }
+        if (currencyList.get(0).getRotation().equals("down")){
+            currencyChanging1.setTextColor(Color.RED);
+        }
+        if (currencyList.get(1).getRotation().equals("down")){
+            currencyChanging2.setTextColor(Color.RED);
+        }
+        if (cryptoList.get(0).getRotation().equals("down")){
+            cryptoChanging1.setTextColor(Color.RED);
 
         }
+        if (cryptoList.get(1).getRotation().equals("down")){
+            cryptoChanging2.setTextColor(Color.RED);
+        }
+
+
+        progressDialog.dismiss();
+
+
 
 
 
@@ -124,7 +150,7 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         goldSalePrice2 = view.findViewById(R.id.goldsaleprice2);
         goldSalePrice3 = view.findViewById(R.id.goldsaleprice3);
         currencySalePrice1 = view.findViewById(R.id.currencysaleprice1);
-        currencySalePrice1 = view.findViewById(R.id.currencysaleprice2);
+        currencySalePrice2 = view.findViewById(R.id.currencysaleprice2);
         cryptoSalePrice1 = view.findViewById(R.id.cryptosaleprice1);
         cryptoSalePrice2 = view.findViewById(R.id.cryptosaleprice2);
 
@@ -134,7 +160,7 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         currencyChanging1 = view.findViewById(R.id.currencychanging1);
         currencyChanging2 = view.findViewById(R.id.currencychanging2);
         cryptoChanging1 = view.findViewById(R.id.cryptochanging1);
-        cryptoChanging1 = view.findViewById(R.id.cryptochanging2);
+        cryptoChanging2 = view.findViewById(R.id.cryptochanging2);
 
 
 
@@ -153,24 +179,36 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                 char[] newGoldName = new char[str_goldName.length()-6];
                 str_goldName.getChars(0,str_goldName.length()-6, newGoldName,0);
 
-                /*String str_goldChanging = elements.select("tr").get(i).select("td").get(3).text();
+                String str_goldChanging = elements.select("tr").get(i).select("td").get(3).text();
                 char[] checkMinusPlus = new char[2];
-                str_goldChanging.getChars(0,1,checkMinusPlus, 0);
+                str_goldChanging.getChars(0,2,checkMinusPlus, 0);
+
+                String rotation;
+
 
                 if (String.valueOf(checkMinusPlus).equals("%-")){
+                    rotation = "down";
 
-                }*/
+                    Log.d("a", String.valueOf(checkMinusPlus));
+                }
+                else {
+                    rotation = "up";
+                    Log.d("a", String.valueOf(checkMinusPlus));
+
+                }
 
                 Log.d("ad", String.valueOf(newGoldName));
                 Log.d("alış", elements.select("tr").get(i).select("td").get(1).text());
                 Log.d("satış", elements.select("tr").get(i).select("td").get(2).text());
                 Log.d("değişim", elements.select("tr").get(i).select("td").get(3).text());
 
+
                 goldList.add(new CurrencyModel(
                         String.valueOf(newGoldName),
                         elements.select("tr").get(i).select("td").get(1).text(),
                         elements.select("tr").get(i).select("td").get(2).text(),
-                        elements.select("tr").get(i).select("td").get(3).text()
+                        elements.select("tr").get(i).select("td").get(3).text(),
+                        rotation
 
                 ));
             }
@@ -182,6 +220,8 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
 
     }
 
+    //private void getDatas(String url, String documentPath, int startLoop, int finishLoop, )
+
     private void currencyPrices() {
         try {
             document = Jsoup.connect("https://kur.doviz.com").ignoreContentType(true).get();
@@ -190,6 +230,19 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                 String str_CurrencyName = elements.select("tr").get(i).select("td").get(0).text();
                 char[] newCurrencyName = new char[3];
                 str_CurrencyName.getChars(0,3, newCurrencyName,0);
+
+                String str_CurrencyChanging = elements.select("tr").get(i).select("td").get(5).text();
+                char[] checkMinusPlus = new char[2];
+                str_CurrencyChanging.getChars(0,2,checkMinusPlus, 0);
+
+                String rotation;
+
+                if (String.valueOf(checkMinusPlus).equals("%-")){
+                    rotation = "down";
+                }
+                else {
+                    rotation = "up";
+                }
 
                 Log.d("ad", String.valueOf(newCurrencyName));
                 Log.d("alış", elements.select("tr").get(i).select("td").get(1).text());
@@ -200,8 +253,8 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                         String.valueOf(newCurrencyName),
                         elements.select("tr").get(i).select("td").get(1).text(),
                         elements.select("tr").get(i).select("td").get(2).text(),
-                        elements.select("tr").get(i).select("td").get(5).text()
-
+                        elements.select("tr").get(i).select("td").get(5).text(),
+                        rotation
                 ));
             }
         } catch (IOException e) {
@@ -219,6 +272,18 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                 char[] newCryptoName = new char[3];
                 str_CryptoName.getChars(0,3, newCryptoName,0);
 
+                String str_CryptoChanging = elements.select("tr").get(i).select("td").get(5).text();
+                char[] checkMinusPlus = new char[2];
+                str_CryptoChanging.getChars(0,2,checkMinusPlus, 0);
+
+                String rotation;
+
+                if (String.valueOf(checkMinusPlus).equals("%-")){
+                    rotation = "down";
+                }
+                else {
+                    rotation = "up";
+                }
 
 
                 Log.d("ad", String.valueOf(newCryptoName));
@@ -230,7 +295,8 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                         String.valueOf(newCryptoName),
                         "null",
                         elements.select("tr").get(i).select("td").get(2).text(),
-                        elements.select("tr").get(i).select("td").get(5).text()
+                        elements.select("tr").get(i).select("td").get(5).text(),
+                        rotation
                 ));
             }
         } catch (IOException e) {

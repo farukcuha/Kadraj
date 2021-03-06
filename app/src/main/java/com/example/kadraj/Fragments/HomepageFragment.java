@@ -40,6 +40,7 @@ public class HomepageFragment extends Fragment {
         idPairs(view);
         loadWeatherImage(view);
 
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
 
         String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnews", "null");

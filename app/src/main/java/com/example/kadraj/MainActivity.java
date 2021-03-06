@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import com.example.kadraj.Fragments.HomepageFragment;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.mainbottomnavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
         bottomNavigationView.setItemIconTintList(null);
+
+
+
     }
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -49,5 +53,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+
 
 }

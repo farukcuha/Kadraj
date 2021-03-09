@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -30,6 +32,8 @@ import com.example.kadraj.Tasks.LocalNewsTask;
 import com.example.kadraj.Tasks.VegetablesPricesTask;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.util.Locale;
+
 
 public class HomepageFragment extends Fragment {
     private ImageView weatherImage;
@@ -38,6 +42,7 @@ public class HomepageFragment extends Fragment {
     private int currentPosition;
 
     private Button settingsButton;
+    private TextView localNewsLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,7 +55,7 @@ public class HomepageFragment extends Fragment {
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
 
         String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnews", "null");
-        if (!resources.equals("null")){
+        /*if (!resources.equals("null")){
             sliderView.setSliderAdapter(new LocalNewsSliderAdapter(
                     new SharedPreferencesProvider(getContext()).getLocalNewsData(resources, "localnews"),
                     getContext(),
@@ -58,10 +63,24 @@ public class HomepageFragment extends Fragment {
                     getActivity(),
                     sliderView
             ));
-        }
-        else {
-            new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
-        }
+        }*/
+        //else {
+            String selectedLocalNewsLocation = PreferenceManager
+                    .getDefaultSharedPreferences(getContext()).getString("localnewslocationforurl", "null");
+            Log.d("a", selectedLocalNewsLocation);
+
+            if (selectedLocalNewsLocation.equals("null")){
+                new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
+
+            }
+            else {
+                new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/"+selectedLocalNewsLocation+"-haberleri/", getFragmentManager(), getActivity()).execute();
+
+            }
+            localNewsLocation.setText(PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnewslocationfortext", "null"));
+        //}
+
+
 
         new VegetablesPricesTask(getContext(), view).execute();
         new CurrencyPricesTask(getContext(), view).execute();
@@ -76,12 +95,13 @@ public class HomepageFragment extends Fragment {
 
 
 
-
         return view;
     }
 
     private void loadWeatherImage(View view) {
-        Glide.with(view.getContext()).load("https://www.mgm.gov.tr/sunum/tahmin-show-2.aspx?m=IZMIT&basla=1&bitir=4&rC=fff&rZ=fff")
+
+
+        Glide.with(view.getContext()).load("https://www.mgm.gov.tr/sunum/tahmin-show-2.aspx?m=BOZYAZI&basla=1&bitir=4&rC=fff&rZ=fff")
                 .centerCrop().fitCenter().listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -102,6 +122,8 @@ public class HomepageFragment extends Fragment {
 
         weatherImage = view.findViewById(R.id.weatherimage);
         weatherProgressBar = view.findViewById(R.id.weatherprogressbar);
+
+        localNewsLocation = view.findViewById(R.id.location);
     }
 
     @Override

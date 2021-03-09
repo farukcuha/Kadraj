@@ -1,12 +1,19 @@
 package com.example.kadraj.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +37,7 @@ public class SettingsFragment extends Fragment {
     private List<NewsCategoryModel> list;
     AlertDialog.Builder builder;
     private List<NewsCategoryModel> journalList, sportList, technologyList;
+    private Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
     ChipGroup newsChipGroup;
@@ -41,10 +49,61 @@ public class SettingsFragment extends Fragment {
 
         button = view.findViewById(R.id.newsaddingbutton);
         chipGroup = view.findViewById(R.id.newschipgroup);
+        localNewsProvinces = view.findViewById(R.id.localnewsspinnerprovinces);
+        weatherProvinces = view.findViewById(R.id.weatherspinnerprovinces);
+        weatherDistricts = view.findViewById(R.id.weatherspinnerdistricts);
 
         journalList = new ArrayList<>();
         sportList = new ArrayList<>();
         technologyList = new ArrayList<>();
+
+
+
+        localNewsProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @SuppressLint("CommitPrefEdits")
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedProvince = parent.getSelectedItem().toString()
+                        .toLowerCase().replace("ı","i")
+                        .replace("ğ", "g")
+                        .replace("ü", "u")
+                        .replace("ç", "c")
+                        .replace("ö", "o")
+                        .replace("ş", "s");
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("localnewslocationforurl", selectedProvince).apply();
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("localnewslocationfortext", parent.getSelectedItem().toString()).apply();
+
+                Log.d("localnews", selectedProvince);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        weatherProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                int i = getResources().getIdentifier(parent.getSelectedItem().toString(), "array", getContext().getPackageName());
+                Log.d("a", String.valueOf(i));
+                ArrayAdapter<CharSequence> districtsAdapter = ArrayAdapter
+                        .createFromResource(getContext(), i, android.R.layout.simple_spinner_dropdown_item);
+                weatherDistricts.setAdapter(districtsAdapter);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +123,8 @@ public class SettingsFragment extends Fragment {
 
                 builder.setView(dialogView);
                 builder.create().show();
+
+
 
             }
         });

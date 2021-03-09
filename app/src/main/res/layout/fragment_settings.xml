@@ -28,7 +28,8 @@
     <Spinner
         android:id="@+id/localnewsspinnerprovinces"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="40dp"
+        android:entries="@array/provinces"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -46,12 +47,13 @@
             android:id="@+id/weatherspinnerprovinces"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:entries="@array/provinces"/>
         <Spinner
             android:id="@+id/weatherspinnerdistricts"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"

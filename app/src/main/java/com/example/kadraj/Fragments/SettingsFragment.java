@@ -56,11 +56,11 @@ public class SettingsFragment extends Fragment {
                 journalRecyclerView = dialogView.findViewById(R.id.journallist);
                 sportRecyclerView = dialogView.findViewById(R.id.sportlist);
                 technologyRecyclerView = dialogView.findViewById(R.id.technologylist);
-                newsChipGroup = dialogView.findViewById(R.id.newschipgroup);
+                newsChipGroup = dialogView.findViewById(R.id.dialogchipgroup);
 
-                journal(journalRecyclerView).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                sport(sportRecyclerView).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                technology(technologyRecyclerView).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                journal(journalRecyclerView, newsChipGroup).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                sport(sportRecyclerView, newsChipGroup).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                technology(technologyRecyclerView, newsChipGroup).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
                 builder.setView(dialogView);
                 builder.create().show();
@@ -71,7 +71,7 @@ public class SettingsFragment extends Fragment {
         return view;
     }
 
-    private RecyclerView journal(RecyclerView recyclerView){
+    private RecyclerView journal(RecyclerView recyclerView, ChipGroup newsChipGroup){
         newsAdder(journalList, "Sözcü", R.drawable.sozcu, "https://www.sozcu.com.tr");
         newsAdder(journalList, "Sabah", R.drawable.sabahlogo, "https://www.sabah.com.tr");
         newsAdder(journalList, "Habertürk",  R.drawable.haberturk, "https://www.haberturk.com");
@@ -83,40 +83,39 @@ public class SettingsFragment extends Fragment {
         newsAdder(journalList, "Takvim", R.drawable.takvim, "https://www.takvim.com.tr");
         newsAdder(journalList, "Yeni Akit", R.drawable.akit, "https://www.yeniakit.com.tr");
 
-        adapter = new NewsAddingAdapter(journalList, getContext());
+        adapter = new NewsAddingAdapter(journalList, getContext(), newsChipGroup);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         return recyclerView;
     }
 
-    private RecyclerView sport(RecyclerView recyclerView){
-        newsAdder(sportList, "Bein Sports", R.drawable.turkiye, "https://tr.beinsports.com");
-        newsAdder(sportList, "Fotomaç", R.drawable.sozcu, "https://www.fotomac.com.tr");
-        newsAdder(sportList, "Fanatik", R.drawable.sabahlogo, "https://www.fanatik.com.tr");
-        newsAdder(sportList, "SporX",  R.drawable.haberturk, "https://www.sporx.com");
-        newsAdder(sportList, "A Spor", R.drawable.hurriyet, "https://www.aspor.com.tr");
-        newsAdder(sportList, "Fotospor", R.drawable.karar, "https://www.fotospor.com");
-        newsAdder(sportList, "NTV Spor", R.drawable.milliyet, "https://www.ntvspor.net");
-        newsAdder(sportList, "TRT Spor", R.drawable.yenisafak, "https://www.trtspor.com.tr");
-        newsAdder(sportList, "Ajans Spor", R.drawable.takvim, "https://ajansspor.com");
+    private RecyclerView sport(RecyclerView recyclerView, ChipGroup newsChipGroup){
+        newsAdder(sportList, "Bein Sports", R.drawable.bein, "https://tr.beinsports.com");
+        newsAdder(sportList, "Fotomaç", R.drawable.fotomac, "https://www.fotomac.com.tr");
+        newsAdder(sportList, "Fanatik", R.drawable.fanatik, "https://www.fanatik.com.tr");
+        newsAdder(sportList, "SporX",  R.drawable.sporx, "https://www.sporx.com");
+        newsAdder(sportList, "A Spor", R.drawable.aspor, "https://www.aspor.com.tr");
+        newsAdder(sportList, "Fotospor", R.drawable.fotospor, "https://www.fotospor.com");
+        newsAdder(sportList, "NTV Spor", R.drawable.ntvspor, "https://www.ntvspor.net");
+        newsAdder(sportList, "TRT Spor", R.drawable.trtspor, "https://www.trtspor.com.tr");
+        newsAdder(sportList, "Ajans Spor", R.drawable.ajansspor, "https://ajansspor.com");
 
-        adapter = new NewsAddingAdapter(sportList, getContext());
+        adapter = new NewsAddingAdapter(sportList, getContext(), newsChipGroup);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         return recyclerView;
 
-
     }
 
-    private RecyclerView technology(RecyclerView recyclerView){
-        newsAdder(technologyList, "Webtekno", R.drawable.sozcu, "https://www.webtekno.com");
-        newsAdder(technologyList, "ShiftDelete", R.drawable.sabahlogo, "https://shiftdelete.net");
-        newsAdder(technologyList, "Webrazzi",  R.drawable.haberturk, "https://webrazzi.com");
-        newsAdder(technologyList, "Log", R.drawable.hurriyet, "https://www.log.com.tr");
-        newsAdder(technologyList, "TeknolojiOku", R.drawable.karar, "https://www.teknolojioku.com");
-        newsAdder(technologyList, "Chip", R.drawable.milliyet, "https://www.chip.com.tr");
+    private RecyclerView technology(RecyclerView recyclerView, ChipGroup newsChipGroup){
+        newsAdder(technologyList, "Webtekno", R.drawable.webtekno, "https://www.webtekno.com");
+        newsAdder(technologyList, "ShiftDelete", R.drawable.shitdelete, "https://shiftdelete.net");
+        newsAdder(technologyList, "Log", R.drawable.log, "https://www.log.com.tr");
+        newsAdder(technologyList, "Chip", R.drawable.chip, "https://www.chip.com.tr");
+        newsAdder(technologyList, "Webrazzi",  R.drawable.webrazzi, "https://webrazzi.com");
+        newsAdder(technologyList, "TeknolojiOku", R.drawable.teknolojioku, "https://www.teknolojioku.com");
 
-        adapter = new NewsAddingAdapter(technologyList, getContext());
+        adapter = new NewsAddingAdapter(technologyList, getContext(), newsChipGroup);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         return recyclerView;

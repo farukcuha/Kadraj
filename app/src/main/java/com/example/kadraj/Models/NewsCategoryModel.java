@@ -1,12 +1,13 @@
 package com.example.kadraj.Models;
 
 public class NewsCategoryModel{
-    private String newsUrl, newsImage, newsName;
+    private String newsUrl, newsName;
+    private int newsImage;
 
     public NewsCategoryModel() {
 
     }
-    public NewsCategoryModel(String newsName, String newsImage, String newsUrl) {
+    public NewsCategoryModel(String newsName, int newsImage, String newsUrl) {
         this.newsUrl = newsUrl;
         this.newsImage = newsImage;
         this.newsName = newsName;
@@ -16,7 +17,7 @@ public class NewsCategoryModel{
         return newsUrl;
     }
 
-    public String getNewsImage() {
+    public int getNewsImage() {
         return newsImage;
     }
 

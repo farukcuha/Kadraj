@@ -1,5 +1,6 @@
 package com.example.kadraj.Tasks;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -38,19 +39,24 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
     public CurrencyPricesTask(Context context, View view) {
         this.context = context;
         this.view = view;
+        this.progressDialog = new CustomProgressDialog(context).loadingDialog();
+
     }
 
     @Override
     protected void onPreExecute() {
-
+        super.onPreExecute();
         idPairs(view);
         goldList = new ArrayList<>();
         currencyList = new ArrayList<>();
         cryptoList = new ArrayList<>();
-        progressDialog = new CustomProgressDialog(context).loadingDialog();
-        progressDialog.show();
-        super.onPreExecute();
 
+        if (progressDialog!=null){
+            progressDialog.show();
+        }
+        else {
+            progressDialog.dismiss();
+        }
     }
 
     @Override
@@ -64,6 +70,7 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
@@ -77,17 +84,17 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         cryptoName1.setText(cryptoList.get(0).getName());
         cryptoName2.setText(cryptoList.get(1).getName());
 
-        goldPurchase1.setText(goldList.get(0).getPurchasePrice());
-        goldPurchase2.setText(goldList.get(1).getPurchasePrice());
-        goldPurchase3.setText(goldList.get(2).getPurchasePrice());
-        currencyPurchase1.setText(currencyList.get(0).getPurchasePrice());
-        currencyPurchase2.setText(currencyList.get(1).getPurchasePrice());
+        goldPurchase1.setText("₺" + goldList.get(0).getPurchasePrice());
+        goldPurchase2.setText("₺" + goldList.get(1).getPurchasePrice());
+        goldPurchase3.setText("₺" + goldList.get(2).getPurchasePrice());
+        currencyPurchase1.setText("₺" + currencyList.get(0).getPurchasePrice());
+        currencyPurchase2.setText("₺" + currencyList.get(1).getPurchasePrice());
 
-        goldSalePrice1.setText(goldList.get(0).getSalePrice());
-        goldSalePrice2.setText(goldList.get(1).getSalePrice());
-        goldSalePrice3.setText(goldList.get(2).getSalePrice());
-        currencySalePrice1.setText(currencyList.get(0).getSalePrice());
-        currencySalePrice2.setText(currencyList.get(1).getSalePrice());
+        goldSalePrice1.setText("₺" + goldList.get(0).getSalePrice());
+        goldSalePrice2.setText("₺" + goldList.get(1).getSalePrice());
+        goldSalePrice3.setText("₺" + goldList.get(2).getSalePrice());
+        currencySalePrice1.setText("₺" + currencyList.get(0).getSalePrice());
+        currencySalePrice2.setText("₺" + currencyList.get(1).getSalePrice());
         cryptoSalePrice1.setText(cryptoList.get(0).getSalePrice());
         cryptoSalePrice2.setText(cryptoList.get(1).getSalePrice());
 

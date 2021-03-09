@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kadraj.CustomProgressDialog;
 import com.example.kadraj.R;
@@ -25,14 +26,22 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     private TextView cucumberPrice, eggplantPrice, beanPrice, pepperPrice1, pepperPrice2, tomatoPrice, lastUpdate;
     private Dialog dialog;
     private List<String> pricesList;
+    private String str_lastUpdate;
 
     public VegetablesPricesTask(Context context, View view) {
         this.context = context;
         this.view = view;
+        this.dialog = new CustomProgressDialog(context).loadingDialog();
     }
 
     @Override
     protected void onPreExecute() {
+        if (dialog!=null){
+            dialog.show();
+        }
+        else{
+            dialog.dismiss();
+        }
         lastUpdate = view.findViewById(R.id.lastupdate);
         cucumberPrice = view.findViewById(R.id.cucumberprice);
         eggplantPrice = view.findViewById(R.id.eggplantprice);
@@ -40,15 +49,7 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
         pepperPrice1 = view.findViewById(R.id.pepperprice1);
         pepperPrice2 = view.findViewById(R.id.pepperprice2);
         tomatoPrice = view.findViewById(R.id.tomatoprice);
-
         pricesList = new ArrayList<>();
-
-        dialog = new CustomProgressDialog(context).loadingDialog();
-        dialog.show();
-
-
-
-
         super.onPreExecute();
     }
 
@@ -64,15 +65,11 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
                 pricesList.add(document.select("font[color=#009900]").get(i).text());
 
             }
+            str_lastUpdate = document.select("div[class=stil32]").text();
 
 
-            lastUpdate.setText(document.select("div[class=stil32]").text());
-            cucumberPrice.setText(pricesList.get(0));
-            eggplantPrice.setText(pricesList.get(1));
-            beanPrice.setText(pricesList.get(2));
-            pepperPrice1.setText(pricesList.get(3));
-            pepperPrice2.setText(pricesList.get(4));
-            tomatoPrice.setText(pricesList.get(5));
+
+
 
 
 
@@ -85,7 +82,13 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
+        lastUpdate.setText(str_lastUpdate);
+        cucumberPrice.setText(pricesList.get(0));
+        eggplantPrice.setText(pricesList.get(1));
+        beanPrice.setText(pricesList.get(2));
+        pepperPrice1.setText(pricesList.get(3));
+        pepperPrice2.setText(pricesList.get(4));
+        tomatoPrice.setText(pricesList.get(5));
         dialog.dismiss();
     }
 }

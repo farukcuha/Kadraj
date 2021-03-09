@@ -4,14 +4,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -32,6 +36,8 @@ public class HomepageFragment extends Fragment {
     private ProgressBar weatherProgressBar;
     private SliderView sliderView;
     private int currentPosition;
+
+    private Button settingsButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,11 +67,21 @@ public class HomepageFragment extends Fragment {
         new CurrencyPricesTask(getContext(), view).execute();
 
 
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new SettingsFragment()).commit();
+            }
+        });
+
+
+
+
         return view;
     }
 
     private void loadWeatherImage(View view) {
-        Glide.with(view.getContext()).load("https://www.mgm.gov.tr/sunum/tahmin-show-2.aspx?m=USKUDAR&basla=1&bitir=4&rC=fff&rZ=fff")
+        Glide.with(view.getContext()).load("https://www.mgm.gov.tr/sunum/tahmin-show-2.aspx?m=IZMIT&basla=1&bitir=4&rC=fff&rZ=fff")
                 .centerCrop().fitCenter().listener(new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -81,6 +97,7 @@ public class HomepageFragment extends Fragment {
     }
 
     private void idPairs(View view) {
+        settingsButton = view.findViewById(R.id.bottomsettingsbutton);
         sliderView = view.findViewById(R.id.localnewsslider);
 
         weatherImage = view.findViewById(R.id.weatherimage);

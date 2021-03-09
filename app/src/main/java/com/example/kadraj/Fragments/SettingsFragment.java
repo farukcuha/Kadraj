@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +16,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 public class SettingsFragment extends Fragment {
-    private Button button;
+    private ImageButton button;
     private ChipGroup chipGroup;
 
     @Nullable
@@ -27,8 +28,7 @@ public class SettingsFragment extends Fragment {
         chipGroup = view.findViewById(R.id.newschipgroup);
 
 
-        Chip chip = new Chip(getContext());
-        chip.setText("Sabah");
+
 
 
         return view;

@@ -58,6 +58,8 @@ dependencies {
     implementation 'com.github.MonsterTechnoGits:WebViewAdblock:1.1'
     implementation 'com.sasank.roundedhorizontalprogress:roundedhorizontalprogress:1.0.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+
 
 
 

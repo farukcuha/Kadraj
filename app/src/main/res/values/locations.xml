@@ -28,7 +28,6 @@
         <item>Denizli</item>
         <item>Diyarbakır</item>
         <item>Düzce</item>
-        <item>Adana</item>
         <item>Edirne</item>
         <item>Elazığ</item>
         <item>Erzincan</item>
@@ -85,21 +84,6 @@
         <item>Zonguldak</item>
     </string-array>
 
-    <string-array name="Mersin">
-        <item>Anamur</item>
-        <item>Bozyazı</item>
-        <item>Aydıncık</item>
-        <item>Silifke</item>
-        <item>Gülnar</item>
-        <item>Mut</item>
-        <item>Erdemli</item>
-        <item>Akdeniz</item>
-        <item>Mezitli</item>
-        <item>Tarsus</item>
-        <item>Anamur</item>
-        <item>Yenişehir</item>
-        <item>Toroslar</item>
-    </string-array>
     <string-array name="Adana">
         <item>Aladağ</item>
         <item>Ceyhan</item>
@@ -118,7 +102,8 @@
         <item>Yüreğir</item>
 
     </string-array>
-    <string-array name="Adıyaman">
+
+    <string-array name="adıyaman">
         <item>Besni</item>
         <item>Çelikhan</item>
         <item>Gerger</item>
@@ -457,6 +442,21 @@
         <item>Tortum</item>
         <item>Uzundere</item>
         <item>Yakutiye</item>
+    </string-array>
+    <string-array name="Mersin">
+        <item>Anamur</item>
+        <item>Bozyazı</item>
+        <item>Aydıncık</item>
+        <item>Silifke</item>
+        <item>Gülnar</item>
+        <item>Mut</item>
+        <item>Erdemli</item>
+        <item>Akdeniz</item>
+        <item>Mezitli</item>
+        <item>Tarsus</item>
+        <item>Anamur</item>
+        <item>Yenişehir</item>
+        <item>Toroslar</item>
     </string-array>
 
 

@@ -68,11 +68,6 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
             str_lastUpdate = document.select("div[class=stil32]").text();
 
 
-
-
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,13 +77,13 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        lastUpdate.setText(str_lastUpdate);
+        /*lastUpdate.setText(str_lastUpdate);
         cucumberPrice.setText(pricesList.get(0));
         eggplantPrice.setText(pricesList.get(1));
         beanPrice.setText(pricesList.get(2));
         pepperPrice1.setText(pricesList.get(3));
         pepperPrice2.setText(pricesList.get(4));
-        tomatoPrice.setText(pricesList.get(5));
+        tomatoPrice.setText(pricesList.get(5));*/
         dialog.dismiss();
     }
 }

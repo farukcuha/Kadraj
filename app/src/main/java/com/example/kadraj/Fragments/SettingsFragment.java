@@ -1,32 +1,29 @@
 package com.example.kadraj.Fragments;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.net.Uri;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kadraj.DatabaseAccess;
 import com.example.kadraj.Models.NewsCategoryModel;
 import com.example.kadraj.R;
-import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +31,11 @@ public class SettingsFragment extends Fragment {
     private ImageButton button;
     private ChipGroup chipGroup;
     private NewsAddingAdapter adapter;
-    private List<NewsCategoryModel> list;
+    private List<String> list;
     AlertDialog.Builder builder;
     private List<NewsCategoryModel> journalList, sportList, technologyList;
     private Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
+    URL resourceId;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
     ChipGroup newsChipGroup;
@@ -57,23 +55,29 @@ public class SettingsFragment extends Fragment {
         sportList = new ArrayList<>();
         technologyList = new ArrayList<>();
 
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getContext());
+        databaseAccess.open();
+        Cursor cursor = databaseAccess.getData();
+        List<String> provincesList = new ArrayList<>();
+
+        while (cursor.moveToNext()){
+            Log.d("a", cursor.getString(0));
+            provincesList.add(cursor.getString(0));
+        }
+        databaseAccess.close();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_spinner_dropdown_item, provincesList);
+        localNewsProvinces.setAdapter(adapter);
+
+
 
 
         localNewsProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @SuppressLint("CommitPrefEdits")
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedProvince = parent.getSelectedItem().toString()
-                        .toLowerCase().replace("ı","i")
-                        .replace("ğ", "g")
-                        .replace("ü", "u")
-                        .replace("ç", "c")
-                        .replace("ö", "o")
-                        .replace("ş", "s");
-                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("localnewslocationforurl", selectedProvince).apply();
-                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("localnewslocationfortext", parent.getSelectedItem().toString()).apply();
 
-                Log.d("localnews", selectedProvince);
+
             }
 
             @Override
@@ -86,11 +90,6 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                int i = getResources().getIdentifier(parent.getSelectedItem().toString(), "array", getContext().getPackageName());
-                Log.d("a", String.valueOf(i));
-                ArrayAdapter<CharSequence> districtsAdapter = ArrayAdapter
-                        .createFromResource(getContext(), i, android.R.layout.simple_spinner_dropdown_item);
-                weatherDistricts.setAdapter(districtsAdapter);
 
             }
 
@@ -99,11 +98,6 @@ public class SettingsFragment extends Fragment {
 
             }
         });
-
-
-
-
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.kadraj.Fragments.HomepageFragment;
@@ -14,6 +15,8 @@ import com.example.kadraj.Fragments.NewsFragment;
 import com.example.kadraj.Fragments.AuthorsFragment;
 import com.example.kadraj.Web.NewsWebView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
@@ -27,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.mainbottomnavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
         bottomNavigationView.setItemIconTintList(null);
-
-
+        Log.d("id1", String.valueOf(getResources().getIdentifier("adıyaman", "array", "com.example.kadraj.R")));
+        Log.d("id2", String.valueOf(R.array.adıyaman));
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {

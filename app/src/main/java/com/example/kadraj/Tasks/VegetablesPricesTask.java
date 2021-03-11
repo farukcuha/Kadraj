@@ -57,9 +57,6 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         try {
             Document document = Jsoup.connect("http://www.tekeliajans.net").ignoreContentType(true).get();
-
-
-
             for (int i = 1; i < 7; i++){
                 Log.d("a", document.select("font[color=#009900]").get(i).text());
                 pricesList.add(document.select("font[color=#009900]").get(i).text());
@@ -77,13 +74,13 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        /*lastUpdate.setText(str_lastUpdate);
+        lastUpdate.setText(str_lastUpdate);
         cucumberPrice.setText(pricesList.get(0));
         eggplantPrice.setText(pricesList.get(1));
         beanPrice.setText(pricesList.get(2));
         pepperPrice1.setText(pricesList.get(3));
         pepperPrice2.setText(pricesList.get(4));
-        tomatoPrice.setText(pricesList.get(5));*/
+        tomatoPrice.setText(pricesList.get(5));
         dialog.dismiss();
     }
 }

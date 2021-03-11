@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="provinces">
+        <item>İl Seçiniz</item>
         <item>Adana</item>
         <item>Adıyaman</item>
         <item>Afyonkarahisar</item>
         <item>Ağrı</item>
-        <item>Aksaray</item>
         <item>Amasya</item>
         <item>Ankara</item>
         <item>Antalya</item>
-        <item>Ardahan</item>
         <item>Artvin</item>
         <item>Aydın</item>
         <item>Balıkesir</item>
-        <item>Bartın</item>
-        <item>Batman</item>
-        <item>Bayburt</item>
         <item>Bilecik</item>
         <item>Bingöl</item>
         <item>Bitlis</item>
@@ -27,7 +23,6 @@
         <item>Çorum</item>
         <item>Denizli</item>
         <item>Diyarbakır</item>
-        <item>Düzce</item>
         <item>Edirne</item>
         <item>Elazığ</item>
         <item>Erzincan</item>
@@ -38,428 +33,55 @@
         <item>Gümüşhane</item>
         <item>Hakkari</item>
         <item>Hatay</item>
-        <item>Iğdır</item>
         <item>Isparta</item>
+        <item>Mersin</item>
         <item>İstanbul</item>
         <item>İzmir</item>
-        <item>Kahramanmaraş</item>
-        <item>Karabük</item>
-        <item>Karaman</item>
         <item>Kars</item>
         <item>Kastamonu</item>
         <item>Kayseri</item>
-        <item>Kırıkkale</item>
         <item>Kırklareli</item>
         <item>Kırşehir</item>
-        <item>Kilis</item>
         <item>Kocaeli</item>
         <item>Konya</item>
         <item>Kütahya</item>
         <item>Malatya</item>
         <item>Manisa</item>
+        <item>Kahramanmaraş</item>
         <item>Mardin</item>
-        <item>Mersin</item>
         <item>Muğla</item>
         <item>Muş</item>
         <item>Nevşehir</item>
         <item>Niğde</item>
         <item>Ordu</item>
-        <item>Osmaniye</item>
         <item>Rize</item>
         <item>Sakarya</item>
         <item>Samsun</item>
         <item>Siirt</item>
         <item>Sinop</item>
         <item>Sivas</item>
-        <item>Şanlıurfa</item>
-        <item>Şırnak</item>
         <item>Tekirdağ</item>
         <item>Tokat</item>
         <item>Trabzon</item>
         <item>Tunceli</item>
+        <item>Şanlıurfa</item>
         <item>Uşak</item>
         <item>Van</item>
-        <item>Yalova</item>
         <item>Yozgat</item>
         <item>Zonguldak</item>
+        <item>Aksaray</item>
+        <item>Bayburt</item>
+        <item>Karaman</item>
+        <item>Kırıkkale</item>
+        <item>Batman</item>
+        <item>Şırnak</item>
+        <item>Bartın</item>
+        <item>Ardahan</item>
+        <item>Iğdır</item>
+        <item>Yalova</item>
+        <item>Karabük</item>
+        <item>Kilis</item>
+        <item>Osmaniye</item>
+        <item>Düzce</item>
     </string-array>
-
-    <string-array name="Adana">
-        <item>Aladağ</item>
-        <item>Ceyhan</item>
-        <item>Çukurova</item>
-        <item>Feke</item>
-        <item>İmamoğlu</item>
-        <item>Karaisalı</item>
-        <item>Karataş</item>
-        <item>Kozan</item>
-        <item>Pozantı</item>
-        <item>Saimbeyli</item>
-        <item>Sarıçam</item>
-        <item>Seyhan</item>
-        <item>Tufanbeyli</item>
-        <item>Yumurtalık</item>
-        <item>Yüreğir</item>
-
-    </string-array>
-
-    <string-array name="adıyaman">
-        <item>Besni</item>
-        <item>Çelikhan</item>
-        <item>Gerger</item>
-        <item>Gölbaşı</item>
-        <item>Kahta</item>
-        <item>Samsat</item>
-        <item>Sincik</item>
-        <item>Tut</item>
-    </string-array>
-    <string-array name="Afyonkarahisar">
-        <item>Başmakçı</item>
-        <item>Bayat</item>
-        <item>Bolvadin</item>
-        <item>Çay</item>
-        <item>Çobanlar</item>
-        <item>Dazkırı</item>
-        <item>Dinar</item>
-        <item>Emirdağ</item>
-        <item>Evciler</item>
-        <item>Hocalar</item>
-        <item>İhsaniye</item>
-        <item>İscehisar</item>
-        <item>Kızılören</item>
-        <item>Sandıklı</item>
-        <item>Sinanpaşa</item>
-        <item>Sultandağı</item>
-        <item>Şuhut</item>
-    </string-array>
-    <string-array name="Ağrı">
-        <item>Diyadin</item>
-        <item>Doğubeyazıt</item>
-        <item>Eleşkirt</item>
-        <item>Hamur</item>
-        <item>Patnos</item>
-        <item>Taşlıçay</item>
-        <item>Tutak</item>
-    </string-array>
-    <string-array name="Amasya">
-        <item>Akyurt</item>
-        <item>Altındağ</item>
-        <item>Ayaş</item>
-        <item>Bala</item>
-        <item>Beypazarı</item>
-        <item>Çamlıdere</item>
-        <item>Çankaya</item>
-        <item>Çubuk</item>
-        <item>Elmadağ</item>
-        <item>Etimesgut</item>
-        <item>Evren</item>
-        <item>Gölbaşı</item>
-        <item>Güdül</item>
-        <item>Haymana</item>
-        <item>Kahramankazan</item>
-        <item>Kalecik</item>
-        <item>Keçiören</item>
-        <item>Kızılcahamam</item>
-        <item>Mamak</item>
-        <item>Nallıhan</item>
-        <item>Polatlı</item>
-        <item>Pursaklar</item>
-        <item>Sincan</item>
-        <item>Şereflikoçhisar</item>
-        <item>Yenimahalle</item>
-    </string-array>
-    <string-array name="Antalya">
-        <item>Akseki</item>
-        <item>Aksu</item>
-        <item>Alanya</item>
-        <item>Demre</item>
-        <item>Döşemealtı</item>
-        <item>Elmalı</item>
-        <item>Finike</item>
-        <item>Gazipaşa</item>
-        <item>Gündoğmuş</item>
-        <item>İbradı</item>
-        <item>Kaş</item>
-        <item>Kemer</item>
-        <item>Kepez</item>
-        <item>Konyaaltı</item>
-        <item>Korkuteli</item>
-        <item>Kumluca</item>
-        <item>Manavgat</item>
-        <item>Muratpaşa</item>
-        <item>Serik</item>
-    </string-array>
-    <string-array name="Artvin">
-        <item>Ardanuç</item>
-        <item>Arhavi</item>
-        <item>Borçka</item>
-        <item>Hopa</item>
-        <item>Kemalpaşa</item>
-        <item>Murgul</item>
-        <item>Şavşat</item>
-        <item>Yusufeli</item>
-    </string-array>
-    <string-array name="Aydın">
-        <item>Bozdoğan</item>
-        <item>Buharkent</item>
-        <item>Çine</item>
-        <item>Didim</item>
-        <item>Efeler</item>
-        <item>Germencik</item>
-        <item>İncirliova</item>
-        <item>Karacasu</item>
-        <item>Karpuzlu</item>
-        <item>Koçarlı</item>
-        <item>Köşk</item>
-        <item>Kuşadası</item>
-        <item>Kuyucak</item>
-        <item>Nazilli</item>
-        <item>Söke</item>
-        <item>Sultanhisar</item>
-        <item>Yenipazar</item>
-    </string-array>
-    <string-array name="Balıkesir">
-        <item>Altıeylül</item>
-        <item>Ayvalık</item>
-        <item>Balya</item>
-        <item>Bandırma</item>
-        <item>Bigadiç</item>
-        <item>Burhaniye</item>
-        <item>Dursunbey</item>
-        <item>Edremit</item>
-        <item>Erdek</item>
-        <item>Gömeç</item>
-        <item>Gönen</item>
-        <item>Havran</item>
-        <item>İvrindi</item>
-        <item>Karesi</item>
-        <item>Kepsut</item>
-        <item>Manyas</item>
-        <item>Marmara</item>
-        <item>Savaştepe</item>
-        <item>Sındırgı</item>
-        <item>Susurluk</item>
-    </string-array>
-    <string-array name="Bilecik">
-        <item>Bozüyük</item>
-        <item>Gölpazarı</item>
-        <item>İnhisar</item>
-        <item>Osmaneli</item>
-        <item>Pazaryeri</item>
-        <item>Söğüt</item>
-        <item>Yenipazar</item>
-    </string-array>
-    <string-array name="Bingöl">
-        <item>Adaklı</item>
-        <item>Genç</item>
-        <item>Karlıova</item>
-        <item>Kiğı</item>
-        <item>Solhan</item>
-        <item>Yayladere</item>
-        <item>Yedisu</item>
-    </string-array>
-    <string-array name="Bitlis">
-        <item>Adilcevaz</item>
-        <item>Ahlat</item>
-        <item>Karlıova</item>
-        <item>Güroymak</item>
-        <item>Hizan</item>
-        <item>Mutki</item>
-        <item>Tatvan</item>
-    </string-array>
-    <string-array name="Bolu">
-        <item>Dörtdivan</item>
-        <item>Gerede</item>
-        <item>Göynük</item>
-        <item>Kıbrısçık</item>
-        <item>Mengen</item>
-        <item>Mudurnu</item>
-        <item>Seben</item>
-        <item>Yeniçağa</item>
-    </string-array>
-    <string-array name="Burdur">
-        <item>Ağlasun</item>
-        <item>Altınyayla</item>
-        <item>Bucak</item>
-        <item>Çavdır</item>
-        <item>Çeltikçi</item>
-        <item>Gölhisar</item>
-        <item>Karamanlı</item>
-        <item>Kemer</item>
-        <item>Tefenni</item>
-        <item>Yeşilova</item>
-    </string-array>
-    <string-array name="Bursa">
-        <item>Büyükorhan</item>
-        <item>Gemlik</item>
-        <item>Gürsu</item>
-        <item>Harmancık</item>
-        <item>İnegöl</item>
-        <item>İznik</item>
-        <item>Karacabey</item>
-        <item>Keles</item>
-        <item>Kestel</item>
-        <item>Mudanya</item>
-        <item>Mustafakemalpaşa</item>
-        <item>Nilüfer</item>
-        <item>Orhaneli</item>
-        <item>Orhangazi</item>
-        <item>Osmangazi</item>
-        <item>Yenişehir</item>
-        <item>Yıldırım</item>
-    </string-array>
-    <string-array name="Çanakkale">
-        <item>Ayvacık</item>
-        <item>Bayramiç</item>
-        <item>Biga</item>
-        <item>Bozcaada</item>
-        <item>Çan</item>
-        <item>Ecebat</item>
-        <item>Ezine</item>
-        <item>Gelibolu</item>
-        <item>Gökçeada</item>
-        <item>Lapseki</item>
-        <item>Yenice</item>
-    </string-array>
-    <string-array name="Çankırı">
-        <item>Atkaracalar</item>
-        <item>Bayramören</item>
-        <item>Çerkeş</item>
-        <item>Eldivan</item>
-        <item>Ilgaz</item>
-        <item>Kızılırmak</item>
-        <item>Korgun</item>
-        <item>Kurşunlu</item>
-        <item>Orta</item>
-        <item>Şabanözü</item>
-        <item>Yapraklı</item>
-    </string-array>
-    <string-array name="Çorum">
-        <item>Alaca</item>
-        <item>Bayat</item>
-        <item>Boğazkale</item>
-        <item>Dodurga</item>
-        <item>İskilip</item>
-        <item>Kargı</item>
-        <item>Laçin</item>
-        <item>Mecitözü</item>
-        <item>Oğuzlar</item>
-        <item>Ortaköy</item>
-        <item>Osmancık</item>
-        <item>Sungurlu</item>
-        <item>Uğurludağ</item>
-    </string-array>
-    <string-array name="Denizli">
-        <item>Acıpayam</item>
-        <item>Babadağ</item>
-        <item>Baklan</item>
-        <item>Bekilli</item>
-        <item>Beyağaç</item>
-        <item>Bozkurt</item>
-        <item>Buldan</item>
-        <item>Çal</item>
-        <item>Çameli</item>
-        <item>Çardak</item>
-        <item>Çivril</item>
-        <item>Güney</item>
-        <item>Honaz</item>
-        <item>Kale</item>
-        <item>Merkezefendi</item>
-        <item>Pamukkale</item>
-        <item>Sarayköy</item>
-        <item>Serinhisar</item>
-        <item>Tavas</item>
-    </string-array>
-    <string-array name="Diyarbakır">
-        <item>Bağlar</item>
-        <item>Bismil</item>
-        <item>Çermik</item>
-        <item>Çınar</item>
-        <item>Çüngüş</item>
-        <item>Dicle</item>
-        <item>Eğil</item>
-        <item>Ergani</item>
-        <item>Hani</item>
-        <item>Hazro</item>
-        <item>Kayapınar</item>
-        <item>Kocaköy</item>
-        <item>Kulp</item>
-        <item>Lice</item>
-        <item>Silvan</item>
-        <item>Sur</item>
-        <item>Yenişehir</item>
-    </string-array>
-    <string-array name="Edirne">
-        <item>Enez</item>
-        <item>Havsa</item>
-        <item>İpsala</item>
-        <item>Keşan</item>
-        <item>Lalapaşa</item>
-        <item>Meriç</item>
-        <item>Süloğlu</item>
-        <item>Uzunköprü</item>
-    </string-array>
-    <string-array name="Elazığ">
-        <item>Ağın</item>
-        <item>Alacakaya</item>
-        <item>Arıcak</item>
-        <item>Baskil</item>
-        <item>Karakoçan</item>
-        <item>Keban</item>
-        <item>Kovancılar</item>
-        <item>Maden</item>
-        <item>Palu</item>
-        <item>Sivrice</item>
-    </string-array>
-    <string-array name="Erzincan">
-        <item>Çayırlı</item>
-        <item>İliç</item>
-        <item>Kemah</item>
-        <item>Kemaliye</item>
-        <item>Otlukbeli</item>
-        <item>Refahiye</item>
-        <item>Tercan</item>
-        <item>Üzümlü</item>
-    </string-array>
-    <string-array name="Erzurum">
-        <item>Aşkale</item>
-        <item>Aziziye</item>
-        <item>Çat</item>
-        <item>Hınıs</item>
-        <item>Horasan</item>
-        <item>İspir</item>
-        <item>Karaçoban</item>
-        <item>Karayazı</item>
-        <item>Köprüköy</item>
-        <item>Narman</item>
-        <item>Oltu</item>
-        <item>Olur</item>
-        <item>Palandöken</item>
-        <item>Pasinler</item>
-        <item>Pazaryolu</item>
-        <item>Şenkaya</item>
-        <item>Tekman</item>
-        <item>Tortum</item>
-        <item>Uzundere</item>
-        <item>Yakutiye</item>
-    </string-array>
-    <string-array name="Mersin">
-        <item>Anamur</item>
-        <item>Bozyazı</item>
-        <item>Aydıncık</item>
-        <item>Silifke</item>
-        <item>Gülnar</item>
-        <item>Mut</item>
-        <item>Erdemli</item>
-        <item>Akdeniz</item>
-        <item>Mezitli</item>
-        <item>Tarsus</item>
-        <item>Anamur</item>
-        <item>Yenişehir</item>
-        <item>Toroslar</item>
-    </string-array>
-
-
-
-
 </resources>

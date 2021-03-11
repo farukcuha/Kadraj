@@ -1,16 +1,18 @@
-package com.example.kadraj;
+package com.example.kadraj.Database;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseAccess {
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
     private static DatabaseAccess instance;
-
-    Cursor cursor = null;
 
     private DatabaseAccess(Context context){
         this.openHelper = new DatabaseOpenHelper(context);
@@ -34,12 +36,19 @@ public class DatabaseAccess {
             this.database.close();
         }
     }
+    public List<String> getData(String position){
+        Cursor cursor = database.rawQuery("select baslik from ilceler where ilid" + " = '"+ position + "'", new String[] {});
 
-    public Cursor getData(){
-        Cursor cursor = database.rawQuery("select baslik from iller", new String[] {});
+        List<String> list = new ArrayList<>();
+        while (cursor.moveToNext()){
+            list.add(cursor.getString(0));
+        }
 
-        return cursor;
+        Log.d("dizisource", list.toString());
+
+        return list;
     }
+
 
 
 }

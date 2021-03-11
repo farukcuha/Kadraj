@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -19,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +27,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new HomepageFragment()).commit();
-        bottomNavigationView = findViewById(R.id.mainbottomnavigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.mainbottomnavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
         bottomNavigationView.setItemIconTintList(null);
-        Log.d("id1", String.valueOf(getResources().getIdentifier("adıyaman", "array", "com.example.kadraj.R")));
-        Log.d("id2", String.valueOf(R.array.adıyaman));
 
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private final BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @SuppressLint("NonConstantResourceId")
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()){
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragmentcontainer, new AuthorsFragment()).setCustomAnimations(R.anim.enter, R.anim.exit).commit();
                     break;
-
             }
             return true;
         }

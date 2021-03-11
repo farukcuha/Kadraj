@@ -1,7 +1,6 @@
 package com.example.kadraj.Fragments;
 
 import android.app.AlertDialog;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,12 +17,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kadraj.DatabaseAccess;
+import com.example.kadraj.Database.DatabaseAccess;
 import com.example.kadraj.Models.NewsCategoryModel;
 import com.example.kadraj.R;
 import com.google.android.material.chip.ChipGroup;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +29,10 @@ public class SettingsFragment extends Fragment {
     private ImageButton button;
     private ChipGroup chipGroup;
     private NewsAddingAdapter adapter;
-    private List<String> list;
     AlertDialog.Builder builder;
     private List<NewsCategoryModel> journalList, sportList, technologyList;
     private Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
-    URL resourceId;
+    String selectedDistrict;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
     ChipGroup newsChipGroup;
@@ -45,38 +42,19 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_settings, container, false);
 
-        button = view.findViewById(R.id.newsaddingbutton);
-        chipGroup = view.findViewById(R.id.newschipgroup);
+        button             = view.findViewById(R.id.newsaddingbutton);
+        chipGroup          = view.findViewById(R.id.newschipgroup);
         localNewsProvinces = view.findViewById(R.id.localnewsspinnerprovinces);
-        weatherProvinces = view.findViewById(R.id.weatherspinnerprovinces);
-        weatherDistricts = view.findViewById(R.id.weatherspinnerdistricts);
+        weatherProvinces   = view.findViewById(R.id.weatherspinnerprovinces);
+        weatherDistricts   = view.findViewById(R.id.weatherspinnerdistricts);
 
-        journalList = new ArrayList<>();
-        sportList = new ArrayList<>();
-        technologyList = new ArrayList<>();
-
-        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getContext());
-        databaseAccess.open();
-        Cursor cursor = databaseAccess.getData();
-        List<String> provincesList = new ArrayList<>();
-
-        while (cursor.moveToNext()){
-            Log.d("a", cursor.getString(0));
-            provincesList.add(cursor.getString(0));
-        }
-        databaseAccess.close();
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
-                android.R.layout.simple_spinner_dropdown_item, provincesList);
-        localNewsProvinces.setAdapter(adapter);
-
-
-
+        journalList     = new ArrayList<>();
+        sportList       = new ArrayList<>();
+        technologyList  = new ArrayList<>();
 
         localNewsProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
 
             }
 
@@ -86,10 +64,31 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+
         weatherProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("a", String.valueOf(parent.getSelectedItemPosition()));
+                selectedDistrict = String.valueOf(parent.getSelectedItemPosition());
 
+                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getContext());
+                databaseAccess.open();
+                ArrayAdapter<String> adapter  = new ArrayAdapter<>(getContext(),
+                        android.R.layout.simple_spinner_dropdown_item,
+                        databaseAccess.getData(selectedDistrict));
+                weatherDistricts.setAdapter(adapter);
+                databaseAccess.close();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        weatherDistricts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
             }
 
@@ -106,20 +105,26 @@ public class SettingsFragment extends Fragment {
 
                 View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.newsaddingdialogitem, null);
 
-                journalRecyclerView = dialogView.findViewById(R.id.journallist);
-                sportRecyclerView = dialogView.findViewById(R.id.sportlist);
+                journalRecyclerView    = dialogView.findViewById(R.id.journallist);
+                sportRecyclerView      = dialogView.findViewById(R.id.sportlist);
                 technologyRecyclerView = dialogView.findViewById(R.id.technologylist);
-                newsChipGroup = dialogView.findViewById(R.id.dialogchipgroup);
+                newsChipGroup          = dialogView.findViewById(R.id.dialogchipgroup);
 
-                journal(journalRecyclerView, newsChipGroup).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                sport(sportRecyclerView, newsChipGroup).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-                technology(technologyRecyclerView, newsChipGroup).setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                journal(journalRecyclerView, newsChipGroup).setLayoutManager(
+                        new LinearLayoutManager(getContext(),
+                        LinearLayoutManager.HORIZONTAL,
+                        false));
+                sport(sportRecyclerView, newsChipGroup).setLayoutManager(
+                        new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false));
+                technology(technologyRecyclerView, newsChipGroup).setLayoutManager(
+                        new LinearLayoutManager(getContext(),
+                                LinearLayoutManager.HORIZONTAL,
+                                false));
 
                 builder.setView(dialogView);
                 builder.create().show();
-
-
-
             }
         });
 

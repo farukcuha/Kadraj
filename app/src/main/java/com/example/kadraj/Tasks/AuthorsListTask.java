@@ -327,6 +327,7 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
         AuthorsAdapter authorsAdapter = new AuthorsAdapter(list, context, fragmentManager);
         recyclerView.setAdapter(authorsAdapter);
 
+
         new SharedPreferencesProvider(context).putAuthorsData(list, "newspaperauthors");
 
         progressDialog.dismiss();

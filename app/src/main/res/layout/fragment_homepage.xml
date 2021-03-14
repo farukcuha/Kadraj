@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
-                android:text="Mersin"
+                android:text=""
                 android:fontFamily="@font/sfusemibold"
                 android:textColor="#000000"
                 />
@@ -43,10 +43,10 @@
                    android:id="@+id/localnewsslider"
                    android:layout_width="match_parent"
                    android:layout_height="250dp"
-                   app:sliderAnimationDuration="600"
+                   app:sliderAnimationDuration="1200"
                    app:sliderAutoCycleDirection="back_and_forth"
                    app:sliderAutoCycleEnabled="true"
-                   app:sliderIndicatorAnimationDuration="1000"
+                   app:sliderIndicatorAnimationDuration="5000"
                    app:sliderIndicatorGravity="center_horizontal|bottom"
                    app:sliderIndicatorMargin="15dp"
                    app:sliderIndicatorOrientation="horizontal"
@@ -75,11 +75,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
-                android:text="Bozyazı"
+                android:text=""
                 android:fontFamily="@font/sfusemibold"
                 android:textColor="#000000"
                 />
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -990,6 +989,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bottombuttonborder"/>
+
 
         </LinearLayout>
     </ScrollView>

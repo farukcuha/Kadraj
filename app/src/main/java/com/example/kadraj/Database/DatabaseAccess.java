@@ -48,7 +48,4 @@ public class DatabaseAccess {
 
         return list;
     }
-
-
-
 }

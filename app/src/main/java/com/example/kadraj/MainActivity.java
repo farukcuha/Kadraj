@@ -1,12 +1,19 @@
 package com.example.kadraj;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
@@ -31,8 +38,13 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
         bottomNavigationView.setItemIconTintList(null);
 
+
+
+
+
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @SuppressLint("NonConstantResourceId")
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -45,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.anasayfa:
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragmentcontainer, new HomepageFragment()).setCustomAnimations(R.anim.enter, R.anim.exit).commit();
+
                     break;
                 case R.id.yazarlar:
                     getSupportFragmentManager().beginTransaction()

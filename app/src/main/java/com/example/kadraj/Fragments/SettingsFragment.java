@@ -1,7 +1,9 @@
 package com.example.kadraj.Fragments;
 
 import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,10 +54,18 @@ public class SettingsFragment extends Fragment {
         sportList       = new ArrayList<>();
         technologyList  = new ArrayList<>();
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+
+        int defaultPreferences = preferences.getInt("localnewslocationposition", 0);
+        localNewsProvinces.setSelection(defaultPreferences);
+
         localNewsProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                preferences.edit().putString("localnewslocationname", parent.getSelectedItem().toString()).apply();
+                preferences.edit().putInt("localnewslocationposition", parent.getSelectedItemPosition()).apply();
             }
 
             @Override
@@ -64,6 +74,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        weatherProvinces.setSelection(preferences.getInt("weatherprovincesposition", 0));
 
         weatherProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -78,6 +89,10 @@ public class SettingsFragment extends Fragment {
                         databaseAccess.getData(selectedDistrict));
                 weatherDistricts.setAdapter(adapter);
                 databaseAccess.close();
+
+                preferences.edit().putInt("weatherprovincesposition", parent.getSelectedItemPosition()).apply();
+                preferences.edit().putString("weatherprovincesname", parent.getSelectedItem().toString()).apply();
+
             }
 
             @Override
@@ -86,10 +101,16 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        weatherDistricts.setSelection(preferences.getInt("weatherdistrictsposition", 0));
+
         weatherDistricts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLocation = parent.getSelectedItem().toString();
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("weatherlocation", selectedLocation).apply();
 
+                preferences.edit().putInt("weatherdistrictsposition", parent.getSelectedItemPosition()).apply();
+                preferences.edit().putString("weatherdistrictsname", parent.getSelectedItem().toString()).apply();
             }
 
             @Override

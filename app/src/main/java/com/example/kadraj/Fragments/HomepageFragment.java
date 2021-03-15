@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class HomepageFragment extends Fragment   {
     private SliderView sliderView;
     private int currentPosition;
 
-    private Button settingsButton, button;
+    private Button settingsButton;
     private TextView localNewsLocation, view_weatherLocation;
     private View view;
 
@@ -120,9 +121,10 @@ public class HomepageFragment extends Fragment   {
                     .replace("İ", "I")
                     .replace("Ç", "C")
                     .replace("Ö", "O")
+                    .replace("Ü", "U")
                     .replace("Ş", "S")
                     .replace(" ", "")
-                    .replace("/", "");
+                    .replace("/", "-");
 
             Glide.with(view.getContext()).load("https://www.mgm.gov.tr/sunum/tahmin-show-2.aspx?m="+ convertedLocaion +"&basla=1&bitir=4&rC=fff&rZ=fff")
                     .centerCrop().fitCenter().listener(new RequestListener<Drawable>() {

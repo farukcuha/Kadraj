@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="headers">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">40sp</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+    </style>
+
+    <style name="vegetablesimage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_weight">0.7</item>
+
+    </style>
+
+    <style name="vegetablestext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">0.4</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#000000</item>
+
+    </style>
+
+    <style name="currencysheader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">1dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:autoSizeTextType" tools:targetApi="o">uniform</item>
+        <item name="android:background">@drawable/tableborder</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingVertical" tools:targetApi="o">2dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="currencysrowheader">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#35495E</item>
+        <item name="android:autoSizeTextType" tools:targetApi="o">uniform</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+    <style name="currencysrowprices">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:autoSizeTextType" tools:targetApi="o">uniform</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_marginRight">1dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">2dp</item>
+    </style>
+    <style name="currencysrowchanging">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#4CAF50</item>
+        <item name="android:autoSizeTextType" tools:targetApi="o">uniform</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_marginRight">1dp</item>
+        <item name="android:paddingVertical" tools:targetApi="o">2dp</item>
+        <item name="android:maxLines">1</item>
+
+    </style>
+
+    <style name="vegetablesprices">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">0.7</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#000000</item>
+
+    </style>
+
+    <style name="covidheaderlayouts">
+        <item name="android:background">#f8b133</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_margin">0.5dp</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+    <style name="covidrow1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">0.5dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">0.4</item>
+        <item name="android:background">#00a0a0</item>
+
+
+    </style>
+    <style name="covidrow2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">0.5dp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="fontFamily">@font/sfumedium</item>
+        <item name="android:layout_weight">0.6</item>
+        <item name="android:background">#6f6f6f</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:autoSizeTextType" tools:ignore="NewApi">uniform</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:maxLines">1</item>
+    </style>
+</resources>

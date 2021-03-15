@@ -8,29 +8,20 @@
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="Yerel Haberler"
-                android:fontFamily="@font/sfumedium"
-                android:textColor="#000000"
-                android:layout_marginHorizontal="10dp"
-                />
+                style="@style/headers"
+                android:text="Yerel Haberler" />
             <TextView
                 android:id="@+id/location"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/headers"
                 android:textSize="25sp"
                 android:text=""
-                android:fontFamily="@font/sfusemibold"
-                android:textColor="#000000"
                 />
 
            <androidx.cardview.widget.CardView
@@ -60,25 +51,14 @@
            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="Hava Durumu"
-                android:fontFamily="@font/sfumedium"
-                android:textColor="#000000"
-                android:layout_marginHorizontal="10dp"
-                />
+                style="@style/headers"
+                android:text="Hava Durumu" />
 
             <TextView
+                style="@style/headers"
                 android:id="@+id/weatherlocationn"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:text=""
-                android:fontFamily="@font/sfusemibold"
-                android:textColor="#000000"
-                />
+                android:text="Bozyızı rep taym"
+                android:textSize="20sp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -104,24 +84,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:text="Hal Fiyatları"
-                android:fontFamily="@font/sfumedium"
-                android:textColor="#000000"
-                android:layout_marginHorizontal="10dp"
-                />
+                style="@style/headers"
+                android:text="Hal Fiyatları" />
             <TextView
+                style="@style/headers"
                 android:id="@+id/lastupdate"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
                 android:text="Son Güncelleme: 26.01.2021"
-                android:fontFamily="@font/sfusemibold"
-                android:textColor="#000000"
-                />
+                android:textSize="20sp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -136,30 +105,17 @@
                     android:paddingVertical="5dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        style="@style/vegetablesimage"
                         android:src="@drawable/cucumber"
-                        android:layout_weight="0.7"/>
+                        />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Salatalık"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
+                        style="@style/vegetablestext"
+                        android:text="Salatalık" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
                         android:id="@+id/cucumberprice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
+                        style="@style/vegetablesprices"
                         android:text="25 ₺"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        android:textColor="#111111"/>
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -178,30 +134,17 @@
                     >
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        style="@style/vegetablesimage"
                         android:src="@drawable/eggplant"
-                        android:layout_weight="0.7"/>
+                        />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Patlıcan"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
+                        style="@style/vegetablestext"
+                        android:text="Patlıcan" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
+                        style="@style/vegetablesprices"
                         android:id="@+id/eggplantprice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:text="25 ₺"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        android:textColor="#111111"/>
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -219,30 +162,16 @@
                     android:paddingVertical="5dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/green_beans"
-                        android:layout_weight="0.7"/>
+                        style="@style/vegetablesimage"
+                        android:src="@drawable/green_beans" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Fasülye"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
+                        style="@style/vegetablestext"
+                        android:text="Fasülye" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
+                        style="@style/vegetablesprices"
                         android:id="@+id/beanprice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:text="25 ₺"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        android:textColor="#111111"/>
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -260,30 +189,17 @@
                     android:paddingVertical="5dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        style="@style/vegetablesimage"
                         android:src="@drawable/green_chili_pepper"
-                        android:layout_weight="0.7"/>
+                        />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Kıl Biber"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
+                        style="@style/vegetablestext"
+                        android:text="Kıl Biber" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
                         android:id="@+id/pepperprice1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:text="25 ₺"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        android:textColor="#111111"/>
+                        style="@style/vegetablesprices"
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -301,30 +217,16 @@
                     android:paddingVertical="5dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/green_chili_pepper__1_"
-                        android:layout_weight="0.7"/>
+                        style="@style/vegetablesimage"
+                        android:src="@drawable/green_chili_pepper__1_" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Sivri Biber"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
+                        style="@style/vegetablestext"
+                        android:text="Sivri Biber" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
                         android:id="@+id/pepperprice2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:text="25 ₺"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        android:textColor="#111111"/>
+                        style="@style/vegetablesprices"
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -336,133 +238,219 @@
                 android:layout_marginTop="5dp"
                 >
                 <LinearLayout
-                    
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingVertical="5dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:src="@drawable/tomato"
-                        android:layout_weight="0.7"/>
+                        style="@style/vegetablesimage"
+                        android:src="@drawable/tomato" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="25sp"
-                        android:text="Domates"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:textColor="#000000"
-                        android:layout_weight="0.4"/>
+                        style="@style/vegetablestext"
+                        android:text="Domates" />
                     <TextView
-                        android:fontFamily="@font/sfumedium"
                         android:id="@+id/tomatoprice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.7"
                         android:text="25 ₺"
-                        android:textSize="25sp"
-                        android:textAlignment="center"
-                        android:textColor="#111111"/>
+                        style="@style/vegetablesprices"
+                        />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <TextView
+                style="@style/headers"
+                android:text="Covid19 Tablosu" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10dp">
+                <TextView
+                    style="@style/covidheaderlayouts"
+                    android:text="Bugün"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Test Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/todaytestnumber"
+                            android:text="120.456"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Vaka Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/todaycasenumber"
+                            android:text="12.467"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Hasta Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/todaypatientnumber"
+                            android:text="568"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Vefat Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/todayripnumber"
+                            android:text="68"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="İyileşen Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/todayhealingnumber"
+                            android:text="15.695"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    style="@style/covidheaderlayouts"
+                    android:text="Toplam"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Test Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/totaltestnumber"
+                            android:text="35.126.000"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Vaka Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/totalcasenumber"
+                            android:text="2.150.000"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Vefat Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/totaldiednumber"
+                            android:text="28.022"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Ağır Hasta"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/heavypatientnumber"
+                            android:text="1.569"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="İyileşen Sayısı"
+                            style="@style/covidrow1" />
+                        <TextView
+                            android:id="@+id/totalhealingnumber"
+                            android:text="2.645.896"
+                            style="@style/covidrow2" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/headers"
+                android:text="Döviz"
+
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="10dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="40sp"
-                    android:text="Döviz"
-                    android:fontFamily="@font/sfumedium"
-                    android:textColor="#000000"
-                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
-                        android:text="Ad"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-                        />
+                        style="@style/currencysheader"
+                        android:text="Ad" />
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
-                        android:text="Alış"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-                        />
+                        style="@style/currencysheader"
+                        android:text="Alış" />
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
-                        android:text="Satış"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
-                        />
+                        style="@style/currencysheader"
+                        android:text="Satış" />
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
-                        android:text="Değişim"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:paddingVertical="2dp"
-
-                        />
+                        style="@style/currencysheader"
+                        android:text="Değişim" />
 
                 </LinearLayout>
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    style="@style/headers"
                     android:text="Altın"
-                    android:fontFamily="@font/sfusemibold"
-                    android:textColor="#000000"
-                    />
-
-
-
+                    android:textSize="25sp"
+                    android:layout_marginHorizontal="0dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -471,62 +459,27 @@
 
                     <TextView
                         android:id="@+id/goldname1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#35495E"
-                        android:textSize="20sp"
+                        style="@style/currencysrowheader"
                         android:text="Gram"
-                        android:autoSizeTextType="uniform"
-                        android:textAlignment="textStart"/>
+                        />
                     <TextView
                         android:id="@+id/goldpurchaseprice1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="407,85"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
 
                         />
                     <TextView
                         android:id="@+id/goldsaleprice1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.350,20"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
+
 
 
                         />
                     <TextView
                         android:id="@+id/goldchanging1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
+                        style="@style/currencysrowchanging"
                         android:text="%0.08"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
-
                         />
 
                 </LinearLayout>
@@ -537,64 +490,22 @@
 
                     <TextView
                         android:id="@+id/goldname2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#35495E"
-                        android:textSize="20sp"
-                        android:text="Çeyrek"
-                        android:autoSizeTextType="uniform"
-                        android:textAlignment="textStart"/>
+                        style="@style/currencysrowheader"
+                        android:text="Çeyrek" />
                     <TextView
                         android:id="@+id/goldpurchaseprice2"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="568,85"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
                         />
                     <TextView
                         android:id="@+id/goldsaleprice2"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.890,20"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
                         android:id="@+id/goldchanging2"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
+                        style="@style/currencysrowchanging"
                         android:text="%0.65"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
-
                         />
 
                 </LinearLayout>
@@ -605,73 +516,32 @@
 
                     <TextView
                         android:id="@+id/goldname3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#35495E"
-                        android:textSize="20sp"
-                        android:text="Cumhriyet"
-                        android:autoSizeTextType="uniform"
-                        android:textAlignment="textStart"/>
+                        style="@style/currencysrowheader"
+                        android:text="Cumhriyet" />
                     <TextView
                         android:id="@+id/goldpurchaseprice3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.789,85"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
                         />
                     <TextView
                         android:id="@+id/goldsaleprice3"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="8.456,48"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
                         android:id="@+id/goldchanging3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
+                        style="@style/currencysrowchanging"
                         android:text="%48,65"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
-
                         />
 
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    style="@style/headers"
                     android:text="Döviz"
-                    android:fontFamily="@font/sfusemibold"
-                    android:textColor="#000000"
+                    android:textSize="25sp"
+                    android:layout_marginHorizontal="0dp"
+
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -680,62 +550,23 @@
 
                     <TextView
                         android:id="@+id/currencyname1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:autoSizeTextType="uniform"
-                        android:fontFamily="@font/sfumedium"
-                        android:text="Dolar"
-                        android:textAlignment="textStart"
-                        android:textColor="#35495E"
-                        android:textSize="20sp" />
+                        style="@style/currencysrowheader"
+                        android:text="Dolar" />
 
                     <TextView
                         android:id="@+id/currencypurchaseprice1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="407,85"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
                         />
                     <TextView
                         android:id="@+id/currencysaleprice1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.350,20"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
                         android:id="@+id/currencychanging1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
+                        style="@style/currencysrowchanging"
                         android:text="%0.08"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
 
                         />
 
@@ -747,63 +578,22 @@
 
                     <TextView
                         android:id="@+id/currencyname2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#35495E"
-                        android:textSize="20sp"
-                        android:text="Euro"
-                        android:autoSizeTextType="uniform"
-                        android:textAlignment="textStart"/>
+                        style="@style/currencysrowheader"
+                        android:text="Euro" />
                     <TextView
                         android:id="@+id/currencypurchaseprice2"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="568,85"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
                         />
                     <TextView
                         android:id="@+id/currencysaleprice2"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.890,20"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
                         android:id="@+id/currencychanging2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
                         android:text="%0.65"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
-
+                        style="@style/currencysrowchanging"
                         />
 
                 </LinearLayout>
@@ -813,63 +603,27 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
+                        style="@style/currencysheader"
                         android:text="Ad"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
                         />
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
+                        style="@style/currencysheader"
                         android:text="Satış"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#FFFFFF"
-                        android:layout_weight="1"
+                        style="@style/currencysheader"
                         android:text="Değişim"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:background="@drawable/tableborder"
-                        android:paddingVertical="2dp"
 
                         />
 
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="25sp"
+                    style="@style/headers"
                     android:text="Kripto"
-                    android:fontFamily="@font/sfusemibold"
-                    android:textColor="#000000"
+                    android:textSize="25sp"
+                    android:layout_marginHorizontal="0dp"
                     />
 
                 <LinearLayout
@@ -879,48 +633,19 @@
 
                     <TextView
                         android:id="@+id/cryptoname1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:autoSizeTextType="uniform"
-                        android:fontFamily="@font/sfumedium"
-                        android:text="Bitcoin"
-                        android:textAlignment="textStart"
-                        android:textColor="#35495E"
-                        android:textSize="20sp" />
+                        style="@style/currencysrowheader"
+                        android:text="Bitcoin" />
 
 
                     <TextView
                         android:id="@+id/cryptosaleprice1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.350,20"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
                         android:id="@+id/cryptochanging1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
+                        style="@style/currencysrowchanging"
                         android:text="%0.08"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
-
                         />
 
                 </LinearLayout>
@@ -931,66 +656,34 @@
 
                     <TextView
                         android:id="@+id/cryptoname2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#35495E"
-                        android:textSize="20sp"
-                        android:text="Ethereum"
-                        android:autoSizeTextType="uniform"
-                        android:textAlignment="textStart"/>
+                        style="@style/currencysrowheader"
+                        android:text="Ethereum"/>
 
                     <TextView
                         android:id="@+id/cryptosaleprice2"
-
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
+                        style="@style/currencysrowprices"
                         android:text="1.890,20"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:layout_marginRight="1dp"
-                        android:paddingVertical="2dp"
-
-
                         />
                     <TextView
                         android:id="@+id/cryptochanging2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/sfumedium"
-                        android:textColor="#4CAF50"
-                        android:layout_weight="1"
+                        style="@style/currencysrowchanging"
                         android:text="%0.65"
-                        android:textAlignment="center"
-                        android:maxLines="1"
-                        android:autoSizeTextType="uniform"
-                        android:paddingVertical="2dp"
-
                         />
 
                 </LinearLayout>
             </LinearLayout>
-
             <Button
                 android:layout_marginHorizontal="10dp"
                 android:id="@+id/bottomsettingsbutton"
                 android:layout_marginVertical="5dp"
-                android:text="Ayarlar"
+                android:text="Uygulama Ayarları"
                 android:clickable="true"
                 android:textSize="15sp"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bottombuttonborder"/>
-
-
+                android:background="@drawable/bottombuttonborder"
+                android:focusable="true" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

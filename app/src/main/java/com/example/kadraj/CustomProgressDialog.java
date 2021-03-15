@@ -14,6 +14,7 @@ public class CustomProgressDialog{
         Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.loadingdialogitem);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.setCancelable(false);
 
         return dialog;
     }

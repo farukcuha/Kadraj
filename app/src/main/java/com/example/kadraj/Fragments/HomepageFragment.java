@@ -62,8 +62,10 @@ public class HomepageFragment extends Fragment   {
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
+
         new VegetablesPricesTask(getContext(), view).execute();
         new CurrencyPricesTask(getContext(), view).execute();
+        new CovidDatasTask(getContext(), view).execute();
 
 
 
@@ -92,16 +94,13 @@ public class HomepageFragment extends Fragment   {
                         .replace("ı", "i")
                         .replace("ç", "c")
                         .replace("ö", "o")
-                        .replace("ş", "s");
+                        .replace("ş", "s")
+                        .replace("ü", "u");
 
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/"+location+"-haberleri/", getFragmentManager(), getActivity()).execute();
                 localNewsLocation.setText(selectedLocalNewsLocation);
             }
         //}
-
-
-
-
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

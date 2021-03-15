@@ -3,4 +3,36 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+    <string name="yerel_haberler">Yerel Haberler</string>
+    <string name="hava_durumu">Hava Durumu</string>
+    <string name="hal_fiyatlari">Hal Fiyatları</string>
+    <string name="salatalik">Salatalık</string>
+    <string name="patlican">Patlıcan</string>
+    <string name="fasulye">Fasülye</string>
+    <string name="kilbiber">Kıl Biber</string>
+    <string name="sivri_biber">Sivri Biber</string>
+    <string name="domates">Domates</string>
+    <string name="covid19_tablosu">Covid19 Tablosu</string>
+    <string name="bugun">Bugün</string>
+    <string name="test_sayisi">Test Sayısı</string>
+    <string name="vaka_sayisi">Vaka Sayısı</string>
+    <string name="hasta_sayisi">Hasta Sayısı</string>
+    <string name="vefat_sayisi">Vefat Sayısı</string>
+    <string name="iyilesen_hasta_sayisi">İyileşen Sayısı</string>
+    <string name="agir_hasta_sayisi">Ağır Hasta</string>
+    <string name="doviz">Döviz</string>
+    <string name="alis">Alış</string>
+    <string name="satis">Satış</string>
+    <string name="degisim">Değişim</string>
+    <string name="altin">Altın</string>
+    <string name="gram">Gram</string>
+    <string name="ceyrek">Çeyrek</string>
+    <string name="cumhriyet">Cumhriyet</string>
+    <string name="dolar">Dolar</string>
+    <string name="euro">Euro</string>
+    <string name="ad">Ad</string>
+    <string name="kripto">Kripto</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="ethereum">Ethereum</string>
+    <string name="uygulama_ayarlar">Uygulama Ayarları</string>
 </resources>

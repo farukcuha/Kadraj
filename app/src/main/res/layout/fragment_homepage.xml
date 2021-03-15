@@ -16,21 +16,20 @@
             android:orientation="vertical">
             <TextView
                 style="@style/headers"
-                android:text="Yerel Haberler" />
+                android:text="@string/yerel_haberler"
+                android:layout_marginHorizontal="10dp"/>
             <TextView
                 android:id="@+id/location"
                 style="@style/headers"
                 android:textSize="25sp"
-                android:text=""
+                android:layout_marginHorizontal="10dp"
                 />
-
-           <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
                android:layout_marginHorizontal="10dp"
                android:layout_width="match_parent"
                android:layout_height="250dp"
                app:cardCornerRadius="10dp">
-
-               <com.smarteist.autoimageslider.SliderView
+                <com.smarteist.autoimageslider.SliderView
                    android:id="@+id/localnewsslider"
                    android:layout_width="match_parent"
                    android:layout_height="250dp"
@@ -52,13 +51,16 @@
 
             <TextView
                 style="@style/headers"
-                android:text="Hava Durumu" />
+                android:text="@string/hava_durumu"
+                android:layout_marginHorizontal="10dp"
+                />
 
             <TextView
                 style="@style/headers"
                 android:id="@+id/weatherlocationn"
-                android:text="Bozyızı rep taym"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -69,7 +71,8 @@
                     android:id="@+id/weatherimage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    />
 
                 <ProgressBar
                     android:id="@+id/weatherprogressbar"
@@ -85,12 +88,15 @@
 
             <TextView
                 style="@style/headers"
-                android:text="Hal Fiyatları" />
+                android:text="@string/hal_fiyatlari"
+                android:layout_marginHorizontal="10dp"
+                />
             <TextView
                 style="@style/headers"
                 android:id="@+id/lastupdate"
-                android:text="Son Güncelleme: 26.01.2021"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
+                />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -110,11 +116,10 @@
                         />
                     <TextView
                         style="@style/vegetablestext"
-                        android:text="Salatalık" />
+                        android:text="@string/salatalik" />
                     <TextView
                         android:id="@+id/cucumberprice"
                         style="@style/vegetablesprices"
-                        android:text="25 ₺"
                         />
 
                 </LinearLayout>
@@ -139,11 +144,10 @@
                         />
                     <TextView
                         style="@style/vegetablestext"
-                        android:text="Patlıcan" />
+                        android:text="@string/patlican" />
                     <TextView
                         style="@style/vegetablesprices"
                         android:id="@+id/eggplantprice"
-                        android:text="25 ₺"
                         />
 
                 </LinearLayout>
@@ -166,11 +170,10 @@
                         android:src="@drawable/green_beans" />
                     <TextView
                         style="@style/vegetablestext"
-                        android:text="Fasülye" />
+                        android:text="@string/fasulye" />
                     <TextView
                         style="@style/vegetablesprices"
                         android:id="@+id/beanprice"
-                        android:text="25 ₺"
                         />
 
                 </LinearLayout>
@@ -194,10 +197,9 @@
                         />
                     <TextView
                         style="@style/vegetablestext"
-                        android:text="Kıl Biber" />
+                        android:text="@string/kilbiber" />
                     <TextView
                         android:id="@+id/pepperprice1"
-                        android:text="25 ₺"
                         style="@style/vegetablesprices"
                         />
 
@@ -221,10 +223,9 @@
                         android:src="@drawable/green_chili_pepper__1_" />
                     <TextView
                         style="@style/vegetablestext"
-                        android:text="Sivri Biber" />
+                        android:text="@string/sivri_biber" />
                     <TextView
                         android:id="@+id/pepperprice2"
-                        android:text="25 ₺"
                         style="@style/vegetablesprices"
                         />
 
@@ -248,10 +249,9 @@
                         android:src="@drawable/tomato" />
                     <TextView
                         style="@style/vegetablestext"
-                        android:text="Domates" />
+                        android:text="@string/domates" />
                     <TextView
                         android:id="@+id/tomatoprice"
-                        android:text="25 ₺"
                         style="@style/vegetablesprices"
                         />
 
@@ -259,7 +259,15 @@
             </androidx.cardview.widget.CardView>
             <TextView
                 style="@style/headers"
-                android:text="Covid19 Tablosu" />
+                android:text="@string/covid19_tablosu"
+                android:layout_marginHorizontal="10dp"
+                />
+            <TextView
+                style="@style/headers"
+                android:id="@+id/covidlastupdatedate"
+                android:textSize="20sp"
+                android:layout_marginHorizontal="10dp"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -267,7 +275,7 @@
                 android:layout_marginHorizontal="10dp">
                 <TextView
                     style="@style/covidheaderlayouts"
-                    android:text="Bugün"
+                    android:text="@string/bugun"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -279,12 +287,12 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
-                            android:text="Test Sayısı"
-                            style="@style/covidrow1" />
+                            style="@style/covidrow1"
+                            android:text="@string/test_sayisi" />
                         <TextView
                             android:id="@+id/todaytestnumber"
-                            android:text="120.456"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -293,11 +301,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Vaka Sayısı"
+                            android:text="@string/vaka_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/todaycasenumber"
-                            android:text="12.467"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -306,11 +313,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Hasta Sayısı"
+                            android:text="@string/hasta_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/todaypatientnumber"
-                            android:text="568"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -319,11 +325,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Vefat Sayısı"
+                            android:text="@string/vefat_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/todayripnumber"
-                            android:text="68"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -332,11 +337,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="İyileşen Sayısı"
+                            android:text="@string/iyilesen_hasta_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/todayhealingnumber"
-                            android:text="15.695"
                             style="@style/covidrow2" />
                     </LinearLayout>
                 </LinearLayout>
@@ -354,11 +358,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Test Sayısı"
+                            android:text="@string/test_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/totaltestnumber"
-                            android:text="35.126.000"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -367,11 +370,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Vaka Sayısı"
+                            android:text="@string/vaka_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/totalcasenumber"
-                            android:text="2.150.000"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -380,11 +382,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Vefat Sayısı"
+                            android:text="@string/vefat_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/totaldiednumber"
-                            android:text="28.022"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -393,11 +394,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="Ağır Hasta"
+                            android:text="@string/agir_hasta_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/heavypatientnumber"
-                            android:text="1.569"
                             style="@style/covidrow2" />
                     </LinearLayout>
                     <LinearLayout
@@ -406,21 +406,25 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <TextView
-                            android:text="İyileşen Sayısı"
+                            android:text="@string/iyilesen_hasta_sayisi"
                             style="@style/covidrow1" />
                         <TextView
                             android:id="@+id/totalhealingnumber"
-                            android:text="2.645.896"
                             style="@style/covidrow2" />
                     </LinearLayout>
                 </LinearLayout>
+                <TextView
+                    android:id="@+id/totalsyringe"
+                    style="@style/covidheaderlayouts"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+
+                    />
             </LinearLayout>
-
-
             <TextView
                 style="@style/headers"
-                android:text="Döviz"
-
+                android:text="@string/doviz"
+                android:layout_marginHorizontal="10dp"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -434,21 +438,25 @@
 
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Ad" />
+                        android:text="@string/ad"
+                        android:paddingVertical="3dp"/>
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Alış" />
+                        android:text="@string/alis"
+                        android:paddingVertical="3dp"/>
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Satış" />
+                        android:text="@string/satis"
+                        android:paddingVertical="3dp"/>
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Değişim" />
+                        android:text="@string/degisim"
+                        android:paddingVertical="3dp"/>
 
                 </LinearLayout>
                 <TextView
                     style="@style/headers"
-                    android:text="Altın"
+                    android:text="@string/altin"
                     android:textSize="25sp"
                     android:layout_marginHorizontal="0dp"/>
 
@@ -460,26 +468,24 @@
                     <TextView
                         android:id="@+id/goldname1"
                         style="@style/currencysrowheader"
-                        android:text="Gram"
+                        android:text="@string/gram"
                         />
                     <TextView
                         android:id="@+id/goldpurchaseprice1"
                         style="@style/currencysrowprices"
-                        android:text="407,85"
+                        android:paddingVertical="2dp"
 
                         />
                     <TextView
                         android:id="@+id/goldsaleprice1"
                         style="@style/currencysrowprices"
-                        android:text="1.350,20"
-
-
-
+                        android:paddingVertical="2dp"
                         />
                     <TextView
                         android:id="@+id/goldchanging1"
                         style="@style/currencysrowchanging"
-                        android:text="%0.08"
+                        android:paddingVertical="2dp"
+
                         />
 
                 </LinearLayout>
@@ -491,21 +497,24 @@
                     <TextView
                         android:id="@+id/goldname2"
                         style="@style/currencysrowheader"
-                        android:text="Çeyrek" />
+                        android:text="@string/ceyrek" />
                     <TextView
                         android:id="@+id/goldpurchaseprice2"
                         style="@style/currencysrowprices"
-                        android:text="568,85"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/goldsaleprice2"
                         style="@style/currencysrowprices"
-                        android:text="1.890,20"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/goldchanging2"
                         style="@style/currencysrowchanging"
-                        android:text="%0.65"
+                        android:paddingVertical="2dp"
+
                         />
 
                 </LinearLayout>
@@ -517,32 +526,33 @@
                     <TextView
                         android:id="@+id/goldname3"
                         style="@style/currencysrowheader"
-                        android:text="Cumhriyet" />
+                        android:text="@string/cumhriyet" />
                     <TextView
                         android:id="@+id/goldpurchaseprice3"
                         style="@style/currencysrowprices"
-                        android:text="1.789,85"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/goldsaleprice3"
                         style="@style/currencysrowprices"
-                        android:text="8.456,48"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/goldchanging3"
                         style="@style/currencysrowchanging"
-                        android:text="%48,65"
+                        android:paddingVertical="2dp"
+
                         />
 
                 </LinearLayout>
 
                 <TextView
                     style="@style/headers"
-                    android:text="Döviz"
+                    android:text="@string/doviz"
                     android:textSize="25sp"
-                    android:layout_marginHorizontal="0dp"
-
-                    />
+                    android:layout_marginHorizontal="0dp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -551,23 +561,24 @@
                     <TextView
                         android:id="@+id/currencyname1"
                         style="@style/currencysrowheader"
-                        android:text="Dolar" />
+                        android:text="@string/dolar" />
 
                     <TextView
                         android:id="@+id/currencypurchaseprice1"
                         style="@style/currencysrowprices"
-                        android:text="407,85"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/currencysaleprice1"
                         style="@style/currencysrowprices"
-                        android:text="1.350,20"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/currencychanging1"
                         style="@style/currencysrowchanging"
-                        android:text="%0.08"
-
+                        android:paddingVertical="2dp"
                         />
 
                 </LinearLayout>
@@ -579,21 +590,24 @@
                     <TextView
                         android:id="@+id/currencyname2"
                         style="@style/currencysrowheader"
-                        android:text="Euro" />
+                        android:text="@string/euro" />
                     <TextView
                         android:id="@+id/currencypurchaseprice2"
                         style="@style/currencysrowprices"
-                        android:text="568,85"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/currencysaleprice2"
                         style="@style/currencysrowprices"
-                        android:text="1.890,20"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/currencychanging2"
-                        android:text="%0.65"
                         style="@style/currencysrowchanging"
+                        android:paddingVertical="2dp"
+
                         />
 
                 </LinearLayout>
@@ -604,16 +618,20 @@
 
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Ad"
+                        android:text="@string/ad"
+                        android:paddingVertical="3dp"
                         />
 
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Satış"
+                        android:text="@string/satis"
+                        android:paddingVertical="3dp"
+
                         />
                     <TextView
                         style="@style/currencysheader"
-                        android:text="Değişim"
+                        android:text="@string/degisim"
+                        android:paddingVertical="3dp"
 
                         />
 
@@ -621,7 +639,7 @@
 
                 <TextView
                     style="@style/headers"
-                    android:text="Kripto"
+                    android:text="@string/kripto"
                     android:textSize="25sp"
                     android:layout_marginHorizontal="0dp"
                     />
@@ -634,18 +652,20 @@
                     <TextView
                         android:id="@+id/cryptoname1"
                         style="@style/currencysrowheader"
-                        android:text="Bitcoin" />
+                        android:text="@string/bitcoin" />
 
 
                     <TextView
                         android:id="@+id/cryptosaleprice1"
                         style="@style/currencysrowprices"
-                        android:text="1.350,20"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/cryptochanging1"
                         style="@style/currencysrowchanging"
-                        android:text="%0.08"
+                        android:paddingVertical="2dp"
+
                         />
 
                 </LinearLayout>
@@ -657,17 +677,19 @@
                     <TextView
                         android:id="@+id/cryptoname2"
                         style="@style/currencysrowheader"
-                        android:text="Ethereum"/>
+                        android:text="@string/ethereum"/>
 
                     <TextView
                         android:id="@+id/cryptosaleprice2"
                         style="@style/currencysrowprices"
-                        android:text="1.890,20"
+                        android:paddingVertical="2dp"
+
                         />
                     <TextView
                         android:id="@+id/cryptochanging2"
                         style="@style/currencysrowchanging"
-                        android:text="%0.65"
+                        android:paddingVertical="2dp"
+
                         />
 
                 </LinearLayout>
@@ -676,7 +698,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:id="@+id/bottomsettingsbutton"
                 android:layout_marginVertical="5dp"
-                android:text="Uygulama Ayarları"
+                android:text="@string/uygulama_ayarlar"
                 android:clickable="true"
                 android:textSize="15sp"
                 android:layout_gravity="center"

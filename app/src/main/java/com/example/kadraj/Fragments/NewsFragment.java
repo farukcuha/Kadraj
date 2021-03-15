@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,23 +29,31 @@ public class NewsFragment extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(listener);
         bottomNavigationView.setItemIconTintList(null);
 
+        bottomNavigationView.getMenu().add(Menu.NONE, 1, Menu.NONE, "https://www.sabah.com.tr").setIcon(R.drawable.sabahlogo);
+        bottomNavigationView.getMenu().add(Menu.NONE, 2, Menu.NONE, "https://www.haberturk.com").setIcon(R.drawable.haberturk);
+        bottomNavigationView.getMenu().add(Menu.NONE, 3, Menu.NONE, "https://www.sozcu.com.tr").setIcon(R.drawable.ntvspor);
+
+
+
         return view;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()){
-                case R.id.newssabah:
+            fragment = new NewsWebView(String.valueOf(item.getTitle()), "Haber");
+
+            /*switch (item.getTitle()){
+                case 1:
                     fragment = new NewsWebView("https://www.sabah.com.tr", "Sabah");
                     break;
-                case R.id.newssozcu:
+                case 2:
                     fragment = new NewsWebView("https://www.sozcu.com.tr/kategori/gundem/", "Sözcü");
                     break;
-                case R.id.newsbozyazi:
+                case 3:
                     fragment = new NewsWebView("https://www.bozyazihaber.com/index.php", "Bozyazı Haber");
                     break;
-            }
+            }*/
             getActivity().getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.newspagecontainer, fragment).commit();
             return true;
         }

@@ -109,19 +109,25 @@ public class SettingsFragment extends Fragment {
                 String selectedLocation = parent.getSelectedItem().toString();
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("weatherlocation", selectedLocation).apply();
 
-                char[] c = new char[6];
-                selectedLocation.getChars(selectedLocation.length() - 6, selectedLocation.length() ,c, 0);
-                Log.d("abcdefg", String.valueOf(c));
-
-                if (String.valueOf(c).equals("Merkez")){
-                    char[] c2 = new char[selectedLocation.length() - 6];
-                    selectedLocation.getChars(0, selectedLocation.length() - 6, c2, 0);
-                    preferences.edit().putString("weatherdistrictsname", String.valueOf(c2)).apply();
-
+                if (selectedLocation.length() < 6){
+                    preferences.edit().putString("weatherdistrictsname", selectedLocation).apply();
 
                 }
                 else {
-                    preferences.edit().putString("weatherdistrictsname", parent.getSelectedItem().toString()).apply();
+                    char[] c = new char[6];
+                    selectedLocation.getChars(selectedLocation.length() - 6, selectedLocation.length() ,c, 0);
+                    Log.d("abcdefg", String.valueOf(c));
+
+                    if (String.valueOf(c).equals("Merkez")){
+                        char[] c2 = new char[selectedLocation.length() - 6];
+                        selectedLocation.getChars(0, selectedLocation.length() - 6, c2, 0);
+                        preferences.edit().putString("weatherdistrictsname", String.valueOf(c2)).apply();
+
+
+                    }
+                    else {
+                        preferences.edit().putString("weatherdistrictsname", parent.getSelectedItem().toString()).apply();
+                    }
                 }
 
                 preferences.edit().putInt("weatherdistrictsposition", parent.getSelectedItemPosition()).apply();

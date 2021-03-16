@@ -293,7 +293,8 @@
                             android:text="@string/test_sayisi" />
                         <TextView
                             android:id="@+id/todaytestnumber"
-                            style="@style/covidrow2" />
+                            style="@style/covidrow2"
+                            />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"

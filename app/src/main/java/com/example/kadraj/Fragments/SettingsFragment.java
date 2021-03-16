@@ -1,6 +1,7 @@
 package com.example.kadraj.Fragments;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,10 +24,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kadraj.Database.DatabaseAccess;
 import com.example.kadraj.Models.NewsCategoryModel;
 import com.example.kadraj.R;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class SettingsFragment extends Fragment {
     private ImageButton button;
@@ -37,7 +41,7 @@ public class SettingsFragment extends Fragment {
     String selectedDistrict;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
-    ChipGroup newsChipGroup;
+    ChipGroup dialogChipGroup;
 
     @Nullable
     @Override
@@ -56,6 +60,7 @@ public class SettingsFragment extends Fragment {
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
+        setUpChipGroup();
 
         int defaultPreferences = preferences.getInt("localnewslocationposition", 0);
         localNewsProvinces.setSelection(defaultPreferences);
@@ -132,8 +137,6 @@ public class SettingsFragment extends Fragment {
 
                 preferences.edit().putInt("weatherdistrictsposition", parent.getSelectedItemPosition()).apply();
 
-
-
             }
 
             @Override
@@ -152,22 +155,38 @@ public class SettingsFragment extends Fragment {
                 journalRecyclerView    = dialogView.findViewById(R.id.journallist);
                 sportRecyclerView      = dialogView.findViewById(R.id.sportlist);
                 technologyRecyclerView = dialogView.findViewById(R.id.technologylist);
-                newsChipGroup          = dialogView.findViewById(R.id.dialogchipgroup);
+                dialogChipGroup = dialogView.findViewById(R.id.dialogchipgroup);
 
-                journal(journalRecyclerView, newsChipGroup).setLayoutManager(
+                journal(journalRecyclerView, dialogChipGroup).setLayoutManager(
                         new LinearLayoutManager(getContext(),
                         LinearLayoutManager.HORIZONTAL,
                         false));
-                sport(sportRecyclerView, newsChipGroup).setLayoutManager(
+                sport(sportRecyclerView, dialogChipGroup).setLayoutManager(
                         new LinearLayoutManager(getContext(),
                                 LinearLayoutManager.HORIZONTAL,
                                 false));
-                technology(technologyRecyclerView, newsChipGroup).setLayoutManager(
+                technology(technologyRecyclerView, dialogChipGroup).setLayoutManager(
                         new LinearLayoutManager(getContext(),
                                 LinearLayoutManager.HORIZONTAL,
                                 false));
-
                 builder.setView(dialogView);
+                builder.setPositiveButton("Kaydet", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null).size() == 4){
+                            chipGroup.removeAllViews();
+                            setUpChipGroup();
+                        }
+                        else {
+                            Toast.makeText(getContext(), "Olmadı", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
                 builder.create().show();
             }
         });
@@ -175,7 +194,7 @@ public class SettingsFragment extends Fragment {
         return view;
     }
 
-    private RecyclerView journal(RecyclerView recyclerView, ChipGroup newsChipGroup){
+    private RecyclerView journal(RecyclerView recyclerView, ChipGroup dialogChipGroup){
         newsAdder(journalList, "Sözcü", R.drawable.sozcu, "https://www.sozcu.com.tr");
         newsAdder(journalList, "Sabah", R.drawable.sabahlogo, "https://www.sabah.com.tr");
         newsAdder(journalList, "Habertürk",  R.drawable.haberturk, "https://www.haberturk.com");
@@ -187,13 +206,13 @@ public class SettingsFragment extends Fragment {
         newsAdder(journalList, "Takvim", R.drawable.takvim, "https://www.takvim.com.tr");
         newsAdder(journalList, "Yeni Akit", R.drawable.akit, "https://www.yeniakit.com.tr");
 
-        adapter = new NewsAddingAdapter(journalList, getContext(), newsChipGroup);
+        adapter = new NewsAddingAdapter(journalList, getContext(), dialogChipGroup);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         return recyclerView;
     }
 
-    private RecyclerView sport(RecyclerView recyclerView, ChipGroup newsChipGroup){
+    private RecyclerView sport(RecyclerView recyclerView, ChipGroup dialogChipGroup){
         newsAdder(sportList, "Bein Sports", R.drawable.bein, "https://tr.beinsports.com");
         newsAdder(sportList, "Fotomaç", R.drawable.fotomac, "https://www.fotomac.com.tr");
         newsAdder(sportList, "Fanatik", R.drawable.fanatik, "https://www.fanatik.com.tr");
@@ -204,14 +223,14 @@ public class SettingsFragment extends Fragment {
         newsAdder(sportList, "TRT Spor", R.drawable.trtspor, "https://www.trtspor.com.tr");
         newsAdder(sportList, "Ajans Spor", R.drawable.ajansspor, "https://ajansspor.com");
 
-        adapter = new NewsAddingAdapter(sportList, getContext(), newsChipGroup);
+        adapter = new NewsAddingAdapter(sportList, getContext(), dialogChipGroup);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         return recyclerView;
 
     }
 
-    private RecyclerView technology(RecyclerView recyclerView, ChipGroup newsChipGroup){
+    private RecyclerView technology(RecyclerView recyclerView, ChipGroup dialogChipGroup){
         newsAdder(technologyList, "Webtekno", R.drawable.webtekno, "https://www.webtekno.com");
         newsAdder(technologyList, "ShiftDelete", R.drawable.shitdelete, "https://shiftdelete.net");
         newsAdder(technologyList, "Log", R.drawable.log, "https://www.log.com.tr");
@@ -219,7 +238,7 @@ public class SettingsFragment extends Fragment {
         newsAdder(technologyList, "Webrazzi",  R.drawable.webrazzi, "https://webrazzi.com");
         newsAdder(technologyList, "TeknolojiOku", R.drawable.teknolojioku, "https://www.teknolojioku.com");
 
-        adapter = new NewsAddingAdapter(technologyList, getContext(), newsChipGroup);
+        adapter = new NewsAddingAdapter(technologyList, getContext(), dialogChipGroup);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         return recyclerView;
@@ -229,4 +248,21 @@ public class SettingsFragment extends Fragment {
     private void newsAdder(List<NewsCategoryModel> list, String name, int image, String url){
         list.add(new NewsCategoryModel(name, image, url));
     }
+
+    private void setUpChipGroup(){
+        Set<String> set = PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null);
+            if (set == null){
+                Log.d("a", "bok");
+            }
+            else {
+                for (String s : set){
+                    Chip chip = (Chip) LayoutInflater.from(getContext()).inflate(R.layout.chip_item_default, chipGroup, false);
+                    chip.setText(s);
+                    chipGroup.addView(chip);
+                    Log.d("aacas", "oldu");
+
+                }
+            }
+    }
+
 }

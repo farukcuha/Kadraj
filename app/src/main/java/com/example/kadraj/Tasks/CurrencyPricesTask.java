@@ -25,16 +25,21 @@ import java.util.List;
 
 
 public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
-    private Context context;
-    private View view;
-
+    @SuppressLint("StaticFieldLeak")
+    Context context;
+    @SuppressLint("StaticFieldLeak")
+    View view;
+    @SuppressLint("StaticFieldLeak")
     private TextView goldName1, goldName2, goldName3, currencyName1, currencyName2, cryptoName1, cryptoName2;
+    @SuppressLint("StaticFieldLeak")
     private TextView goldPurchase1, goldPurchase2, goldPurchase3, currencyPurchase1, currencyPurchase2;
+    @SuppressLint("StaticFieldLeak")
     private TextView goldSalePrice1, goldSalePrice2, goldSalePrice3, currencySalePrice1, currencySalePrice2, cryptoSalePrice1, cryptoSalePrice2;
+    @SuppressLint("StaticFieldLeak")
     private TextView goldChanging1, goldChanging2, goldChanging3, currencyChanging1, currencyChanging2, cryptoChanging1, cryptoChanging2;
     private Document document;
     private List<CurrencyModel> goldList, currencyList, cryptoList;
-    private Dialog progressDialog;
+    private final Dialog progressDialog;
 
     public CurrencyPricesTask(Context context, View view) {
         this.context = context;
@@ -128,13 +133,7 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         if (cryptoList.get(1).getRotation().equals("down")){
             cryptoChanging2.setTextColor(Color.RED);
         }
-
-
         progressDialog.dismiss();
-
-
-
-
 
     }
 
@@ -168,11 +167,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         currencyChanging2 = view.findViewById(R.id.currencychanging2);
         cryptoChanging1 = view.findViewById(R.id.cryptochanging1);
         cryptoChanging2 = view.findViewById(R.id.cryptochanging2);
-
-
-
-
-
 
 
     }
@@ -228,7 +222,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
     }
 
     //private void getDatas(String url, String documentPath, int startLoop, int finishLoop, )
-
     private void currencyPrices() {
         try {
             document = Jsoup.connect("https://kur.doviz.com").ignoreContentType(true).get();
@@ -291,8 +284,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                 else {
                     rotation = "up";
                 }
-
-
                 Log.d("ad", String.valueOf(newCryptoName));
                 Log.d("alış", "null");
                 Log.d("satış", elements.select("tr").get(i).select("td").get(2).text());

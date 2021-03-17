@@ -63,7 +63,7 @@ public class HomepageFragment extends Fragment   {
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
 
-        new VegetablesPricesTask(getContext(), view).execute();
+        //new VegetablesPricesTask(getContext(), view).execute();
         new CurrencyPricesTask(getContext(), view).execute();
         new CovidDatasTask(getContext(), view).execute();
 

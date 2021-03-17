@@ -71,7 +71,7 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
                 covidList.add(element.select("div.value").text());
             }
 
-            covidList.add(document.select("div.syringe-block > span").text());
+            covidList.add(document.select("div[class=syringe-block col-md-24]").select("div[class=col-md-8]").first().select("span").text());
             covidList.add(document.select("div.covid-title > div.text > span").text());
             Log.d("sadc",document.select("div.covid-title > div.text > span").text());
 

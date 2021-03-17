@@ -8,17 +8,43 @@
     tools:context=".Fragments.NewsFragment"
     android:orientation="vertical">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/news_bottom_navigation"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        app:itemIconSize="50dp"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toTopOf="@+id/newspagecontainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@drawable/newsbarshape"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/news1"
+            style="@style/newsnavigation"
+            android:text="Sabah"
+            android:onClick="onClick"
+            />
+        <TextView
+            android:id="@+id/news2"
+            style="@style/newsnavigation"
+            android:text="Habertürk"
+            android:onClick="onClick"
+
+            />
+        <TextView
+            android:id="@+id/news3"
+            style="@style/newsnavigation"
+            android:text="Log"
+            android:onClick="onClick"
+
+            />
+        <TextView
+            android:id="@+id/news4"
+            style="@style/newsnavigation"
+            android:text="Webtekno"
+            android:onClick="onClick"
+
+            />
+
+    </LinearLayout>
+
 
     <FrameLayout
         android:id="@+id/newspagecontainer"

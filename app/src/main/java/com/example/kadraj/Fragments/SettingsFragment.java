@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kadraj.Database.DatabaseAccess;
 import com.example.kadraj.Models.NewsCategoryModel;
+import com.example.kadraj.NewsResourcesProvider;
 import com.example.kadraj.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -42,6 +43,7 @@ public class SettingsFragment extends Fragment {
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
     ChipGroup dialogChipGroup;
+    NewsResourcesProvider provider = new NewsResourcesProvider();
 
     @Nullable
     @Override
@@ -68,7 +70,6 @@ public class SettingsFragment extends Fragment {
         localNewsProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
                 preferences.edit().putString("localnewslocationname", parent.getSelectedItem().toString()).apply();
                 preferences.edit().putInt("localnewslocationposition", parent.getSelectedItemPosition()).apply();
             }
@@ -195,16 +196,16 @@ public class SettingsFragment extends Fragment {
     }
 
     private RecyclerView journal(RecyclerView recyclerView, ChipGroup dialogChipGroup){
-        newsAdder(journalList, "Sözcü", R.drawable.sozcu, "https://www.sozcu.com.tr");
-        newsAdder(journalList, "Sabah", R.drawable.sabahlogo, "https://www.sabah.com.tr");
-        newsAdder(journalList, "Habertürk",  R.drawable.haberturk, "https://www.haberturk.com");
-        newsAdder(journalList, "Hürriyet", R.drawable.hurriyet, "https://www.hurriyet.com.tr");
-        newsAdder(journalList, "Karar", R.drawable.karar, "https://www.karar.com");
-        newsAdder(journalList, "Milliyet", R.drawable.milliyet, "https://www.milliyet.com.tr");
-        newsAdder(journalList, "Yeni Şafak", R.drawable.yenisafak, "https://www.yenisafak.com");
-        newsAdder(journalList, "Türkiye", R.drawable.turkiye, "https://www.turkiyegazetesi.com.tr");
-        newsAdder(journalList, "Takvim", R.drawable.takvim, "https://www.takvim.com.tr");
-        newsAdder(journalList, "Yeni Akit", R.drawable.akit, "https://www.yeniakit.com.tr");
+        newsAdder(journalList, provider.getData("Sözcü"));
+        newsAdder(journalList, provider.getData("Sabah"));
+        newsAdder(journalList, provider.getData("Habertürk"));
+        newsAdder(journalList, provider.getData("Hürriyet"));
+        newsAdder(journalList, provider.getData("Karar"));
+        newsAdder(journalList, provider.getData("Milliyet"));
+        newsAdder(journalList, provider.getData("Yeni Şafak"));
+        newsAdder(journalList, provider.getData("Türkiye"));
+        newsAdder(journalList, provider.getData("Takvim"));
+        newsAdder(journalList, provider.getData("Yeni Akit"));
 
         adapter = new NewsAddingAdapter(journalList, getContext(), dialogChipGroup);
         recyclerView.setAdapter(adapter);
@@ -213,15 +214,15 @@ public class SettingsFragment extends Fragment {
     }
 
     private RecyclerView sport(RecyclerView recyclerView, ChipGroup dialogChipGroup){
-        newsAdder(sportList, "Bein Sports", R.drawable.bein, "https://tr.beinsports.com");
-        newsAdder(sportList, "Fotomaç", R.drawable.fotomac, "https://www.fotomac.com.tr");
-        newsAdder(sportList, "Fanatik", R.drawable.fanatik, "https://www.fanatik.com.tr");
-        newsAdder(sportList, "SporX",  R.drawable.sporx, "https://www.sporx.com");
-        newsAdder(sportList, "A Spor", R.drawable.aspor, "https://www.aspor.com.tr");
-        newsAdder(sportList, "Fotospor", R.drawable.fotospor, "https://www.fotospor.com");
-        newsAdder(sportList, "NTV Spor", R.drawable.ntvspor, "https://www.ntvspor.net");
-        newsAdder(sportList, "TRT Spor", R.drawable.trtspor, "https://www.trtspor.com.tr");
-        newsAdder(sportList, "Ajans Spor", R.drawable.ajansspor, "https://ajansspor.com");
+        newsAdder(sportList, provider.getData("Bein Sports"));
+        newsAdder(sportList, provider.getData("Fotomaç"));
+        newsAdder(sportList, provider.getData("Fanatik"));
+        newsAdder(sportList, provider.getData("SporX"));
+        newsAdder(sportList, provider.getData("A Spor"));
+        newsAdder(sportList, provider.getData("Fotospor"));
+        newsAdder(sportList, provider.getData("NTV Spor"));
+        newsAdder(sportList, provider.getData("TRT Spor"));
+        newsAdder(sportList, provider.getData("Ajans Spor"));
 
         adapter = new NewsAddingAdapter(sportList, getContext(), dialogChipGroup);
         recyclerView.setAdapter(adapter);
@@ -231,12 +232,12 @@ public class SettingsFragment extends Fragment {
     }
 
     private RecyclerView technology(RecyclerView recyclerView, ChipGroup dialogChipGroup){
-        newsAdder(technologyList, "Webtekno", R.drawable.webtekno, "https://www.webtekno.com");
-        newsAdder(technologyList, "ShiftDelete", R.drawable.shitdelete, "https://shiftdelete.net");
-        newsAdder(technologyList, "Log", R.drawable.log, "https://www.log.com.tr");
-        newsAdder(technologyList, "Chip", R.drawable.chip, "https://www.chip.com.tr");
-        newsAdder(technologyList, "Webrazzi",  R.drawable.webrazzi, "https://webrazzi.com");
-        newsAdder(technologyList, "TeknolojiOku", R.drawable.teknolojioku, "https://www.teknolojioku.com");
+        newsAdder(technologyList, provider.getData("Webtekno"));
+        newsAdder(technologyList, provider.getData("ShiftDelete"));
+        newsAdder(technologyList, provider.getData("Log"));
+        newsAdder(technologyList, provider.getData("Chip"));
+        newsAdder(technologyList, provider.getData("Webrazzi"));
+        newsAdder(technologyList, provider.getData("TeknolojiOku"));
 
         adapter = new NewsAddingAdapter(technologyList, getContext(), dialogChipGroup);
         recyclerView.setAdapter(adapter);
@@ -245,8 +246,15 @@ public class SettingsFragment extends Fragment {
 
     }
 
-    private void newsAdder(List<NewsCategoryModel> list, String name, int image, String url){
-        list.add(new NewsCategoryModel(name, image, url));
+    private void newsAdder(List<NewsCategoryModel> list, List<NewsCategoryModel> childList){
+        for (int i = 0; i < childList.size(); i++){
+            list.add(new NewsCategoryModel(
+                    childList.get(i).getNewsUrl(),
+                    childList.get(i).getNewsImage(),
+                    childList.get(i).getNewsName()
+            ));
+        }
+
     }
 
     private void setUpChipGroup(){

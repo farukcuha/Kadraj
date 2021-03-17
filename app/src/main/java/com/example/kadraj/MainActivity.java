@@ -39,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setItemIconTintList(null);
 
 
-
-
-
-
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @RequiresApi(api = Build.VERSION_CODES.M)

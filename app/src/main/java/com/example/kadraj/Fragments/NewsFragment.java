@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import me.grantland.widget.AutofitHelper;
+
 
 public class NewsFragment extends Fragment implements View.OnClickListener {
     private Fragment fragment;
@@ -70,6 +72,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         news3.setOnClickListener(this);
         news4.setOnClickListener(this);
 
+        AutofitHelper.create(news1);
+        AutofitHelper.create(news2);
+        AutofitHelper.create(news3);
+        AutofitHelper.create(news4);
         return view;
     }
 

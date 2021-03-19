@@ -27,6 +27,8 @@ import com.example.kadraj.R;
 
 import java.util.List;
 
+import me.grantland.widget.AutofitHelper;
+
 public class AuthorsAdapter extends RecyclerView.Adapter<AuthorsAdapter.Holder> {
     List<AuthorsModel> authorsList;
     Context context;
@@ -103,8 +105,10 @@ public class AuthorsAdapter extends RecyclerView.Adapter<AuthorsAdapter.Holder> 
             progressBar = itemView.findViewById(R.id.progressbar);
             authorsImage = itemView.findViewById(R.id.authorsimage);
             authorsName = itemView.findViewById(R.id.authorname);
+            AutofitHelper.create(authorsName);
             articleHeader = itemView.findViewById(R.id.articleheader);
             newspaperImage = itemView.findViewById(R.id.newspapericon);
+
 
         }
     }

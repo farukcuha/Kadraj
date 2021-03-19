@@ -15,413 +15,438 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/headers"
-                android:text="@string/yerel_haberler"
-                android:layout_marginHorizontal="10dp"/>
-            <TextView
-                android:id="@+id/location"
-                style="@style/headers"
-                android:textSize="25sp"
-                android:layout_marginHorizontal="10dp"
-                />
-            <androidx.cardview.widget.CardView
-               android:layout_marginHorizontal="10dp"
-               android:layout_width="match_parent"
-               android:layout_height="250dp"
-               app:cardCornerRadius="10dp">
-                <com.smarteist.autoimageslider.SliderView
-                   android:id="@+id/localnewsslider"
-                   android:layout_width="match_parent"
-                   android:layout_height="250dp"
-                   app:sliderAnimationDuration="1200"
-                   app:sliderAutoCycleDirection="back_and_forth"
-                   app:sliderAutoCycleEnabled="true"
-                   app:sliderIndicatorAnimationDuration="5000"
-                   app:sliderIndicatorGravity="center_horizontal|bottom"
-                   app:sliderIndicatorMargin="15dp"
-                   app:sliderIndicatorOrientation="horizontal"
-                   app:sliderIndicatorPadding="3dp"
-                   app:sliderIndicatorRadius="2dp"
-                   app:sliderIndicatorSelectedColor="#35495E"
-                   app:sliderIndicatorUnselectedColor="#ACACAC"
-                   app:sliderScrollTimeInSec="1"
-                   app:sliderStartAutoCycle="true"
-                   />
-           </androidx.cardview.widget.CardView>
-
-            <TextView
-                style="@style/headers"
-                android:text="@string/hava_durumu"
-                android:layout_marginHorizontal="10dp"
-                />
-
-            <TextView
-                style="@style/headers"
-                android:id="@+id/weatherlocationn"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
-                />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/localnewslayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="10dp"
-                >
-                <ImageView
-                    android:id="@+id/weatherimage"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/headers"
+                    android:text="@string/yerel_haberler"
+                    android:layout_marginHorizontal="10dp"/>
+                <TextView
+                    android:id="@+id/location"
+                    style="@style/headers"
+                    android:textSize="25sp"
+                    android:layout_marginHorizontal="10dp"
+                    />
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="MissingConstraints"
+                    android:layout_height="250dp"
+                    app:cardCornerRadius="10dp">
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/localnewsslider"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:sliderAnimationDuration="1200"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderIndicatorAnimationDuration="5000"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMargin="15dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="2dp"
+                        app:sliderIndicatorSelectedColor="#35495E"
+                        app:sliderIndicatorUnselectedColor="#ACACAC"
+                        app:sliderScrollTimeInSec="1"
+                        app:sliderStartAutoCycle="true"
+                        />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weatherlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/headers"
+                    android:text="@string/hava_durumu"
+                    android:layout_marginHorizontal="10dp"
                     />
 
-                <ProgressBar
-                    android:id="@+id/weatherprogressbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/weatherimage"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
+                <TextView
+                    style="@style/headers"
+                    android:id="@+id/weatherlocationn"
+                    android:textSize="20sp"
+                    android:layout_marginHorizontal="10dp"
+                    />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                style="@style/headers"
-                android:text="@string/hal_fiyatlari"
-                android:layout_marginHorizontal="10dp"
-                />
-            <TextView
-                style="@style/headers"
-                android:id="@+id/lastupdate"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
-                />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                >
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
-
-                    <ImageView
-                        style="@style/vegetablesimage"
-                        android:src="@drawable/cucumber"
-                        />
-                    <TextView
-                        style="@style/vegetablestext"
-                        android:text="@string/salatalik" />
-                    <TextView
-                        android:id="@+id/cucumberprice"
-                        style="@style/vegetablesprices"
-                        />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
                     >
-
                     <ImageView
-                        style="@style/vegetablesimage"
-                        android:src="@drawable/eggplant"
-                        />
-                    <TextView
-                        style="@style/vegetablestext"
-                        android:text="@string/patlican" />
-                    <TextView
-                        style="@style/vegetablesprices"
-                        android:id="@+id/eggplantprice"
+                        android:id="@+id/weatherimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="MissingConstraints"
                         />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+                    <ProgressBar
+                        android:id="@+id/weatherprogressbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/weatherimage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
 
-                    <ImageView
-                        style="@style/vegetablesimage"
-                        android:src="@drawable/green_beans" />
-                    <TextView
-                        style="@style/vegetablestext"
-                        android:text="@string/fasulye" />
-                    <TextView
-                        style="@style/vegetablesprices"
-                        android:id="@+id/beanprice"
-                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
+            </LinearLayout>
 
-                    <ImageView
-                        style="@style/vegetablesimage"
-                        android:src="@drawable/green_chili_pepper"
-                        />
-                    <TextView
-                        style="@style/vegetablestext"
-                        android:text="@string/kilbiber" />
-                    <TextView
-                        android:id="@+id/pepperprice1"
-                        style="@style/vegetablesprices"
-                        />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
-
-                    <ImageView
-                        style="@style/vegetablesimage"
-                        android:src="@drawable/green_chili_pepper__1_" />
-                    <TextView
-                        style="@style/vegetablestext"
-                        android:text="@string/sivri_biber" />
-                    <TextView
-                        android:id="@+id/pepperprice2"
-                        style="@style/vegetablesprices"
-                        />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="25dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingVertical="5dp">
-
-                    <ImageView
-                        style="@style/vegetablesimage"
-                        android:src="@drawable/tomato" />
-                    <TextView
-                        style="@style/vegetablestext"
-                        android:text="@string/domates" />
-                    <TextView
-                        android:id="@+id/tomatoprice"
-                        style="@style/vegetablesprices"
-                        />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <TextView
-                style="@style/headers"
-                android:text="@string/covid19_tablosu"
-                android:layout_marginHorizontal="10dp"
-                />
-            <TextView
-                style="@style/headers"
-                android:id="@+id/covidlastupdatedate"
-                android:textSize="20sp"
-                android:layout_marginHorizontal="10dp"
-                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginHorizontal="10dp">
+                android:visibility="gone">
                 <TextView
-                    style="@style/covidheaderlayouts"
-                    android:text="@string/bugun"
+                    style="@style/headers"
+                    android:text="@string/hal_fiyatlari"
+                    android:layout_marginHorizontal="10dp"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/covidrow1"
-                            android:text="@string/test_sayisi" />
-                        <TextView
-                            android:id="@+id/todaytestnumber"
-                            style="@style/covidrow2"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/vaka_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/todaycasenumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/hasta_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/todaypatientnumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/vefat_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/todayripnumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/iyilesen_hasta_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/todayhealingnumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                </LinearLayout>
                 <TextView
-                    style="@style/covidheaderlayouts"
-                    android:text="Toplam"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/test_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/totaltestnumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/vaka_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/totalcasenumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/vefat_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/totaldiednumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/agir_hasta_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/heavypatientnumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <TextView
-                            android:text="@string/iyilesen_hasta_sayisi"
-                            style="@style/covidrow1" />
-                        <TextView
-                            android:id="@+id/totalhealingnumber"
-                            style="@style/covidrow2" />
-                    </LinearLayout>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/totalsyringe"
-                    style="@style/covidheaderlayouts"
+                    style="@style/headers"
+                    android:id="@+id/lastupdate"
                     android:textSize="20sp"
-                    android:textAlignment="center"
-
+                    android:layout_marginHorizontal="10dp"
                     />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    android:layout_marginHorizontal="10dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="5dp">
+
+                        <ImageView
+                            style="@style/vegetablesimage"
+                            android:src="@drawable/cucumber"
+                            />
+                        <TextView
+                            style="@style/vegetablestext"
+                            android:text="@string/salatalik" />
+                        <TextView
+                            android:id="@+id/cucumberprice"
+                            style="@style/vegetablesprices"
+                            />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="5dp"
+                        >
+
+                        <ImageView
+                            style="@style/vegetablesimage"
+                            android:src="@drawable/eggplant"
+                            />
+                        <TextView
+                            style="@style/vegetablestext"
+                            android:text="@string/patlican" />
+                        <TextView
+                            style="@style/vegetablesprices"
+                            android:id="@+id/eggplantprice"
+                            />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="5dp">
+
+                        <ImageView
+                            style="@style/vegetablesimage"
+                            android:src="@drawable/green_beans" />
+                        <TextView
+                            style="@style/vegetablestext"
+                            android:text="@string/fasulye" />
+                        <TextView
+                            style="@style/vegetablesprices"
+                            android:id="@+id/beanprice"
+                            />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="5dp">
+
+                        <ImageView
+                            style="@style/vegetablesimage"
+                            android:src="@drawable/green_chili_pepper"
+                            />
+                        <TextView
+                            style="@style/vegetablestext"
+                            android:text="@string/kilbiber" />
+                        <TextView
+                            android:id="@+id/pepperprice1"
+                            style="@style/vegetablesprices"
+                            />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="5dp">
+
+                        <ImageView
+                            style="@style/vegetablesimage"
+                            android:src="@drawable/green_chili_pepper__1_" />
+                        <TextView
+                            style="@style/vegetablestext"
+                            android:text="@string/sivri_biber" />
+                        <TextView
+                            android:id="@+id/pepperprice2"
+                            style="@style/vegetablesprices"
+                            />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingVertical="5dp">
+
+                        <ImageView
+                            style="@style/vegetablesimage"
+                            android:src="@drawable/tomato" />
+                        <TextView
+                            style="@style/vegetablestext"
+                            android:text="@string/domates" />
+                        <TextView
+                            android:id="@+id/tomatoprice"
+                            style="@style/vegetablesprices"
+                            />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/covidlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/headers"
+                    android:text="@string/covid19_tablosu"
+                    android:layout_marginHorizontal="10dp"
+                    />
+                <TextView
+                    style="@style/headers"
+                    android:id="@+id/covidlastupdatedate"
+                    android:textSize="20sp"
+                    android:layout_marginHorizontal="10dp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="10dp">
+                    <TextView
+                        style="@style/covidheaderlayouts"
+                        android:text="@string/bugun"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/covidrow1"
+                                android:text="@string/test_sayisi" />
+                            <TextView
+                                android:id="@+id/todaytestnumber"
+                                style="@style/covidrow2"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/vaka_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/todaycasenumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/hasta_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/todaypatientnumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/vefat_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/todayripnumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/iyilesen_hasta_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/todayhealingnumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        style="@style/covidheaderlayouts"
+                        android:text="Toplam"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/test_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/totaltestnumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/vaka_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/totalcasenumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/vefat_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/totaldiednumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/agir_hasta_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/heavypatientnumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:text="@string/iyilesen_hasta_sayisi"
+                                style="@style/covidrow1" />
+                            <TextView
+                                android:id="@+id/totalhealingnumber"
+                                style="@style/covidrow2" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/totalsyringe"
+                        style="@style/covidheaderlayouts"
+                        android:textSize="20sp"
+                        android:textAlignment="center"
+
+                        />
+                </LinearLayout>
             </LinearLayout>
             <TextView
                 style="@style/headers"
@@ -690,10 +715,7 @@
                     <TextView
                         android:id="@+id/cryptochanging2"
                         style="@style/currencysrowchanging"
-                        android:paddingVertical="2dp"
-
-                        />
-
+                        android:paddingVertical="2dp" />
                 </LinearLayout>
             </LinearLayout>
             <Button

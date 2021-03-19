@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.grantland.widget.AutofitHelper;
+
 public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
     @SuppressLint("StaticFieldLeak")
     Context context;
@@ -95,12 +97,17 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
         todayRipNumber.setText(covidList.get(3));
         todayHealingNumber.setText(covidList.get(4));
         totalTestNumber.setText(covidList.get(5));
+        AutofitHelper.create(totalTestNumber);
         totalCaseNumber.setText(covidList.get(6));
+        AutofitHelper.create(totalCaseNumber);
         totalRipNumber.setText(covidList.get(7));
         heavyPatientNumber.setText(covidList.get(8));
         totalHealingNumber.setText(covidList.get(9));
+        AutofitHelper.create(totalHealingNumber);
         totalSyringe.setText(covidList.get(10));
         lastUpdate.setText(covidList.get(11));
+
+
         dialog.dismiss();
     }
 }

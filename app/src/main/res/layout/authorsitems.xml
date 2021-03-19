@@ -59,23 +59,24 @@
                     android:orientation="horizontal"
                     android:layout_gravity="center">
                     <TextView
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.2"
                         android:fontFamily="@font/sfumedium"
                         android:id="@+id/authorname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
                         android:text="Ahmet Faruk Çuha"
                         android:textColor="#111111"
                         android:textSize="20sp"
-                        android:maxLines="1"/>
+                        android:maxLines="1"
+                        />
                     <ImageView
                         android:padding="5dp"
                         android:id="@+id/newspapericon"
                         android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.7"
+                        android:layout_weight="0.8"
                         android:contentDescription="@string/todo" />
                 </LinearLayout>
 

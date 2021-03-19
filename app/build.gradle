@@ -44,7 +44,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
-
+    compile 'me.grantland:autofittextview:0.2.+'
     implementation 'com.github.jgabrielfreitas:BlurImageView:1.0.1'
 
 

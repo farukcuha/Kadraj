@@ -128,6 +128,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
             document = Jsoup.connect("https://www.karar.com/yazarlar").ignoreContentType(true).get();
             Element element = document.select("div[class=title line-camp line-2]").get(0);
 
+
             popularAuthorsList.add(new AuthorsModel(
                     element.parent().select("div[class=author-name]").text(),
                     element.parent().select("img.lazy").attr("data-src"),

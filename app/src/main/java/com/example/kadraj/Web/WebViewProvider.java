@@ -1,6 +1,11 @@
 package com.example.kadraj.Web;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceResponse;
@@ -46,14 +51,40 @@ public class WebViewProvider extends Activity {
                 progressBar.animateProgress(100, 0, newProgress);
                 progressBar.setProgress(newProgress);
 
+            }
+        });
 
+        webView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK
+                        && event.getAction() == MotionEvent.ACTION_UP
+                        && webView.canGoBack()) {
+                    handler.sendEmptyMessage(1);
+                    return true;
+                }
+
+                return false;
             }
         });
     }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+
+    private Handler handler = new Handler(){
+        @SuppressLint("HandlerLeak")
+        @Override
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case 1:{
+                    webViewGoBack();
+                }break;
+            }
+        }
+    };
+
+    private void webViewGoBack(){
+        webView.goBack();
     }
+
 
     private class Browser_home extends WebViewClient {
 

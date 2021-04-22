@@ -34,15 +34,16 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    app:cardCornerRadius="10dp">
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginBottom="5dp">
                     <com.smarteist.autoimageslider.SliderView
                         android:id="@+id/localnewsslider"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        app:sliderAnimationDuration="1200"
+                        app:sliderAnimationDuration="500"
                         app:sliderAutoCycleDirection="back_and_forth"
                         app:sliderAutoCycleEnabled="true"
-                        app:sliderIndicatorAnimationDuration="5000"
+                        app:sliderIndicatorAnimationDuration="500"
                         app:sliderIndicatorGravity="center_horizontal|bottom"
                         app:sliderIndicatorMargin="15dp"
                         app:sliderIndicatorOrientation="horizontal"
@@ -50,7 +51,7 @@
                         app:sliderIndicatorRadius="2dp"
                         app:sliderIndicatorSelectedColor="#35495E"
                         app:sliderIndicatorUnselectedColor="#ACACAC"
-                        app:sliderScrollTimeInSec="1"
+                        app:sliderScrollTimeInSec="4"
                         app:sliderStartAutoCycle="true"
                         />
                 </androidx.cardview.widget.CardView>
@@ -101,6 +102,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/vegetableslayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -256,6 +258,7 @@
                     app:cardCornerRadius="25dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -534,9 +537,7 @@
                     <TextView
                         android:id="@+id/goldsaleprice2"
                         style="@style/currencysrowprices"
-                        android:paddingVertical="2dp"
-
-                        />
+                        android:paddingVertical="2dp" />
                     <TextView
                         android:id="@+id/goldchanging2"
                         style="@style/currencysrowchanging"

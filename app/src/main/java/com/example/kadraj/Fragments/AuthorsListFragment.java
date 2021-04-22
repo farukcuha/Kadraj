@@ -56,7 +56,6 @@ public class AuthorsListFragment extends Fragment {
 
         }
 
-
         else {
             new AuthorsListTask(newspaperUrl, getContext(), getFragmentManager(), authorsRecyclerView).execute();
         }

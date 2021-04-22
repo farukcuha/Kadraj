@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.kadraj.Models.AuthorsModel;
 import com.example.kadraj.Models.SliderNewsModel;
@@ -40,7 +41,6 @@ public class SharedPreferencesProvider {
         Type type = new TypeToken<List<AuthorsModel>>(){}.getType();
         list = gson.fromJson(resources, type);
 
-        Log.d(tag, "there are datas");
 
         return list;
     }
@@ -62,7 +62,7 @@ public class SharedPreferencesProvider {
         Type type = new TypeToken<List<SliderNewsModel>>(){}.getType();
         list = gson.fromJson(resources, type);
 
-        Log.d(tag, "there are datas");
+
 
         return list;
     }

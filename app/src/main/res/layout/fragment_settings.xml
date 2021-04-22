@@ -1,96 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Fragments.SettingsFragment"
-    android:orientation="vertical"
-    android:layout_marginHorizontal="10dp">
-
-    <TextView
-        style="@style/headers"
-        android:text="Ayarlar"
-        />
-    <TextView
-        style="@style/headers"
-        android:text="Yerel Haber Lokasyonu"
-        android:textSize="25sp"
-        />
-    <Spinner
-        android:id="@+id/localnewsspinnerprovinces"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:entries="@array/provinces" />
-
-    <TextView
-        style="@style/headers"
-        android:text="Hava Durumu Lokasyonu"
-        android:textSize="25sp"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Spinner
-            android:id="@+id/weatherspinnerprovinces"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:entries="@array/provinces"/>
-        <Spinner
-            android:id="@+id/weatherspinnerdistricts"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-    <TextView
-        style="@style/headers"
-        android:text="Haber Kaynakları"
-        android:textSize="25sp"
-        />
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    tools:context=".Fragments.SettingsFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/newschipgroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
-            />
-        <ImageButton
-            android:id="@+id/newsaddingbutton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/addingicon"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
         <TextView
             style="@style/headers"
-            android:text="Gece Modu"
-            android:layout_weight="0.2"
-            android:textSize="25sp"
-            />
+            android:text="Ayarlar" />
 
-        <Switch
-            android:layout_gravity="center"
-            android:id="@+id/nightmodeswitch"
+        <TextView
+            style="@style/headers"
+            android:text="Yerel Haber Lokasyonu"
+            android:textSize="25sp" />
+
+        <Spinner
+            android:id="@+id/localnewsspinnerprovinces"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:entries="@array/provinces" />
+
+        <TextView
+            style="@style/headers"
+            android:text="Hava Durumu Lokasyonu"
+            android:textSize="25sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/weatherspinnerprovinces"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:entries="@array/provinces" />
+
+            <Spinner
+                android:id="@+id/weatherspinnerdistricts"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/headers"
+            android:text="Haber Kaynakları"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/newschipgroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+
+                />
+
+            <ImageButton
+                android:id="@+id/newsaddingbutton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/addingicon" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/headers"
+                android:layout_weight="0.2"
+                android:text="Gece Modu"
+                android:textSize="25sp" />
+
+            <Switch
+                android:id="@+id/nightmodeswitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+        </LinearLayout>
+
     </LinearLayout>
 
+    <!-- <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginTop="372dp"
+        android:src="@drawable/farukcuha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/google"
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:layout_margin="20dp"
+            android:onClick="onClick"
+            android:src="@drawable/search" />
+
+        <ImageView
+            android:id="@+id/github"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:onClick="onClick"
+            android:src="@drawable/github" />
+
+        <ImageView
+            android:id="@+id/linkedin"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:onClick="onClick"
+            android:src="@drawable/linkedin" />
 
 
+    </LinearLayout>-->
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

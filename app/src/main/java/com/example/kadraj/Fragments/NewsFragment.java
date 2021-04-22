@@ -23,6 +23,7 @@ import com.example.kadraj.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -44,19 +45,22 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         news3 = view.findViewById(R.id.news3);
         news4 = view.findViewById(R.id.news4);
 
-
-
-
         list = new ArrayList<>();
-        Set<String> src = PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null);
-        for (String s : src){
-            List<NewsCategoryModel> comingList = new NewsResourcesProvider().getData(s);
-            list.add(new NewsCategoryModel(
-                    comingList.get(0).getNewsUrl(),
-                    comingList.get(0).getNewsImage(),
-                    comingList.get(0).getNewsName()
-            ));
+        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null) != null){
+            Set<String> src = PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null);
+            for (String s : src){
+                List<NewsCategoryModel> comingList = new NewsResourcesProvider().getData(s);
+                list.add(new NewsCategoryModel(
+                        comingList.get(0).getNewsUrl(),
+                        comingList.get(0).getNewsImage(),
+                        comingList.get(0).getNewsName()
+                ));
+            }
         }
+        defaultNews(list, "Sabah", R.drawable.sabahlogo, "https://www.sabah.com.tr");
+        defaultNews(list, "Sözcü", R.drawable.sozcu, "https://www.sozcu.com.tr");
+        defaultNews(list, "Habertürk", R.drawable.haberturk, "https://www.haberturk.com");
+        defaultNews(list, "Webtekno", R.drawable.webtekno, "https://www.webtekno.com");
 
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.newspagecontainer,
                 new NewsWebView(list.get(0).getNewsUrl(), list.get(0).getNewsName())).commit();
@@ -109,4 +113,9 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.newspagecontainer,
                 new NewsWebView(list.get(position).getNewsUrl(), list.get(position).getNewsName())).commit();
     }
+
+    private void defaultNews(List<NewsCategoryModel> list, String url, int image, String name){
+        list.add(new NewsCategoryModel(url, image, name));
+    }
+
 }

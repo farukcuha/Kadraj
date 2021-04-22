@@ -29,7 +29,9 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.example.kadraj.R;
+import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Tasks.CurrencyPricesTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
 import com.example.kadraj.Tasks.VegetablesPricesTask;
@@ -41,7 +43,7 @@ public class HomepageFragment extends Fragment   {
     private ProgressBar weatherProgressBar;
     private SliderView sliderView;
     private int currentPosition;
-
+    String selectedLocalNewsLocation;
     private Button settingsButton;
     private TextView localNewsLocation, view_weatherLocation;
     private View view;
@@ -60,16 +62,19 @@ public class HomepageFragment extends Fragment   {
 
         loadWeatherImage(view);
 
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
         PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
 
-        //new VegetablesPricesTask(getContext(), view).execute();
+        new VegetablesPricesTask(getContext(), view).execute();
         new CurrencyPricesTask(getContext(), view).execute();
         new CovidDatasTask(getContext(), view).execute();
 
+        selectedLocalNewsLocation = PreferenceManager
+                .getDefaultSharedPreferences(getContext()).getString("localnewslocationname", "null");
 
+        localNewsLocation.setText(selectedLocalNewsLocation);
 
-        /*String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnews", "null");
+        String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnews", "null");
+
         if (!resources.equals("null")){
             sliderView.setSliderAdapter(new LocalNewsSliderAdapter(
                     new SharedPreferencesProvider(getContext()).getLocalNewsData(resources, "localnews"),
@@ -78,15 +83,11 @@ public class HomepageFragment extends Fragment   {
                     getActivity(),
                     sliderView
             ));
-        }*/
-        //else {
-        String selectedLocalNewsLocation = PreferenceManager
-                .getDefaultSharedPreferences(getContext()).getString("localnewslocationname", "null");
-
+        }
+        else {
             if (selectedLocalNewsLocation.equals("null")){
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
                 localNewsLocation.setText("Mersin");
-
             }
             else {
                 String location = selectedLocalNewsLocation.toLowerCase()
@@ -100,14 +101,13 @@ public class HomepageFragment extends Fragment   {
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/"+location+"-haberleri/", getFragmentManager(), getActivity()).execute();
                 localNewsLocation.setText(selectedLocalNewsLocation);
             }
-        //}
+        }
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new SettingsFragment()).commit();
             }
         });
-
         return view;
     }
 
@@ -155,22 +155,25 @@ public class HomepageFragment extends Fragment   {
                 }
             }).into(weatherImage);
         }
-
-
     }
 
     @Override
     public void onPause() {
         super.onPause();
         currentPosition = sliderView.getCurrentPagePosition();
+
+        Log.d("a", String.valueOf(currentPosition));
     }
 
     @Override
     public void onResume() {
         super.onResume();
         sliderView.setCurrentPagePosition(currentPosition);
-
+        localNewsLocation.setText(selectedLocalNewsLocation);
+        Log.d("b", String.valueOf(currentPosition));
     }
+
+
 
 
 }

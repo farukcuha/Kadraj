@@ -52,8 +52,6 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         try {
             Document document = Jsoup.connect(url).ignoreContentType(true).get();
-
-
             for (Element element : document.select("div[class=swiper-slide  read-count-container sponsored-news no-sponsor-text] > a")){
                 String image = element.select("img").attr("data-src");
 

@@ -31,6 +31,7 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
     TextView todayTestNumber, todayCaseNumber, todayPatientNumber, todayRipNumber, todayHealingNumber;
     @SuppressLint("StaticFieldLeak")
     TextView totalTestNumber, totalCaseNumber, totalRipNumber, heavyPatientNumber, totalHealingNumber;
+    @SuppressLint("StaticFieldLeak")
     TextView totalSyringe, lastUpdate;
     List<String> covidList;
 
@@ -67,13 +68,12 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
         try {
             Document document = Jsoup.connect("https://www.yenisafak.com/").ignoreContentType(true).get();
 
-
             for (Element element : document.select("div.entry-block > div.entry")){
                 Log.d("a", element.select("div.value").text());
                 covidList.add(element.select("div.value").text());
             }
 
-            covidList.add(document.select("div[class=syringe-block col-md-24]").select("div[class=col-md-8]").first().select("span").text());
+            covidList.add(document.select("div[class=syringe-block]").select("div[class=syringe-item]").first().select("span").text());
             covidList.add(document.select("div.covid-title > div.text > span").text());
             Log.d("sadc",document.select("div.covid-title > div.text > span").text());
 
@@ -81,8 +81,6 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         return null;
     }
 
@@ -106,7 +104,6 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
         AutofitHelper.create(totalHealingNumber);
         totalSyringe.setText(covidList.get(10));
         lastUpdate.setText(covidList.get(11));
-
 
         dialog.dismiss();
     }

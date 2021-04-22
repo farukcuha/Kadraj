@@ -2,7 +2,9 @@ package com.example.kadraj.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import com.example.kadraj.Database.DatabaseAccess;
 import com.example.kadraj.Models.NewsCategoryModel;
 import com.example.kadraj.NewsResourcesProvider;
 import com.example.kadraj.R;
+import com.example.kadraj.Web.NewsWebView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
@@ -40,6 +44,7 @@ public class SettingsFragment extends Fragment {
     private List<NewsCategoryModel> journalList, sportList, technologyList;
     private Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
     String selectedDistrict;
+    //ImageView google, github, linkedin;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
     ChipGroup dialogChipGroup;
@@ -55,13 +60,21 @@ public class SettingsFragment extends Fragment {
         localNewsProvinces = view.findViewById(R.id.localnewsspinnerprovinces);
         weatherProvinces   = view.findViewById(R.id.weatherspinnerprovinces);
         weatherDistricts   = view.findViewById(R.id.weatherspinnerdistricts);
+        /*google = view.findViewById(R.id.google);
+        github = view.findViewById(R.id.github);
+        linkedin = view.findViewById(R.id.linkedin);
+
+        google.setOnClickListener(this);
+        github.setOnClickListener(this);
+        linkedin.setOnClickListener(this);*/
+
 
         journalList     = new ArrayList<>();
         sportList       = new ArrayList<>();
         technologyList  = new ArrayList<>();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
+        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
         setUpChipGroup();
 
         int defaultPreferences = preferences.getInt("localnewslocationposition", 0);
@@ -273,4 +286,30 @@ public class SettingsFragment extends Fragment {
             }
     }
 
+    /*@Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.google:
+                Intent intent = new Intent();
+                intent.setType(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:ahmetfarukcuha@gmail.com"));
+                startActivity(intent);
+                break;
+            case R.id.github:
+                getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                        .replace(R.id.fragmentcontainer, new NewsWebView("https://github.com/farukcuha", "github"))
+                        .addToBackStack("TAG")
+                        .commit();
+                break;
+            case R.id.linkedin:
+
+                getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                        .replace(R.id.fragmentcontainer, new NewsWebView("www.linkedin.com/in/ahmet-faruk-çuha-5a8209116", "linkedin"))
+                        .addToBackStack("TAG")
+                        .commit();
+                break;
+        }
+    }*/
 }

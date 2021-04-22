@@ -1,5 +1,6 @@
 package com.example.kadraj.Tasks;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -21,8 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
+    @SuppressLint("StaticFieldLeak")
     private Context context;
+    @SuppressLint("StaticFieldLeak")
     private View view;
+    @SuppressLint("StaticFieldLeak")
     private TextView cucumberPrice, eggplantPrice, beanPrice, pepperPrice1, pepperPrice2, tomatoPrice, lastUpdate;
     private Dialog dialog;
     private List<String> pricesList;
@@ -57,6 +61,7 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... voids) {
         try {
             Document document = Jsoup.connect("http://www.tekeliajans.net").ignoreContentType(true).get();
+
             for (int i = 1; i < 7; i++){
                 Log.d("a", document.select("font[color=#009900]").get(i).text());
                 pricesList.add(document.select("font[color=#009900]").get(i).text());
@@ -64,9 +69,9 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
             }
             str_lastUpdate = document.select("div[class=stil32]").text();
 
-
         } catch (IOException e) {
             e.printStackTrace();
+
         }
         return null;
     }
@@ -74,13 +79,21 @@ public class VegetablesPricesTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        lastUpdate.setText(str_lastUpdate);
-        cucumberPrice.setText(pricesList.get(0));
-        eggplantPrice.setText(pricesList.get(1));
-        beanPrice.setText(pricesList.get(2));
-        pepperPrice1.setText(pricesList.get(3));
-        pepperPrice2.setText(pricesList.get(4));
-        tomatoPrice.setText(pricesList.get(5));
+       if (pricesList.isEmpty()){
+           Toast.makeText(context, "Sebze Fiyatlarına Ulaşılamadı", Toast.LENGTH_SHORT).show();
+       }
+       else {
+           lastUpdate.setText(str_lastUpdate);
+           cucumberPrice.setText(pricesList.get(0));
+           eggplantPrice.setText(pricesList.get(1));
+           beanPrice.setText(pricesList.get(2));
+           pepperPrice1.setText(pricesList.get(3));
+           pepperPrice2.setText(pricesList.get(4));
+           tomatoPrice.setText(pricesList.get(5));
+           view.findViewById(R.id.vegetableslayout).setVisibility(View.VISIBLE);
+       }
+
+
         dialog.dismiss();
     }
 }

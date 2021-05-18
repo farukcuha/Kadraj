@@ -65,7 +65,7 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                 karar();
                 break;
 
-            case "https://www.sozcu.com.tr/kategori/yazarlar/":
+                case "https://www.sozcu.com.tr/kategori/yazarlar/":
                 sozcu();
                 break;
             case "https://www.milliyet.com.tr/yazarlar/":

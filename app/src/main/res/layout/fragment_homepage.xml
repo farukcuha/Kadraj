@@ -445,7 +445,7 @@
                     <TextView
                         android:id="@+id/totalsyringe"
                         style="@style/covidheaderlayouts"
-                        android:textSize="20sp"
+                        android:textSize="17sp"
                         android:textAlignment="center"
 
                         />

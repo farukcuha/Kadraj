@@ -34,8 +34,6 @@ public class AuthorsAdapter extends RecyclerView.Adapter<AuthorsAdapter.Holder> 
     Context context;
     FragmentManager fragmentManager;
 
-
-
     public AuthorsAdapter(List<AuthorsModel> authorsList, Context context, FragmentManager fragmentManager ) {
         this.authorsList = authorsList;
         this.context = context;

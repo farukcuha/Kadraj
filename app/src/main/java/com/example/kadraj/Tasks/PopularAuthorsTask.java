@@ -36,14 +36,15 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
         this.context = context;
         this.recyclerView = recyclerView;
         this.fragmentManager = fragmentManager;
+
+        popularAuthorsList = new ArrayList<>();
+        popularAuthorsAdapter = new AuthorsAdapter(popularAuthorsList, context, fragmentManager);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        popularAuthorsList = new ArrayList<>();
         progressDialog = new CustomProgressDialog(context).loadingDialog();
-
         progressDialog.show();
     }
     @Override
@@ -70,6 +71,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.sabahlogo,
                         "popular"
                 ));
+                popularAuthorsAdapter.notifyDataSetChanged();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,6 +99,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.sozcu,
                         "popular"
                 ));
+                popularAuthorsAdapter.notifyDataSetChanged();
             }
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -116,7 +119,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                     R.drawable.haberturk,
                     "popular"
             ));
-
+            popularAuthorsAdapter.notifyDataSetChanged();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -137,7 +140,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                     R.drawable.karar,
                     "popular"
             ));
-
+            popularAuthorsAdapter.notifyDataSetChanged();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -158,7 +161,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.turkiye,
                         "popular"
                 ));
-
+            popularAuthorsAdapter.notifyDataSetChanged();
             } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -178,7 +181,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                     R.drawable.takvim,
                     "popular"
                 ));
-
+            popularAuthorsAdapter.notifyDataSetChanged();
             } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -200,6 +203,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                     "popular"
 
                 ));
+            popularAuthorsAdapter.notifyDataSetChanged();
             } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -219,6 +223,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                     R.drawable.milliyet,
                     "popular"
                 ));
+            popularAuthorsAdapter.notifyDataSetChanged();
             } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -242,7 +247,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.yenisafak,
                         "popular"
                 ));
-
+            popularAuthorsAdapter.notifyDataSetChanged();
             } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -261,6 +266,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
                     R.drawable.akit,
                     "popular"
             ));
+            popularAuthorsAdapter.notifyDataSetChanged();
 
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -275,7 +281,6 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
-        popularAuthorsAdapter = new AuthorsAdapter(popularAuthorsList, context, fragmentManager);
         recyclerView.setAdapter(popularAuthorsAdapter);
         new SharedPreferencesProvider(context).putAuthorsData(popularAuthorsList, "popularauthors");
 

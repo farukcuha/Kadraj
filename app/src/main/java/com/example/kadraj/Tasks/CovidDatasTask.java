@@ -1,4 +1,4 @@
-package com.example.kadraj.Fragments;
+package com.example.kadraj.Tasks;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -90,6 +90,7 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
         super.onPostExecute(aVoid);
 
         todayTestNumber.setText(covidList.get(0));
+        AutofitHelper.create(todayTestNumber);
         todayCaseNumber.setText(covidList.get(1));
         todayPatientNumber.setText(covidList.get(2));
         todayRipNumber.setText(covidList.get(3));
@@ -103,6 +104,7 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
         totalHealingNumber.setText(covidList.get(9));
         AutofitHelper.create(totalHealingNumber);
         totalSyringe.setText(covidList.get(10));
+        AutofitHelper.create(totalSyringe);
         lastUpdate.setText(covidList.get(11));
 
         dialog.dismiss();

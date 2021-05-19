@@ -447,6 +447,7 @@
                         style="@style/covidheaderlayouts"
                         android:textSize="17sp"
                         android:textAlignment="center"
+                        android:lines="1"
 
                         />
                 </LinearLayout>

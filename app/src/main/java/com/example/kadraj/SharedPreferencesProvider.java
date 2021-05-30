@@ -15,17 +15,14 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class SharedPreferencesProvider {
-    private SharedPreferences sharedPreferences;
+    private final SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    private Context context;
-
 
     public SharedPreferencesProvider(Context context) {
-        this.context = context;
+        sharedPreferences = context.getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
     }
 
     public void putAuthorsData(List<AuthorsModel> popularAuthorsList, String tag){
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         Gson gson = new Gson();
         String json = gson.toJson(popularAuthorsList);
@@ -41,13 +38,10 @@ public class SharedPreferencesProvider {
         Type type = new TypeToken<List<AuthorsModel>>(){}.getType();
         list = gson.fromJson(resources, type);
 
-
         return list;
     }
 
     public void putLocalNewsData(List<SliderNewsModel> popularAuthorsList, String tag){
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-
         Gson gson = new Gson();
         String json = gson.toJson(popularAuthorsList);
         editor = sharedPreferences.edit();
@@ -61,8 +55,6 @@ public class SharedPreferencesProvider {
         Gson gson = new Gson();
         Type type = new TypeToken<List<SliderNewsModel>>(){}.getType();
         list = gson.fromJson(resources, type);
-
-
 
         return list;
     }

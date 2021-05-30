@@ -1,5 +1,7 @@
 package com.example.kadraj.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -29,6 +31,8 @@ import com.example.kadraj.Tasks.CurrencyPricesTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.util.Objects;
+
 
 public class HomepageFragment extends Fragment   {
     private ImageView weatherImage;
@@ -39,6 +43,7 @@ public class HomepageFragment extends Fragment   {
     private Button settingsButton;
     private TextView localNewsLocation, view_weatherLocation;
     private View view;
+    SharedPreferences sharedPreferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,20 +57,17 @@ public class HomepageFragment extends Fragment   {
         localNewsLocation  = view.findViewById(R.id.location);
         view_weatherLocation    = view.findViewById(R.id.weatherlocationn);
 
-        loadWeatherImage(view);
+        sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
+        selectedLocalNewsLocation = sharedPreferences.getString("localnewslocationname", "null");
+        sharedPreferences.edit().remove("popularauthors").apply();
 
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("popularauthors").apply();
-
-        //new VegetablesPricesTask(getContext(), view).execute();
         new CurrencyPricesTask(getContext(), view).execute();
         new CovidDatasTask(getContext(), view).execute();
 
-        selectedLocalNewsLocation = PreferenceManager
-                .getDefaultSharedPreferences(getContext()).getString("localnewslocationname", "null");
+        localNewsLocationControl();
+        loadWeatherImage(view);
 
-        localNewsLocation.setText(selectedLocalNewsLocation);
-
-        String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("localnews", "null");
+        String resources = sharedPreferences.getString("localnews", "null");
 
         if (!resources.equals("null")){
             sliderView.setSliderAdapter(new LocalNewsSliderAdapter(
@@ -79,7 +81,6 @@ public class HomepageFragment extends Fragment   {
         else {
             if (selectedLocalNewsLocation.equals("null")){
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
-                localNewsLocation.setText("Mersin");
             }
             else {
                 String location = selectedLocalNewsLocation.toLowerCase()
@@ -91,16 +92,25 @@ public class HomepageFragment extends Fragment   {
                         .replace("ü", "u");
 
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/"+location+"-haberleri/", getFragmentManager(), getActivity()).execute();
-                localNewsLocation.setText(selectedLocalNewsLocation);
             }
         }
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.fragmentcontainer, new SettingsFragment()).commit();
+                assert getFragmentManager() != null;
+                getFragmentManager().beginTransaction().addToBackStack("back").replace(R.id.fragmentcontainer, new SettingsFragment()).commit();
             }
         });
         return view;
+    }
+
+    private void localNewsLocationControl() {
+        if (selectedLocalNewsLocation.equals("null")){
+            localNewsLocation.setText("Mersin");
+        }
+        else {
+            localNewsLocation.setText(selectedLocalNewsLocation);
+        }
     }
 
     private void loadWeatherImage(View view) {
@@ -153,16 +163,14 @@ public class HomepageFragment extends Fragment   {
     public void onPause() {
         super.onPause();
         currentPosition = sliderView.getCurrentPagePosition();
-
         Log.d("a", String.valueOf(currentPosition));
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        localNewsLocationControl();
         sliderView.setCurrentPagePosition(currentPosition);
-        localNewsLocation.setText(selectedLocalNewsLocation);
-        Log.d("b", String.valueOf(currentPosition));
     }
 
 

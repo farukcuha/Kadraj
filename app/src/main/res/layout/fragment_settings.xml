@@ -105,61 +105,16 @@
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/developer"
+            style="@style/headers"
+            android:background="?selectableItemBackground"
+            android:text="Geliştirici"
+            android:textSize="25sp" />
+
     </LinearLayout>
 
-    <!-- <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginTop="372dp"
-        android:src="@drawable/farukcuha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:id="@+id/google"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_margin="20dp"
-            android:onClick="onClick"
-            android:src="@drawable/search" />
-
-        <ImageView
-            android:id="@+id/github"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="20dp"
-            android:onClick="onClick"
-            android:src="@drawable/github" />
-
-        <ImageView
-            android:id="@+id/linkedin"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="20dp"
-            android:onClick="onClick"
-            android:src="@drawable/linkedin" />
-
-
-    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

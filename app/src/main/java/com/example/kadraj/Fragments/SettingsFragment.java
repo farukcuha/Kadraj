@@ -1,6 +1,7 @@
 package com.example.kadraj.Fragments;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +36,7 @@ import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class SettingsFragment extends Fragment {
@@ -44,11 +47,12 @@ public class SettingsFragment extends Fragment {
     private List<NewsCategoryModel> journalList, sportList, technologyList;
     private Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
     String selectedDistrict;
-    //ImageView google, github, linkedin;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
     ChipGroup dialogChipGroup;
     NewsResourcesProvider provider = new NewsResourcesProvider();
+    SharedPreferences sharedPreferences;
+    TextView developer;
 
     @Nullable
     @Override
@@ -60,31 +64,35 @@ public class SettingsFragment extends Fragment {
         localNewsProvinces = view.findViewById(R.id.localnewsspinnerprovinces);
         weatherProvinces   = view.findViewById(R.id.weatherspinnerprovinces);
         weatherDistricts   = view.findViewById(R.id.weatherspinnerdistricts);
-        /*google = view.findViewById(R.id.google);
-        github = view.findViewById(R.id.github);
-        linkedin = view.findViewById(R.id.linkedin);
-
-        google.setOnClickListener(this);
-        github.setOnClickListener(this);
-        linkedin.setOnClickListener(this);*/
-
+        developer          = view.findViewById(R.id.developer);
 
         journalList     = new ArrayList<>();
         sportList       = new ArrayList<>();
         technologyList  = new ArrayList<>();
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("localnews").apply();
+        sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
+        sharedPreferences.edit().remove("localnews").apply();
         setUpChipGroup();
 
-        int defaultPreferences = preferences.getInt("localnewslocationposition", 0);
+        int defaultPreferences = sharedPreferences.getInt("localnewslocationposition", 0);
         localNewsProvinces.setSelection(defaultPreferences);
+
+        developer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                        .replace(R.id.fragmentcontainer, new DeveloperFragment())
+                        .addToBackStack("back")
+                        .commit();
+            }
+        });
 
         localNewsProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                preferences.edit().putString("localnewslocationname", parent.getSelectedItem().toString()).apply();
-                preferences.edit().putInt("localnewslocationposition", parent.getSelectedItemPosition()).apply();
+                sharedPreferences.edit().putString("localnewslocationname", parent.getSelectedItem().toString()).apply();
+                sharedPreferences.edit().putInt("localnewslocationposition", parent.getSelectedItemPosition()).apply();
             }
 
             @Override
@@ -93,7 +101,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        weatherProvinces.setSelection(preferences.getInt("weatherprovincesposition", 0));
+        weatherProvinces.setSelection(sharedPreferences.getInt("weatherprovincesposition", 0));
 
         weatherProvinces.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -109,8 +117,8 @@ public class SettingsFragment extends Fragment {
                 weatherDistricts.setAdapter(adapter);
                 databaseAccess.close();
 
-                preferences.edit().putInt("weatherprovincesposition", parent.getSelectedItemPosition()).apply();
-                preferences.edit().putString("weatherprovincesname", parent.getSelectedItem().toString()).apply();
+                sharedPreferences.edit().putInt("weatherprovincesposition", parent.getSelectedItemPosition()).apply();
+                sharedPreferences.edit().putString("weatherprovincesname", parent.getSelectedItem().toString()).apply();
 
             }
 
@@ -120,7 +128,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        weatherDistricts.setSelection(preferences.getInt("weatherdistrictsposition", 0));
+        weatherDistricts.setSelection(sharedPreferences.getInt("weatherdistrictsposition", 0));
 
         weatherDistricts.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -129,7 +137,7 @@ public class SettingsFragment extends Fragment {
                 PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("weatherlocation", selectedLocation).apply();
 
                 if (selectedLocation.length() < 6){
-                    preferences.edit().putString("weatherdistrictsname", selectedLocation).apply();
+                    sharedPreferences.edit().putString("weatherdistrictsname", selectedLocation).apply();
 
                 }
                 else {
@@ -140,16 +148,16 @@ public class SettingsFragment extends Fragment {
                     if (String.valueOf(c).equals("Merkez")){
                         char[] c2 = new char[selectedLocation.length() - 6];
                         selectedLocation.getChars(0, selectedLocation.length() - 6, c2, 0);
-                        preferences.edit().putString("weatherdistrictsname", String.valueOf(c2)).apply();
+                        sharedPreferences.edit().putString("weatherdistrictsname", String.valueOf(c2)).apply();
 
 
                     }
                     else {
-                        preferences.edit().putString("weatherdistrictsname", parent.getSelectedItem().toString()).apply();
+                        sharedPreferences.edit().putString("weatherdistrictsname", parent.getSelectedItem().toString()).apply();
                     }
                 }
 
-                preferences.edit().putInt("weatherdistrictsposition", parent.getSelectedItemPosition()).apply();
+                sharedPreferences.edit().putInt("weatherdistrictsposition", parent.getSelectedItemPosition()).apply();
 
             }
 
@@ -285,31 +293,4 @@ public class SettingsFragment extends Fragment {
                 }
             }
     }
-
-    /*@Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.google:
-                Intent intent = new Intent();
-                intent.setType(Intent.ACTION_SENDTO);
-                intent.setData(Uri.parse("mailto:ahmetfarukcuha@gmail.com"));
-                startActivity(intent);
-                break;
-            case R.id.github:
-                getFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                        .replace(R.id.fragmentcontainer, new NewsWebView("https://github.com/farukcuha", "github"))
-                        .addToBackStack("TAG")
-                        .commit();
-                break;
-            case R.id.linkedin:
-
-                getFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                        .replace(R.id.fragmentcontainer, new NewsWebView("www.linkedin.com/in/ahmet-faruk-çuha-5a8209116", "linkedin"))
-                        .addToBackStack("TAG")
-                        .commit();
-                break;
-        }
-    }*/
 }

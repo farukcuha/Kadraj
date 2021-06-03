@@ -3,18 +3,23 @@ package com.example.kadraj.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -24,13 +29,24 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
+import com.example.kadraj.ErrorDialog;
 import com.example.kadraj.R;
 import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Tasks.CovidDatasTask;
 import com.example.kadraj.Tasks.CurrencyPricesTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.smarteist.autoimageslider.SliderView;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Objects;
 
 
@@ -44,11 +60,21 @@ public class HomepageFragment extends Fragment   {
     private TextView localNewsLocation, view_weatherLocation;
     private View view;
     SharedPreferences sharedPreferences;
+    String resources;
+    ErrorDialog errorDialog;
+    AdView adView1, adView2, adView3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_homepage, container, false);
+
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NotNull InitializationStatus initializationStatus) {
+
+            }
+        });
 
         settingsButton     = view.findViewById(R.id.bottomsettingsbutton);
         sliderView         = view.findViewById(R.id.localnewsslider);
@@ -57,18 +83,59 @@ public class HomepageFragment extends Fragment   {
         localNewsLocation  = view.findViewById(R.id.location);
         view_weatherLocation    = view.findViewById(R.id.weatherlocationn);
 
+        adView1 = view.findViewById(R.id.adview1);
+        adView2 = view.findViewById(R.id.adview2);
+        adView3 = view.findViewById(R.id.adview3);
+
         sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
         selectedLocalNewsLocation = sharedPreferences.getString("localnewslocationname", "null");
         sharedPreferences.edit().remove("popularauthors").apply();
 
-        new CurrencyPricesTask(getContext(), view).execute();
-        new CovidDatasTask(getContext(), view).execute();
+        resources = sharedPreferences.getString("localnews", "null");
 
-        localNewsLocationControl();
-        loadWeatherImage(view);
+        errorDialog = new ErrorDialog(getContext(), "İnternet bağlantınızı kontrol ediniz.");
 
-        String resources = sharedPreferences.getString("localnews", "null");
+        checkInternetConnection();
 
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                assert getFragmentManager() != null;
+                getFragmentManager().beginTransaction().addToBackStack("back").replace(R.id.fragmentcontainer, new SettingsFragment()).commit();
+            }
+        });
+
+
+        return view;
+    }
+
+    private void checkInternetConnection() {
+        ConnectivityManager connectivityManager = ((ConnectivityManager) Objects.requireNonNull(getActivity())
+                .getSystemService(Context.CONNECTIVITY_SERVICE));
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnectedOrConnecting()){
+            new CurrencyPricesTask(getContext(), view).execute();
+            new CovidDatasTask(getContext(), view).execute();
+            getLocalNews();
+            localNewsLocationControl();
+            loadWeatherImage(view);
+            loadBannerAds(adView1);loadBannerAds(adView2);loadBannerAds(adView3);
+
+        } else {
+            errorDialog.show();
+        }
+
+    }
+
+    private void loadBannerAds(AdView adView) {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
+
+
+
+    private void getLocalNews(){
         if (!resources.equals("null")){
             sliderView.setSliderAdapter(new LocalNewsSliderAdapter(
                     new SharedPreferencesProvider(getContext()).getLocalNewsData(resources, "localnews"),
@@ -94,14 +161,6 @@ public class HomepageFragment extends Fragment   {
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/"+location+"-haberleri/", getFragmentManager(), getActivity()).execute();
             }
         }
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                assert getFragmentManager() != null;
-                getFragmentManager().beginTransaction().addToBackStack("back").replace(R.id.fragmentcontainer, new SettingsFragment()).commit();
-            }
-        });
-        return view;
     }
 
     private void localNewsLocationControl() {
@@ -162,7 +221,9 @@ public class HomepageFragment extends Fragment   {
     @Override
     public void onPause() {
         super.onPause();
-        currentPosition = sliderView.getCurrentPagePosition();
+        if (sliderView.getSliderAdapter() != null){
+            currentPosition = sliderView.getCurrentPagePosition();
+        }
         Log.d("a", String.valueOf(currentPosition));
     }
 

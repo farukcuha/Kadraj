@@ -109,7 +109,7 @@
             android:id="@+id/developer"
             style="@style/headers"
             android:background="?selectableItemBackground"
-            android:text="Geliştirici"
+            android:text="Hakkımızda"
             android:textSize="25sp" />
 
     </LinearLayout>

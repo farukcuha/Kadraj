@@ -1,5 +1,9 @@
 package com.example.kadraj.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
 import com.example.kadraj.Adapters.PapernewsAdapter;
+import com.example.kadraj.ErrorDialog;
 import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Models.PapernewsModel;
 import com.example.kadraj.Tasks.PopularAuthorsTask;
@@ -21,6 +26,7 @@ import com.example.kadraj.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class AuthorsFragment extends Fragment {
@@ -28,20 +34,23 @@ public class AuthorsFragment extends Fragment {
     private PapernewsAdapter papernewsAdapter;
     private List<PapernewsModel> papernewsimages;
     private AuthorsAdapter popularAuthorsAdapter;
-
+    ErrorDialog errorDialog;
+    SharedPreferences sharedPreferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_authors, container, false);
 
+        sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
+
+        sharedPreferences.edit().remove("newspaperauthors").apply();
+        errorDialog = new ErrorDialog(getContext(), "İnternet Bağlantınızı Kontrol Ediniz.");
+
         papernewsReyclerView = view.findViewById(R.id.papernewsrecyclerview);
         popularAuthorsRecyclerView = view.findViewById(R.id.popularauthors);
         setUpPapernewsList();
         setUpAuthorList();
-
-        PreferenceManager.getDefaultSharedPreferences(getContext()).edit().remove("newspaperauthors").apply();
-
 
         return view;
     }
@@ -69,7 +78,7 @@ public class AuthorsFragment extends Fragment {
 
     }
     private void setUpAuthorList() {
-        String resources = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("popularauthors", "null");
+        String resources = sharedPreferences.getString("popularauthors", "null");
 
         if (!resources.equals("null")){
             popularAuthorsRecyclerView.setHasFixedSize(true);
@@ -80,11 +89,21 @@ public class AuthorsFragment extends Fragment {
         }
 
         else {
-            new PopularAuthorsTask(getContext(), popularAuthorsRecyclerView, getFragmentManager()).execute();
+            checkInternetConnection();
         }
+    }
 
+    private void checkInternetConnection(){
+        ConnectivityManager connectivityManager = ((ConnectivityManager) Objects.requireNonNull(getActivity())
+                .getSystemService(Context.CONNECTIVITY_SERVICE));
 
-
-
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()){
+            new PopularAuthorsTask(getContext(), popularAuthorsRecyclerView, getFragmentManager()).execute();
+            errorDialog.dismiss();
+        }
+        else {
+            errorDialog.show();
+        }
     }
 }

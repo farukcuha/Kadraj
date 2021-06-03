@@ -44,8 +44,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
         super.onPreExecute();
         progressDialog = new CustomProgressDialog(context).loadingDialog();
         progressDialog.show();
-
-
         list = new ArrayList<>();
     }
 
@@ -64,8 +62,7 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
             case "https://www.karar.com/yazarlar":
                 karar();
                 break;
-
-                case "https://www.sozcu.com.tr/kategori/yazarlar/":
+            case "https://www.sozcu.com.tr/kategori/yazarlar/":
                 sozcu();
                 break;
             case "https://www.milliyet.com.tr/yazarlar/":
@@ -84,8 +81,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
             case "https://www.takvim.com.tr/yazarlar":
                 takvim();
                 break;
-
-
         }
 
         return null;
@@ -93,7 +88,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
 
     private void sabah(){
         try {
-
             document = Jsoup.connect(newspaperUrl).ignoreContentType(true).get();
             for (Element element : document.select("figure[class=multiple boxShadowSet]")){
 

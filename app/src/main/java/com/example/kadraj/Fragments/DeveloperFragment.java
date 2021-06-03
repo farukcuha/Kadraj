@@ -32,7 +32,7 @@ public class DeveloperFragment extends Fragment implements View.OnClickListener 
         String text = "<b>Kaynaklar</b><br>" +
                 "Yerel haberler Hürriyet gazetesinin web sayfasından alınmıştır.<br>" +
                 "Hava durumu bilgileri MGM'den alınmıştır.<br>" +
-                "Güncel covid-19 bilgileri Yenişafak gazetesinin web sayfasından alınmıştır.<br>" +
+                "Güncel covid-19 verileri Yenişafak gazetesinin web sayfasından alınmıştır.<br>" +
                 "Tüm gazete yazarlarının verileri gazetelerin kendi web sayfalarından alınmıştır.<br><br>" +
                 "Uygulamaya dair görüşlerinizi lütfen yorumlarda belirtin.<br><br>" +
                 "<b>Geliştirici</b><br>" +

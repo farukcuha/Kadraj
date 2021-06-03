@@ -1,4 +1,4 @@
-package com.example.kadraj.Fragments;
+package com.example.kadraj.Adapters;
 
 import android.content.Context;
 import android.preference.PreferenceManager;

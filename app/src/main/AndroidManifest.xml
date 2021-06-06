@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.kadraj">
+    package="com.pandorina.kadraj">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-
 
     <application
         android:allowBackup="true"
@@ -24,14 +22,14 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2022851438534411~1152438916"/>
 
-        <activity android:name=".Activities.IntroActivity">
+        <activity android:name="com.pandorina.kadraj.Activities.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity"/>
+        <activity android:name="com.pandorina.kadraj.Activities.MainActivity"/>
     </application>
 
 </manifest>

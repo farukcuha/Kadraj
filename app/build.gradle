@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.kadraj"
+        applicationId "com.pandorina.kadraj"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1

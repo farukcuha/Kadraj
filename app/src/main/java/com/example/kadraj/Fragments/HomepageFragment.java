@@ -1,5 +1,6 @@
 package com.example.kadraj.Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -10,10 +11,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,15 +27,12 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
-import com.example.kadraj.ErrorDialog;
+import com.example.kadraj.Dialogs.ErrorDialog;
 import com.example.kadraj.R;
 import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Tasks.CovidDatasTask;
 import com.example.kadraj.Tasks.CurrencyPricesTask;
 import com.example.kadraj.Tasks.LocalNewsTask;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -45,24 +40,22 @@ import com.smarteist.autoimageslider.SliderView;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Objects;
 
 
 public class HomepageFragment extends Fragment   {
-    private ImageView weatherImage;
-    private ProgressBar weatherProgressBar;
-    private SliderView sliderView;
-    private int currentPosition;
+    ImageView weatherImage;
+    ProgressBar weatherProgressBar;
+    SliderView sliderView;
+    int currentPosition;
     String selectedLocalNewsLocation;
-    private Button settingsButton;
-    private TextView localNewsLocation, view_weatherLocation;
-    private View view;
+    Button settingsButton;
+    TextView localNewsLocation, view_weatherLocation;
+    View view;
     SharedPreferences sharedPreferences;
     String resources;
     ErrorDialog errorDialog;
-    AdView adView1, adView2, adView3;
+    LinearLayout weatherLayout, covidLayout, currencyLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,16 +69,15 @@ public class HomepageFragment extends Fragment   {
             }
         });
 
-        settingsButton     = view.findViewById(R.id.bottomsettingsbutton);
-        sliderView         = view.findViewById(R.id.localnewsslider);
-        weatherImage       = view.findViewById(R.id.weatherimage);
-        weatherProgressBar = view.findViewById(R.id.weatherprogressbar);
-        localNewsLocation  = view.findViewById(R.id.location);
-        view_weatherLocation    = view.findViewById(R.id.weatherlocationn);
-
-        adView1 = view.findViewById(R.id.adview1);
-        adView2 = view.findViewById(R.id.adview2);
-        adView3 = view.findViewById(R.id.adview3);
+        settingsButton         = view.findViewById(R.id.bottomsettingsbutton);
+        sliderView             = view.findViewById(R.id.localnewsslider);
+        weatherImage           = view.findViewById(R.id.weatherimage);
+        weatherProgressBar     = view.findViewById(R.id.weatherprogressbar);
+        localNewsLocation      = view.findViewById(R.id.location);
+        view_weatherLocation   = view.findViewById(R.id.weatherlocationn);
+        weatherLayout          = view.findViewById(R.id.weatherlayout);
+        covidLayout            = view.findViewById(R.id.covidlayout);
+        currencyLayout         = view.findViewById(R.id.currencylayout);
 
         sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
         selectedLocalNewsLocation = sharedPreferences.getString("localnewslocationname", "null");
@@ -105,7 +97,6 @@ public class HomepageFragment extends Fragment   {
             }
         });
 
-
         return view;
     }
 
@@ -120,20 +111,11 @@ public class HomepageFragment extends Fragment   {
             getLocalNews();
             localNewsLocationControl();
             loadWeatherImage(view);
-            loadBannerAds(adView1);loadBannerAds(adView2);loadBannerAds(adView3);
 
         } else {
             errorDialog.show();
         }
-
     }
-
-    private void loadBannerAds(AdView adView) {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-    }
-
-
 
     private void getLocalNews(){
         if (!resources.equals("null")){
@@ -146,7 +128,7 @@ public class HomepageFragment extends Fragment   {
             ));
         }
         else {
-            if (selectedLocalNewsLocation.equals("null")){
+            if (selectedLocalNewsLocation.equals("null") || selectedLocalNewsLocation.equals("İl Seçiniz")){
                 new LocalNewsTask(getContext(), sliderView, "https://www.hurriyet.com.tr/mersin-haberleri/", getFragmentManager(), getActivity()).execute();
             }
             else {
@@ -164,7 +146,7 @@ public class HomepageFragment extends Fragment   {
     }
 
     private void localNewsLocationControl() {
-        if (selectedLocalNewsLocation.equals("null")){
+        if (selectedLocalNewsLocation.equals("null") || selectedLocalNewsLocation.equals("İl Seçiniz")){
             localNewsLocation.setText("Mersin");
         }
         else {
@@ -172,8 +154,9 @@ public class HomepageFragment extends Fragment   {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void loadWeatherImage(View view) {
-        String weatherDistrictLocation = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("weatherdistrictsname", "null");
+        String weatherDistrictLocation = sharedPreferences.getString("weatherdistrictsname", "null");
         view_weatherLocation.setText(weatherDistrictLocation);
         if (!weatherDistrictLocation.equals("null")){
             String convertedLocaion = weatherDistrictLocation.toUpperCase()
@@ -224,7 +207,6 @@ public class HomepageFragment extends Fragment   {
         if (sliderView.getSliderAdapter() != null){
             currentPosition = sliderView.getCurrentPagePosition();
         }
-        Log.d("a", String.valueOf(currentPosition));
     }
 
     @Override

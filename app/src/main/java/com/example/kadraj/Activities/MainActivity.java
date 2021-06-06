@@ -1,4 +1,4 @@
-package com.example.kadraj;
+package com.example.kadraj.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import com.example.kadraj.Fragments.HomepageFragment;
 import com.example.kadraj.Fragments.NewsFragment;
 import com.example.kadraj.Fragments.AuthorsFragment;
+import com.example.kadraj.R;
 import com.example.kadraj.Web.NewsWebView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -47,21 +48,22 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.haberler:
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragmentcontainer, new NewsFragment())
-                            .replace(R.id.newspagecontainer, new NewsWebView("https://www.sabah.com.tr", "Sabah")).setCustomAnimations(R.anim.enter, R.anim.exit).commit();
+                            .replace(R.id.newspagecontainer, new NewsWebView("https://www.sabah.com.tr", "Sabah"))
+                            .setCustomAnimations(R.anim.enter, R.anim.exit).commit();
                     break;
                 case R.id.anasayfa:
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentcontainer, new HomepageFragment()).setCustomAnimations(R.anim.enter, R.anim.exit).commit();
+                            .replace(R.id.fragmentcontainer, new HomepageFragment())
+                            .setCustomAnimations(R.anim.enter, R.anim.exit).commit();
 
                     break;
                 case R.id.yazarlar:
                     getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentcontainer, new AuthorsFragment()).setCustomAnimations(R.anim.enter, R.anim.exit).commit();
+                            .replace(R.id.fragmentcontainer, new AuthorsFragment())
+                            .setCustomAnimations(R.anim.enter, R.anim.exit).commit();
                     break;
             }
             return true;
         }
     };
-
-
 }

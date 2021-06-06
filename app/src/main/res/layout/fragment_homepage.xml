@@ -5,13 +5,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     tools:context=".Fragments.HomepageFragment"
     android:background="#fff"
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:overScrollMode="never">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,15 +104,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
-
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adview1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                ads:adUnitId="ca-app-pub-2022851438534411/3587030565"
-                ads:adSize="SMART_BANNER"
-                />
 
             <LinearLayout
                 android:id="@+id/vegetableslayout"
@@ -463,14 +456,6 @@
                         />
                 </LinearLayout>
             </LinearLayout>
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adview2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                ads:adUnitId="ca-app-pub-2022851438534411/3587030565"
-                ads:adSize="SMART_BANNER"
-                />
             <TextView
                 style="@style/headers"
                 android:text="@string/doviz"
@@ -480,7 +465,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_marginHorizontal="10dp">
+                android:layout_marginHorizontal="10dp"
+                android:id="@+id/currencylayout">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -739,14 +725,6 @@
                         android:paddingVertical="2dp" />
                 </LinearLayout>
             </LinearLayout>
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adview3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                ads:adUnitId="ca-app-pub-2022851438534411/3587030565"
-                ads:adSize="SMART_BANNER"
-                />
             <Button
                 android:layout_marginHorizontal="10dp"
                 android:id="@+id/bottomsettingsbutton"

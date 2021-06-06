@@ -13,8 +13,7 @@ import com.example.kadraj.R;
 
 
 public class NewsWebView extends Fragment {
-    private String name,url;
-
+    String name,url;
 
     public NewsWebView(String url, String name) {
         this.url = url;

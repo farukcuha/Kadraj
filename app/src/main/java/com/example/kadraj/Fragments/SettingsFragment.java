@@ -37,12 +37,12 @@ import java.util.Objects;
 import java.util.Set;
 
 public class SettingsFragment extends Fragment {
-    private ImageButton button;
-    private ChipGroup chipGroup;
-    private NewsAddingAdapter adapter;
+    ImageButton button;
+    ChipGroup chipGroup;
+    NewsAddingAdapter adapter;
     AlertDialog.Builder builder;
-    private List<NewsCategoryModel> journalList, sportList, technologyList;
-    private Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
+    List<NewsCategoryModel> journalList, sportList, technologyList;
+    Spinner localNewsProvinces, weatherProvinces, weatherDistricts;
     String selectedDistrict;
 
     RecyclerView journalRecyclerView, sportRecyclerView, technologyRecyclerView;
@@ -131,7 +131,7 @@ public class SettingsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedLocation = parent.getSelectedItem().toString();
-                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().putString("weatherlocation", selectedLocation).apply();
+                sharedPreferences.edit().putString("weatherlocation", selectedLocation).apply();
 
                 if (selectedLocation.length() < 6){
                     sharedPreferences.edit().putString("weatherdistrictsname", selectedLocation).apply();
@@ -192,12 +192,9 @@ public class SettingsFragment extends Fragment {
                 builder.setPositiveButton("Kaydet", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null).size() == 4){
+                        if (sharedPreferences.getStringSet("newschiplist", null).size() == 4){
                             chipGroup.removeAllViews();
                             setUpChipGroup();
-                        }
-                        else {
-                            Toast.makeText(getContext(), "Olmadı", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).setNegativeButton("İptal", new DialogInterface.OnClickListener() {
@@ -276,16 +273,12 @@ public class SettingsFragment extends Fragment {
     }
 
     private void setUpChipGroup(){
-        Set<String> set = PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null);
-            if (set == null){
-                Log.d("a", "bok");
-            }
-            else {
+        Set<String> set = sharedPreferences.getStringSet("newschiplist", null);
+            if (set != null){
                 for (String s : set){
                     Chip chip = (Chip) LayoutInflater.from(getContext()).inflate(R.layout.chip_item_default, chipGroup, false);
                     chip.setText(s);
                     chipGroup.addView(chip);
-                    Log.d("aacas", "oldu");
 
                 }
             }

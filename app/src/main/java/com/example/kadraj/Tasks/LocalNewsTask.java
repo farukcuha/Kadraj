@@ -1,5 +1,6 @@
 package com.example.kadraj.Tasks;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -9,7 +10,7 @@ import android.util.Log;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.kadraj.Adapters.LocalNewsSliderAdapter;
-import com.example.kadraj.CustomProgressDialog;
+import com.example.kadraj.Dialogs.CustomProgressDialog;
 import com.example.kadraj.Models.SliderNewsModel;
 import com.example.kadraj.SharedPreferencesProvider;
 import com.smarteist.autoimageslider.SliderView;
@@ -23,13 +24,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
-    private Context context;
-    private SliderView localNewsSliderView;
-    private List<SliderNewsModel> list;
-    private String url;
-    private Dialog progressDialog;
-    private FragmentManager fragmentManager;
-    private Activity activity;
+    @SuppressLint("StaticFieldLeak")
+    Context context;
+    @SuppressLint("StaticFieldLeak")
+    SliderView localNewsSliderView;
+    List<SliderNewsModel> list;
+    String url;
+    Dialog progressDialog;
+    FragmentManager fragmentManager;
+    @SuppressLint("StaticFieldLeak")
+    Activity activity;
 
     public LocalNewsTask(Context context, SliderView localNewsSliderView, String url, FragmentManager fragmentManager, Activity activity) {
         this.context = context;
@@ -67,15 +71,10 @@ public class LocalNewsTask extends AsyncTask<Void, Void, Void> {
                         "https://www.hurriyet.com.tr" + element.attr("href"),
                         element.attr("title")
                 ));
-                Log.d("sdfg", element.select("img").attr("data-src"));
-                Log.d("sdfg", element.attr("href"));
-                Log.d("sdfg", element.select("div[class=slide-description]").text());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         return null;
     }
 

@@ -1,5 +1,6 @@
 package com.example.kadraj.Tasks;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
 import com.example.kadraj.SharedPreferencesProvider;
-import com.example.kadraj.CustomProgressDialog;
+import com.example.kadraj.Dialogs.CustomProgressDialog;
 import com.example.kadraj.Models.AuthorsModel;
 import com.example.kadraj.R;
 
@@ -24,13 +25,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
-    private AuthorsAdapter popularAuthorsAdapter;
-    private Context context;
-    private RecyclerView recyclerView;
-    private List<AuthorsModel> popularAuthorsList;
-    private Dialog progressDialog;
-    private Document document;
-    private FragmentManager fragmentManager;
+    AuthorsAdapter popularAuthorsAdapter;
+    @SuppressLint("StaticFieldLeak")
+    Context context;
+    @SuppressLint("StaticFieldLeak")
+    RecyclerView recyclerView;
+    List<AuthorsModel> popularAuthorsList;
+    Dialog progressDialog;
+    Document document;
+    FragmentManager fragmentManager;
 
     public PopularAuthorsTask(Context context, RecyclerView recyclerView, FragmentManager fragmentManager) {
         this.context = context;
@@ -49,7 +52,6 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
     }
     @Override
     protected Void doInBackground(Void... voids) {
-
         sabah();sozcu();karar();turkiye();
         takvim();haberturk();hurriyet();
         milliyet();yenisafak();akit();
@@ -130,7 +132,6 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
         try {
             document = Jsoup.connect("https://www.karar.com/yazarlar").ignoreContentType(true).get();
             Element element = document.select("div[class=title line-camp line-2]").get(0);
-
 
             popularAuthorsList.add(new AuthorsModel(
                     element.parent().select("div[class=author-name]").text(),

@@ -94,31 +94,12 @@ public class LocalNewsSliderAdapter extends SliderViewAdapter<LocalNewsSliderAda
         TextView newsTitle;
         ImageView newsImage;
         ProgressBar progressBar;
-        //BlurView blurView;
-
-
 
         public Holder(View itemView) {
             super(itemView);
             newsTitle = itemView.findViewById(R.id.newstitle);
             newsImage = itemView.findViewById(R.id.newsimage);
             progressBar = itemView.findViewById(R.id.sliderprogressbar);
-            //blurView = itemView.findViewById(R.id.blurview);
-
-            /*View decorView = activity.getWindow().getDecorView();
-            //ViewGroup you want to start blur from. Choose root as close to BlurView in hierarchy as possible.
-            ViewGroup rootView = (ViewGroup) decorView.findViewById(android.R.id.content);
-            //Set drawable to draw in the beginning of each blurred frame (Optional).
-            //Can be used in case your layout has a lot of transparent space and your content
-            //gets kinda lost after after blur is applied.
-            Drawable windowBackground = decorView.getBackground();
-
-            blurView.setupWith(rootView)
-                    .setFrameClearDrawable(windowBackground)
-                    .setBlurAlgorithm(new RenderScriptBlur(context))
-                    .setBlurRadius(25.f)
-                    .setBlurAutoUpdate(true)
-                    .setHasFixedTransformationMatrix(true);*/
         }
     }
 }

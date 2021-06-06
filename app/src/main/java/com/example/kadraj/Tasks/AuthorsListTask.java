@@ -1,5 +1,6 @@
 package com.example.kadraj.Tasks;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
 import com.example.kadraj.SharedPreferencesProvider;
-import com.example.kadraj.CustomProgressDialog;
+import com.example.kadraj.Dialogs.CustomProgressDialog;
 import com.example.kadraj.Models.AuthorsModel;
 import com.example.kadraj.R;
 
@@ -24,13 +25,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
-    private String newspaperUrl;
-    private Document document;
-    private List<AuthorsModel> list;
-    private Context context;
-    private FragmentManager fragmentManager;
-    private RecyclerView recyclerView;
-    private Dialog progressDialog;
+    String newspaperUrl;
+    Document document;
+    List<AuthorsModel> list;
+    @SuppressLint("StaticFieldLeak")
+    Context context;
+    FragmentManager fragmentManager;
+    @SuppressLint("StaticFieldLeak")
+    RecyclerView recyclerView;
+    Dialog progressDialog;
 
     public AuthorsListTask(String newspaperUrl, Context context, FragmentManager fragmentManager, RecyclerView recyclerView) {
         this.newspaperUrl = newspaperUrl;
@@ -100,9 +103,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         "all"
                 ));
             }
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,7 +124,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         "all"
                 ));
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -141,21 +140,17 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         "https://www.hurriyet.com.tr" + element.attr("href"),
                         R.drawable.hurriyet,
                         "all"
-
                 ));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
     private void karar() {
         try {
             document = Jsoup.connect(newspaperUrl).ignoreContentType(true).get();
 
             for (Element element : document.select("div[class=title line-camp line-2]")) {
-
                 list.add(new AuthorsModel(
                         element.parent().select("div[class=author-name]").text(),
                         element.parent().select("img.lazy").attr("data-src"),
@@ -164,22 +159,15 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.karar,
                         "all"
                 ));
-
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
     private void sozcu() {
         try {
             document = Jsoup.connect(newspaperUrl).ignoreContentType(true).get();
-
             for (Element element : document.select("div[class=cas-inner]")){
-
                 String eskiresim = element.select("span[class=news-img]").attr("style");
                 char[] yeniresim = new char[eskiresim.length()-20];
                 eskiresim.getChars(21, eskiresim.length()-1, yeniresim,0);
@@ -217,14 +205,10 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
     private void turkiye() {
         try {
             document = Jsoup.connect(newspaperUrl).ignoreContentType(true).get();
-
             for (Element element : document.select("table[class=yazar-kutu]")){
 
                 list.add(new AuthorsModel(
@@ -235,7 +219,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.milliyet,
                         "all"
                 ));
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -261,7 +244,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.yenisafak,
                         "all"
                 ));
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -272,9 +254,7 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
     private void yeniakit() {
         try {
             document = Jsoup.connect(newspaperUrl).ignoreContentType(true).get();
-
             for (Element element : document.select("p[class=postTitle]")){
-
                 list.add(new AuthorsModel(
                         element.parent().select("p[class=authorName]").text(),
                         element.parent().parent().select("img[class=b-lazy]").attr("data-src"),
@@ -283,7 +263,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.akit,
                         "all"
                 ));
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -294,7 +273,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
     private void takvim() {
         try {
             document = Jsoup.connect(newspaperUrl).ignoreContentType(true).get();
-
             for (Element element : document.select("ul[class=list] > li")){
 
                 list.add(new AuthorsModel(
@@ -305,7 +283,6 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
                         R.drawable.takvim,
                         "all"
                 ));
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -315,12 +292,10 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);
         AuthorsAdapter authorsAdapter = new AuthorsAdapter(list, context, fragmentManager);
         recyclerView.setAdapter(authorsAdapter);
-
 
         new SharedPreferencesProvider(context).putAuthorsData(list, "newspaperauthors");
 

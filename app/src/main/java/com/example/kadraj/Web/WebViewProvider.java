@@ -18,11 +18,11 @@ import com.sasank.roundedhorizontalprogress.RoundedHorizontalProgressBar;
 
 
 public class WebViewProvider extends Activity {
-    private View view;
-    private String pdTitle, loadUrl;
-    private int webViewIdTag, progressIdTag;
-    private WebView webView;
-    private RoundedHorizontalProgressBar progressBar;
+    View view;
+    String pdTitle, loadUrl;
+    int webViewIdTag, progressIdTag;
+    WebView webView;
+    RoundedHorizontalProgressBar progressBar;
 
     public WebViewProvider(View view, String pdTitle, String loadUrl, int webViewIdTag, int progressIdTag) {
         this.view = view;
@@ -32,6 +32,7 @@ public class WebViewProvider extends Activity {
         this.progressIdTag = progressIdTag;
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     public void provider(){
         webView = view.findViewById(webViewIdTag);
         progressBar = view.findViewById(progressIdTag);

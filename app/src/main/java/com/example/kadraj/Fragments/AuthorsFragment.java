@@ -11,14 +11,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.kadraj.Adapters.AuthorsAdapter;
 import com.example.kadraj.Adapters.PapernewsAdapter;
-import com.example.kadraj.ErrorDialog;
+import com.example.kadraj.Dialogs.ErrorDialog;
 import com.example.kadraj.SharedPreferencesProvider;
 import com.example.kadraj.Models.PapernewsModel;
 import com.example.kadraj.Tasks.PopularAuthorsTask;
@@ -30,17 +30,20 @@ import java.util.Objects;
 
 
 public class AuthorsFragment extends Fragment {
-    private RecyclerView papernewsReyclerView, popularAuthorsRecyclerView;
-    private PapernewsAdapter papernewsAdapter;
-    private List<PapernewsModel> papernewsimages;
-    private AuthorsAdapter popularAuthorsAdapter;
+    RecyclerView papernewsReyclerView, popularAuthorsRecyclerView;
+    PapernewsAdapter papernewsAdapter;
+    List<PapernewsModel> papernewsimages;
+    AuthorsAdapter popularAuthorsAdapter;
     ErrorDialog errorDialog;
     SharedPreferences sharedPreferences;
+    LinearLayout newspaperLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_authors, container, false);
+
+        newspaperLayout = view.findViewById(R.id.newspaperslayout);
 
         sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
 
@@ -59,7 +62,6 @@ public class AuthorsFragment extends Fragment {
         papernewsimages = new ArrayList<>();
 
         papernewsReyclerView.setLayoutManager(new GridLayoutManager(getContext(), 5));
-
         papernewsReyclerView.setHasFixedSize(true);
 
         papernewsimages.add(new PapernewsModel(R.drawable.sabahlogo, "https://www.sabah.com.tr/yazarlar", "Sabah"));

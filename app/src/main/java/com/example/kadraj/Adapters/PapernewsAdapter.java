@@ -18,9 +18,9 @@ import com.example.kadraj.R;
 import java.util.List;
 
 public class PapernewsAdapter extends RecyclerView.Adapter<PapernewsAdapter.Holder> {
-    private List<PapernewsModel> papernewsimages;
-    private Context context;
-    private FragmentManager fragmentManager;
+    List<PapernewsModel> papernewsimages;
+    Context context;
+    FragmentManager fragmentManager;
 
     public PapernewsAdapter(List<PapernewsModel> papernewsimages, Context context, androidx.fragment.app.FragmentManager fragmentManager) {
         this.papernewsimages = papernewsimages;

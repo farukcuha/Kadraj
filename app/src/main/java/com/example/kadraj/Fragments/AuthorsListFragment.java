@@ -20,11 +20,11 @@ import com.example.kadraj.R;
 
 
 public class AuthorsListFragment extends Fragment {
-    private String newspaperName;
-    private RecyclerView authorsRecyclerView;
-    private String newspaperUrl;
-    private TextView newspaperTextView;
-    private AuthorsAdapter popularAuthorsAdapter;
+    String newspaperName;
+    RecyclerView authorsRecyclerView;
+    String newspaperUrl;
+    TextView newspaperTextView;
+    AuthorsAdapter popularAuthorsAdapter;
 
     public AuthorsListFragment(String  newspaperName, String newspaperUrl) {
         this.newspaperName = newspaperName;
@@ -60,9 +60,6 @@ public class AuthorsListFragment extends Fragment {
             new AuthorsListTask(newspaperUrl, getContext(), getFragmentManager(), authorsRecyclerView).execute();
         }
 
-
         return view;
-
     }
-
 }

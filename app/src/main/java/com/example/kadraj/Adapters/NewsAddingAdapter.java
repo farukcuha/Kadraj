@@ -1,6 +1,7 @@
 package com.example.kadraj.Adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,15 +26,18 @@ import java.util.List;
 import java.util.Set;
 
 public class NewsAddingAdapter extends RecyclerView.Adapter<NewsAddingAdapter.Holder> {
-    private List<NewsCategoryModel> list;
-    private Context context;
-    private ChipGroup chipGroup;
+    List<NewsCategoryModel> list;
+    Context context;
+    ChipGroup chipGroup;
     List<String> chipList = new ArrayList<>();
+    SharedPreferences sharedPreferences;
 
     public NewsAddingAdapter(List<NewsCategoryModel> list, Context context, ChipGroup chipGroup) {
         this.list = list;
         this.context = context;
         this.chipGroup = chipGroup;
+
+        sharedPreferences = context.getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -55,7 +59,7 @@ public class NewsAddingAdapter extends RecyclerView.Adapter<NewsAddingAdapter.Ho
             public void onClick(View v) {
                 Chip chip = (Chip) LayoutInflater.from(context).inflate(R.layout.chip_item_close, chipGroup, false);
                 if (chipList.contains(model.getNewsName())){
-                    Toast.makeText(context, "Olmaz, aynı şeyi bidaha secip napacan?", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Farklı kaynaklar seçiniz", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     if (chipGroup.getChildCount() < 4){
@@ -75,19 +79,17 @@ public class NewsAddingAdapter extends RecyclerView.Adapter<NewsAddingAdapter.Ho
                         }
                         Set<String> set = new HashSet<>();
                         set.addAll(chipList);
-                        PreferenceManager.getDefaultSharedPreferences(context).edit().putStringSet("newschiplist", set).apply();
+                        sharedPreferences.edit().putStringSet("newschiplist", set).apply();
 
                         Log.d("a", String.valueOf(chipList));
                     }
                     else {
-                        Toast.makeText(context, "Olmaz, en fazla dört dene seçebilirsin yavrum", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "4 adet kaynak seçebilirsiniz", Toast.LENGTH_SHORT).show();
 
                     }
                 }
             }
         });
-
-
     }
 
     @Override

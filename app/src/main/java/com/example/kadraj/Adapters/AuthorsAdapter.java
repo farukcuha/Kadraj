@@ -97,7 +97,6 @@ public class AuthorsAdapter extends RecyclerView.Adapter<AuthorsAdapter.Holder> 
         private TextView authorsName, articleHeader;
         private ImageView newspaperImage;
 
-
         public Holder(@NonNull View itemView) {
             super(itemView);
             progressBar = itemView.findViewById(R.id.progressbar);

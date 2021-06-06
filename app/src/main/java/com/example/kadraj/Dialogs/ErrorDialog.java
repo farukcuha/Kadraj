@@ -1,4 +1,4 @@
-package com.example.kadraj;
+package com.example.kadraj.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.kadraj.R;
 
 public class ErrorDialog {
     Context context;

@@ -1,7 +1,9 @@
-package com.example.kadraj;
+package com.example.kadraj.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
+
+import com.example.kadraj.R;
 
 public class CustomProgressDialog{
     private final Context context;

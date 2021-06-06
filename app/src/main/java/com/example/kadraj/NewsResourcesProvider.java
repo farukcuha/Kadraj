@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewsResourcesProvider {
-
     public List<NewsCategoryModel> getData(String newsName){
         List<NewsCategoryModel> list = new ArrayList<>();
         switch (newsName){

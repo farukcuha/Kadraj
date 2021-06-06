@@ -1,4 +1,4 @@
-package com.example.kadraj;
+package com.example.kadraj.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.kadraj.R;
+
 public class IntroActivity extends AppCompatActivity {
     Handler handler = new Handler();
     ImageView introImage;
@@ -18,7 +20,7 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-
+        
         introImage = findViewById(R.id.introimage);
         animation = AnimationUtils.loadAnimation(IntroActivity.this, R.anim.intro);
         introImage.startAnimation(animation);
@@ -33,6 +35,4 @@ public class IntroActivity extends AppCompatActivity {
         }, 2500);
 
     }
-
-
 }

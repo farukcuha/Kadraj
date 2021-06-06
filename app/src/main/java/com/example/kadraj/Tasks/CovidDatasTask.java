@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.kadraj.CustomProgressDialog;
+import com.example.kadraj.Dialogs.CustomProgressDialog;
 import com.example.kadraj.R;
 
 import org.jsoup.Jsoup;
@@ -75,7 +75,6 @@ public class CovidDatasTask extends AsyncTask<Void, Void, Void> {
 
             covidList.add(document.select("div[class=syringe-block]").select("div[class=syringe-item]").first().select("span").text());
             covidList.add(document.select("div.covid-title > div.text > span").text());
-            Log.d("sadc",document.select("div.covid-title > div.text > span").text());
 
 
         } catch (IOException e) {

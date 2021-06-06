@@ -10,7 +10,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nestedscrollview">
+        android:id="@+id/nestedscrollview"
+        android:overScrollMode="never">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,7 +30,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:id="@+id/authorslistreyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

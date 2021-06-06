@@ -1,6 +1,8 @@
 package com.example.kadraj.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -32,13 +34,16 @@ import me.grantland.widget.AutofitHelper;
 
 
 public class NewsFragment extends Fragment implements View.OnClickListener {
-    private Fragment fragment;
     TextView news1, news2, news3, news4;
     List<NewsCategoryModel> list;
+    SharedPreferences sharedPreferences;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
+
+        sharedPreferences = getContext().getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
 
         news1 = view.findViewById(R.id.news1);
         news2 = view.findViewById(R.id.news2);
@@ -46,8 +51,8 @@ public class NewsFragment extends Fragment implements View.OnClickListener {
         news4 = view.findViewById(R.id.news4);
 
         list = new ArrayList<>();
-        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null) != null){
-            Set<String> src = PreferenceManager.getDefaultSharedPreferences(getContext()).getStringSet("newschiplist", null);
+        if (sharedPreferences.getStringSet("newschiplist", null) != null){
+            Set<String> src = sharedPreferences.getStringSet("newschiplist", null);
             for (String s : src){
                 List<NewsCategoryModel> comingList = new NewsResourcesProvider().getData(s);
                 list.add(new NewsCategoryModel(

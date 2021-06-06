@@ -5,18 +5,16 @@ import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.kadraj.CustomProgressDialog;
+import com.example.kadraj.Dialogs.CustomProgressDialog;
 import com.example.kadraj.Models.CurrencyModel;
 import com.example.kadraj.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -69,8 +67,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         goldPrices();
         currencyPrices();
         cryptoPrices();
-
-
         return null;
     }
 
@@ -79,7 +75,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
 
         goldName1.setText(goldList.get(0).getName());
         goldName2.setText(goldList.get(1).getName());
@@ -186,7 +181,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
 
                 String rotation;
 
-
                 if (String.valueOf(checkMinusPlus).equals("%-")){
                     rotation = "down";
 
@@ -197,12 +191,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                     Log.d("a", String.valueOf(checkMinusPlus));
 
                 }
-
-                Log.d("ad", String.valueOf(newGoldName));
-                Log.d("alış", elements.select("tr").get(i).select("td").get(1).text());
-                Log.d("satış", elements.select("tr").get(i).select("td").get(2).text());
-                Log.d("değişim", elements.select("tr").get(i).select("td").get(3).text());
-
 
                 goldList.add(new CurrencyModel(
                         String.valueOf(newGoldName),
@@ -216,12 +204,8 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
-    //private void getDatas(String url, String documentPath, int startLoop, int finishLoop, )
     private void currencyPrices() {
         try {
             document = Jsoup.connect("https://kur.doviz.com").ignoreContentType(true).get();
@@ -243,11 +227,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                 else {
                     rotation = "up";
                 }
-
-                Log.d("ad", String.valueOf(newCurrencyName));
-                Log.d("alış", elements.select("tr").get(i).select("td").get(1).text());
-                Log.d("satış", elements.select("tr").get(i).select("td").get(2).text());
-                Log.d("değişim", elements.select("tr").get(i).select("td").get(5).text());
 
                 currencyList.add(new CurrencyModel(
                         String.valueOf(newCurrencyName),
@@ -284,10 +263,6 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
                 else {
                     rotation = "up";
                 }
-                Log.d("ad", String.valueOf(newCryptoName));
-                Log.d("alış", "null");
-                Log.d("satış", elements.select("tr").get(i).select("td").get(2).text());
-                Log.d("değişim", elements.select("tr").get(i).select("td").get(5).text());
 
                 cryptoList.add(new CurrencyModel(
                         String.valueOf(newCryptoName),

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_baseline_cancel_24"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:onClick="onClick"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yerel haber konumu, hava durumu konumu gibi bilgileri uygulama ayarlarından değiştirebilirsiniz."
+            android:fontFamily="@font/sfumedium"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            />
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:lottie_rawRes="@raw/go"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_gravity="center"/>
+        <Button
+            android:layout_marginHorizontal="10dp"
+            android:id="@+id/goingtosettings"
+            android:layout_marginVertical="5dp"
+            android:text="Ayarlara git"
+            android:clickable="true"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottombuttonborder"
+            android:focusable="true"
+            android:onClick="onClick"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

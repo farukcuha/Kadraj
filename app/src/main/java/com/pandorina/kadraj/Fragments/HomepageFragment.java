@@ -27,6 +27,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.pandorina.kadraj.Adapters.LocalNewsSliderAdapter;
 import com.pandorina.kadraj.Dialogs.ErrorDialog;
+import com.pandorina.kadraj.Dialogs.GoingToSettingsDialog;
 import com.pandorina.kadraj.R;
 import com.pandorina.kadraj.SharedPreferencesProvider;
 import com.pandorina.kadraj.Tasks.CovidDatasTask;
@@ -55,6 +56,7 @@ public class HomepageFragment extends Fragment   {
     String resources;
     ErrorDialog errorDialog;
     LinearLayout weatherLayout, covidLayout, currencyLayout;
+    GoingToSettingsDialog goingToSettingsDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,8 +87,10 @@ public class HomepageFragment extends Fragment   {
         resources = sharedPreferences.getString("localnews", "null");
 
         errorDialog = new ErrorDialog(getContext(), "İnternet bağlantınızı kontrol ediniz.");
+        goingToSettingsDialog = new GoingToSettingsDialog(getContext(), getFragmentManager());
 
         checkInternetConnection();
+        checkCustomLocation();
 
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +101,13 @@ public class HomepageFragment extends Fragment   {
         });
 
         return view;
+    }
+
+    private void checkCustomLocation() {
+        if (sharedPreferences.getString("localnewslocationname", "null").equals("null") ||
+                sharedPreferences.getString("weatherprovincesname", "null").equals("null")){
+            goingToSettingsDialog.show();
+        }
     }
 
     private void checkInternetConnection() {

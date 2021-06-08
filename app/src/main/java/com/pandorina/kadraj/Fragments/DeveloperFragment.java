@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.pandorina.kadraj.R;
 
+import java.util.Objects;
+
 
 public class DeveloperFragment extends Fragment implements View.OnClickListener {
     TextView textView;
@@ -33,14 +35,26 @@ public class DeveloperFragment extends Fragment implements View.OnClickListener 
                 "Güncel covid-19 verileri Yenişafak gazetesinin web sayfasından alınmıştır.<br>" +
                 "Güncel döviz verileri döviz.com'dan alınmıştır.<br>" +
                 "Tüm gazete yazarlarının verileri gazetelerin kendi web sayfalarından alınmıştır.<br><br>" +
-                "Uygulamaya dair görüşlerinizi lütfen yorumlarda belirtin.<br><br>" +
+                "Uygulamaya dair görüşlerinizi, öneri ve yorumlarınızı aşağıdaki mail simgesine tıklayarak tarafımıza ulaştırabilirsiniz.<br><br>" +
                 "<b>Geliştirici</b><br>" +
                 "Ahmet Faruk Çuha";
+
         textView.setText(Html.fromHtml(text));
 
         view.findViewById(R.id.github).setOnClickListener(this);
         view.findViewById(R.id.twitter).setOnClickListener(this);
         view.findViewById(R.id.linkedin).setOnClickListener(this);
+
+        view.findViewById(R.id.gmail).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:ahmetfarukcuha@gmail.com"));
+                if (intent.resolveActivity(Objects.requireNonNull(getContext()).getPackageManager()) != null){
+                    startActivity(intent);
+                }
+            }
+        });
 
         return view;
     }

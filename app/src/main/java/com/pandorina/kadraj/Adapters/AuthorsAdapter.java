@@ -80,7 +80,6 @@ public class AuthorsAdapter extends RecyclerView.Adapter<AuthorsAdapter.Holder> 
                         .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                         .replace(R.id.fragmentcontainer, new NewsWebView(model.getArticleUrl(), model.getAuthorName()))
                         .addToBackStack("TAG")
-
                         .commit();
             }
         });

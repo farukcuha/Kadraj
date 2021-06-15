@@ -12,5 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
-appkey.jks
 local.properties
+appkey.jks
+

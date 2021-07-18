@@ -29,11 +29,20 @@ public class DeveloperFragment extends Fragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.fragment_developer, container, false);
         textView = view.findViewById(R.id.info);
 
-        String text = "<b>Kaynaklar</b><br>" +
-                "Yerel haberler Hürriyet gazetesinin web sayfasından alınmıştır.<br>" +
-                "Hava durumu bilgileri MGM'den alınmıştır.<br>" +
-                "Güncel döviz verileri döviz.com'dan alınmıştır.<br>" +
-                "Tüm gazete yazarlarının verileri gazetelerin kendi web sayfalarından alınmıştır.<br><br>" +
+        String text =
+                "<b>Yerel Haberler:<b> <u>https://www.hurriyet.com.tr</u><br>" +
+                "<b>Hava Durumu:<b> <u>https://www.mgm.gov.tr</u><br>" +
+                "<b>Güncel Döviz Kurları:<b> <u>https://www.doviz.com</u><br>" +
+                "<b>Gazete Yazarları:<b> <u>https://www.sabah.com.tr</u><br>" +
+                        "<u>https://www.sozcu.com.tr</u><br>" +
+                        "<u>https://www.haberturk.com</u><br>" +
+                        "<u>https://www.hurriyet.com.tr</u><br>" +
+                        "<u>https://www.karar.com/</u><br>" +
+                        "<u>https://www.milliyet.com.tr</u><br>" +
+                        "<u>https://www.turkiyegazetesi.com.tr</u><br>" +
+                        "<u>https://www.takvim.com.tr</u><br>" +
+                        "<u>https://www.yeniakit.com.tr</u><br>" +
+                        "<u>https://www.yenisafak.com</u><br><br>" +
                 "Uygulamaya dair görüşlerinizi, öneri ve yorumlarınızı aşağıdaki mail simgesine tıklayarak tarafımıza ulaştırabilirsiniz.<br><br>" +
                 "<b>Geliştirici</b><br>" +
                 "Ahmet Faruk Çuha";

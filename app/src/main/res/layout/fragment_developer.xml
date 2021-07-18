@@ -19,11 +19,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfusemibold"
+                android:text="Kaynaklar"
+                android:textSize="25sp"
+                android:textColor="#000"
+                />
+            <TextView
                 android:id="@+id/info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfumedium"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 />
 
             <LinearLayout

@@ -57,9 +57,7 @@ public class CurrencyPricesTask extends AsyncTask<Void, Void, Void> {
         if (progressDialog!=null){
             progressDialog.show();
         }
-        else {
-            progressDialog.dismiss();
-        }
+
     }
 
     @Override

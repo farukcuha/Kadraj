@@ -5,11 +5,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.pandorina.kadraj.Adapters.AuthorsAdapter;
 import com.pandorina.kadraj.SharedPreferencesProvider;
 import com.pandorina.kadraj.Dialogs.CustomProgressDialog;
@@ -31,14 +33,15 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
     @SuppressLint("StaticFieldLeak")
     RecyclerView recyclerView;
     List<AuthorsModel> popularAuthorsList;
-    Dialog progressDialog;
     Document document;
     FragmentManager fragmentManager;
+    ShimmerFrameLayout skeleton;
 
-    public PopularAuthorsTask(Context context, RecyclerView recyclerView, FragmentManager fragmentManager) {
+    public PopularAuthorsTask(Context context, RecyclerView recyclerView, FragmentManager fragmentManager, ShimmerFrameLayout skeleton) {
         this.context = context;
         this.recyclerView = recyclerView;
         this.fragmentManager = fragmentManager;
+        this.skeleton = skeleton;
 
         popularAuthorsList = new ArrayList<>();
         popularAuthorsAdapter = new AuthorsAdapter(popularAuthorsList, context, fragmentManager);
@@ -47,8 +50,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressDialog = new CustomProgressDialog(context).loadingDialog();
-        progressDialog.show();
+        skeleton.setVisibility(View.VISIBLE);
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -285,7 +287,7 @@ public class PopularAuthorsTask extends AsyncTask<Void, Void, Void> {
         recyclerView.setAdapter(popularAuthorsAdapter);
         new SharedPreferencesProvider(context).putAuthorsData(popularAuthorsList, "popularauthors");
 
-        progressDialog.dismiss();
+        skeleton.setVisibility(View.GONE);
 
     }
 

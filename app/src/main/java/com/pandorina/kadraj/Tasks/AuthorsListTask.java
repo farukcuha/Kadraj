@@ -5,11 +5,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.pandorina.kadraj.Adapters.AuthorsAdapter;
 import com.pandorina.kadraj.SharedPreferencesProvider;
 import com.pandorina.kadraj.Dialogs.CustomProgressDialog;
@@ -34,19 +36,20 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
     @SuppressLint("StaticFieldLeak")
     RecyclerView recyclerView;
     Dialog progressDialog;
+    ShimmerFrameLayout skeleton;
 
-    public AuthorsListTask(String newspaperUrl, Context context, FragmentManager fragmentManager, RecyclerView recyclerView) {
+    public AuthorsListTask(String newspaperUrl, Context context, FragmentManager fragmentManager, RecyclerView recyclerView, ShimmerFrameLayout skeleton) {
         this.newspaperUrl = newspaperUrl;
         this.context = context;
         this.fragmentManager = fragmentManager;
         this.recyclerView = recyclerView;
+        this.skeleton = skeleton;
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progressDialog = new CustomProgressDialog(context).loadingDialog();
-        progressDialog.show();
+        skeleton.setVisibility(View.VISIBLE);
         list = new ArrayList<>();
     }
 
@@ -299,7 +302,7 @@ public class AuthorsListTask extends AsyncTask<Void, Void, Void> {
 
         new SharedPreferencesProvider(context).putAuthorsData(list, "newspaperauthors");
 
-        progressDialog.dismiss();
+        skeleton.setVisibility(View.GONE);
     }
 
 }

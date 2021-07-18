@@ -30,7 +30,6 @@ import com.pandorina.kadraj.Dialogs.ErrorDialog;
 import com.pandorina.kadraj.Dialogs.GoingToSettingsDialog;
 import com.pandorina.kadraj.R;
 import com.pandorina.kadraj.SharedPreferencesProvider;
-import com.pandorina.kadraj.Tasks.CovidDatasTask;
 import com.pandorina.kadraj.Tasks.CurrencyPricesTask;
 import com.pandorina.kadraj.Tasks.LocalNewsTask;
 import com.google.android.gms.ads.MobileAds;
@@ -77,7 +76,6 @@ public class HomepageFragment extends Fragment   {
         localNewsLocation      = view.findViewById(R.id.location);
         view_weatherLocation   = view.findViewById(R.id.weatherlocationn);
         weatherLayout          = view.findViewById(R.id.weatherlayout);
-        covidLayout            = view.findViewById(R.id.covidlayout);
         currencyLayout         = view.findViewById(R.id.currencylayout);
 
         sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
@@ -117,7 +115,6 @@ public class HomepageFragment extends Fragment   {
 
         if (networkInfo != null && networkInfo.isConnectedOrConnecting()){
             new CurrencyPricesTask(getContext(), view).execute();
-            new CovidDatasTask(getContext(), view).execute();
             getLocalNews();
             localNewsLocationControl();
             loadWeatherImage(view);
@@ -217,6 +214,7 @@ public class HomepageFragment extends Fragment   {
         if (sliderView.getSliderAdapter() != null){
             currentPosition = sliderView.getCurrentPagePosition();
         }
+        
     }
 
     @Override

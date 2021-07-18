@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.pandorina.kadraj.Adapters.AuthorsAdapter;
 import com.pandorina.kadraj.Adapters.PapernewsAdapter;
 import com.pandorina.kadraj.Dialogs.ErrorDialog;
@@ -37,6 +38,7 @@ public class AuthorsFragment extends Fragment {
     ErrorDialog errorDialog;
     SharedPreferences sharedPreferences;
     LinearLayout newspaperLayout;
+    ShimmerFrameLayout skeleton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +46,7 @@ public class AuthorsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_authors, container, false);
 
         newspaperLayout = view.findViewById(R.id.newspaperslayout);
+        skeleton = view.findViewById(R.id.authorskeleton);
 
         sharedPreferences = Objects.requireNonNull(getContext()).getSharedPreferences("kadrajcloud", Context.MODE_PRIVATE);
 
@@ -101,7 +104,7 @@ public class AuthorsFragment extends Fragment {
 
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()){
-            new PopularAuthorsTask(getContext(), popularAuthorsRecyclerView, getFragmentManager()).execute();
+            new PopularAuthorsTask(getContext(), popularAuthorsRecyclerView, getFragmentManager(), skeleton).execute();
             errorDialog.dismiss();
         }
         else {

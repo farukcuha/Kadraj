@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.pandorina.kadraj.Adapters.AuthorsAdapter;
 import com.pandorina.kadraj.SharedPreferencesProvider;
 import com.pandorina.kadraj.Tasks.AuthorsListTask;
@@ -25,6 +26,7 @@ public class AuthorsListFragment extends Fragment {
     String newspaperUrl;
     TextView newspaperTextView;
     AuthorsAdapter popularAuthorsAdapter;
+    ShimmerFrameLayout skeleton;
 
     public AuthorsListFragment(String  newspaperName, String newspaperUrl) {
         this.newspaperName = newspaperName;
@@ -38,6 +40,7 @@ public class AuthorsListFragment extends Fragment {
 
         newspaperTextView = view.findViewById(R.id.newspapername);
         authorsRecyclerView = view.findViewById(R.id.authorslistreyclerview);
+        skeleton = view.findViewById(R.id.authorskeleton);
 
         newspaperTextView.setText(newspaperName);
 
@@ -57,7 +60,7 @@ public class AuthorsListFragment extends Fragment {
         }
 
         else {
-            new AuthorsListTask(newspaperUrl, getContext(), getFragmentManager(), authorsRecyclerView).execute();
+            new AuthorsListTask(newspaperUrl, getContext(), getFragmentManager(), authorsRecyclerView, skeleton).execute();
         }
 
         return view;
